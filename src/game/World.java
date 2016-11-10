@@ -31,7 +31,11 @@ public class World {
     
     @Override
     public String toString() {
-    
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append(invader.toString());
+        sb.append("\n******************");
+        sb.append(spaceShip.toString());
+        
+        return sb.toString();
     }
 }
