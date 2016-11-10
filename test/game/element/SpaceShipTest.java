@@ -2,6 +2,7 @@ package game.element;
 
 import static org.junit.Assert.*;
 import game.World;
+import game.element.GameMoveableElement.Direction;
 import game.element.SpaceShip;
 
 import org.junit.Test;
@@ -26,9 +27,9 @@ public class SpaceShipTest {
 	public void SpaceShipTurnLeft() {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
+		s.turnLeft();
 		
-		
-		assertEquals(s.turnLeft(), );
+		assertEquals(Direction.LEFT, s.getDirection());
 	}
 
 	/**
@@ -36,7 +37,11 @@ public class SpaceShipTest {
 	 */
 	@Test
 	public void SpaceShipTurnRight() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		s.turnRight();
 		
+		assertEquals(Direction.RIGHT, s.getDirection());
 	}
 	
 	/**
@@ -44,7 +49,12 @@ public class SpaceShipTest {
 	 */
 	@Test
 	public void SpaceShipWallLeft() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		s.turnLeft();
+		s.update(4000);
 		
+		assertTrue(0 <= s.getPosition().getX());
 	}
 	
 	/**
@@ -52,7 +62,12 @@ public class SpaceShipTest {
 	 */
 	@Test
 	public void SpaceShipWallRight() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		s.turnRight();
+		s.update(w.getWidth());
 		
+		assertTrue(w.getWidth() >= s.getPosition().getX());
 	}
 	
 }
