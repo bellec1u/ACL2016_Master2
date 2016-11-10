@@ -6,6 +6,7 @@ package main;
  * @author BELLEC Leopold
  * @author DAUZVARDIS Juozas
  * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
  *
  */
 public class Main {
