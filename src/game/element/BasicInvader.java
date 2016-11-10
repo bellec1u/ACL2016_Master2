@@ -23,7 +23,6 @@ public class BasicInvader extends Invader{
 	public BasicInvader(Point2D pos) {
 		super(pos, spd);
 		turnDown();
-		isMoving = true;
 	}
 
 	@Override

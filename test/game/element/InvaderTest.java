@@ -9,21 +9,21 @@ import org.junit.Test;
 public class InvaderTest {
 
 	/**
-	 * test si l'Invader ne bouge pas
+	 * test si l'Invader ne bouge pas -> doit retourner faux
 	 */
 	@Test
-	public void SpaceShipDontMove() {
+	public void InvaderCantMove() {
 		World w = new World();
 		Invader i = w.getInvader();
 		
-		assertTrue(i.getIsMoving());
+		assertFalse(i.getDirection() == null);
 	}
 	
 	/**
 	 * test si l'Invader vas vers le bas
 	 */
 	@Test
-	public void SpaceShipGoDown() {
+	public void InvaderGoDown() {
 		World w = new World();
 		Invader i = w.getInvader();
 		

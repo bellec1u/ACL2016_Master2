@@ -1,9 +1,10 @@
 package game.element;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import game.World;
 import game.element.GameMoveableElement.Direction;
-import game.element.SpaceShip;
 
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class SpaceShipTest {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
 		
-		assertFalse(s.getIsMoving());
+		assertTrue(s.getDirection() == null);
 	}
 	
 	/**
@@ -65,9 +66,9 @@ public class SpaceShipTest {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
 		s.turnRight();
-		s.update(w.getWidth());
+		s.update(World.WIDTH + 20);
 		
-		assertTrue(w.getWidth() >= s.getPosition().getX());
+		assertTrue(World.WIDTH >= s.getPosition().getX());
 	}
 	
 }
