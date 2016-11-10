@@ -22,12 +22,12 @@ public class BasicInvader extends Invader{
 	 */
 	public BasicInvader(Point2D pos) {
 		super(pos, spd);
-		// TODO Auto-generated constructor stub
+		turnDown();
+		isMoving = true;
 	}
 
 	@Override
 	public void update(double delta) {
-		// TODO Auto-generated method stub
 		move(delta);
 	}
 }

@@ -29,10 +29,21 @@ public class Game {
         
         while (!input.equals("q")) {
             System.out.println(world);
-            System.out.print("Commande : ");
+            System.out.print("Commande (l, r, q) : ");
             input = s.nextLine();
             
+            world.spaceShip.setIsMoving(true);
             
+            switch (input) {
+            case "l":
+                world.spaceShip.turnLeft();
+                break;
+            case "r":
+                world.spaceShip.turnRight();
+                break;
+            }
+            
+            world.update(1);
             //System.out.println("Input : " + input);
         }
         

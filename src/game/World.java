@@ -21,8 +21,8 @@ public class World {
     public final static int WIDTH = 200;
     public final static int HEIGHT = 200;
     
-    private Invader invader;
-    private SpaceShip spaceShip; 
+    public Invader invader;
+    public SpaceShip spaceShip; 
     
     public World() {
         this.invader = new BasicInvader(new Point2D.Double(10, 10));
@@ -44,12 +44,20 @@ public class World {
 	public SpaceShip getSpaceShip() {
 		return spaceShip;
 	}
+	
+	public void update(double delta) {
+	    spaceShip.update(delta);
+	    invader.update(delta);
+	}
+	
 
 	@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("INVADER :\n");
         sb.append(invader.toString());
-        sb.append("\n******************");
+        sb.append("\n******************\n");
+        sb.append("SPACE SHIP :\n");
         sb.append(spaceShip.toString());
         
         return sb.toString();

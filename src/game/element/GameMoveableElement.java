@@ -23,7 +23,7 @@ public abstract class GameMoveableElement extends GameElement{
 	protected Direction direction;
 	
 	/** Boolean indicates if object is moving or not **/
-	private boolean isMoving;
+	protected boolean isMoving;
 	
 	/**
 	 * Constructs a GameMoveableElement.java with the given parameter(s)
@@ -31,12 +31,12 @@ public abstract class GameMoveableElement extends GameElement{
 	 * @param spd
 	 */
 	public GameMoveableElement(Point2D pos, double spd) {
-		// TODO Auto-generated constructor stub
 		super(pos);
 		speed = spd;
 		isMoving = false;
 		direction = Direction.LEFT;
 	}
+	
 	
 	/** Moves the object toward a direction with given parameter :
 	 * @param delta time between 2 frames
@@ -106,15 +106,6 @@ public abstract class GameMoveableElement extends GameElement{
 		direction = Direction.DOWN;
 	}
 	
-	/** toString **/
-	public String toString(){
-		StringBuilder sb = new StringBuilder("");
-		sb.append(super.toString());
-		sb.append("Direction ? " + direction + "\n");
-		sb.append("Moves ? " + isMoving + "\n");
-		return sb.toString();
-	}
-	
 	/** Returns the speed **/
 	public double getSpeed(){
 		return speed;
@@ -125,4 +116,17 @@ public abstract class GameMoveableElement extends GameElement{
 		return this.direction;
 	}
 	
+	public void setIsMoving(boolean val) {
+	    isMoving = val;
+	}
+	
+	/** toString **/
+    public String toString(){
+        StringBuilder sb = new StringBuilder("");
+        sb.append(super.toString());
+        sb.append("Direction ? " + direction + "\n");
+        sb.append("Moves ? " + isMoving + "\n");
+        return sb.toString();
+    }
+    
 }
