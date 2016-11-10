@@ -1,5 +1,7 @@
 package game.element;
 
+import game.World;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -50,11 +52,14 @@ public abstract class GameElement {
 	 * @param y position dans l'axe Y
 	 */
 	public void setPosition(double x, double y){
-		if(x>0&&y>0){
+		if(x>0 && y>0 && x<World.WIDTH && y<World.HEIGHT){
 			position.setLocation(x, y);
 		}
 	}
 	
+	/**
+	 * donne le nom de l'element et sa position
+	 */
 	public String toString(){
 		String s=this.toString()+" en position : "+this.position.getX()+", "+this.position.getY()+".\n";
 		return s;
