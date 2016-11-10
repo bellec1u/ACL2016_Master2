@@ -37,11 +37,6 @@ public abstract class GameMoveableElement extends GameElement{
 		isMoving = false;
 		direction = Direction.LEFT;
 	}
-
-	/** Returns the GameMoveableElement's direction **/
-	protected Direction getDirection(){
-		return this.direction;
-	}
 	
 	/** Moves the object toward a direction with given parameter :
 	 * @param delta time between 2 frames
@@ -123,6 +118,11 @@ public abstract class GameMoveableElement extends GameElement{
 	/** Returns the speed **/
 	public double getSpeed(){
 		return speed;
+	}
+	
+	/** Returns the GameMoveableElement's direction **/
+	protected Direction getDirection(){
+		return this.direction;
 	}
 	
 }
