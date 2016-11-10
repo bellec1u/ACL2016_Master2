@@ -29,7 +29,23 @@ public class World {
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(150, 100));
     }
     
-    @Override
+    public static int getWidth() {
+		return WIDTH;
+	}
+
+	public static int getHeight() {
+		return HEIGHT;
+	}
+
+	public Invader getInvader() {
+		return invader;
+	}
+
+	public SpaceShip getSpaceShip() {
+		return spaceShip;
+	}
+
+	@Override
     public String toString() {
     
         return "";
