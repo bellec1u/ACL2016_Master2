@@ -1,5 +1,12 @@
 package game;
 
+import game.element.BasicInvader;
+import game.element.BasicSpaceShip;
+import game.element.Invader;
+import game.element.SpaceShip;
+
+import java.awt.geom.Point2D;
+
 /**
  * Project "Space Invader"
  * M1 Informatique 2016/2017
@@ -10,5 +17,21 @@ package game;
  *
  */
 public class World {
-
+    
+    public final static int WIDTH = 200;
+    public final static int HEIGHT = 200;
+    
+    private Invader invader;
+    private SpaceShip spaceShip; 
+    
+    public World() {
+        this.invader = new BasicInvader(new Point2D.Double(10, 10));
+        this.spaceShip = new BasicSpaceShip(new Point2D.Double(150, 100));
+    }
+    
+    @Override
+    public String toString() {
+    
+        return "";
+    }
 }
