@@ -19,9 +19,6 @@ public class Game {
         this.world = new World();
     }
     
-    public void update() {
-        
-    }
     
     /**
      * methode qui lance le jeu
@@ -31,10 +28,12 @@ public class Game {
         String input = "";
         
         while (!input.equals("q")) {
-        	System.out.println("-------------------------");
+        	System.out.println("+========================+");
             System.out.println(world);
-            System.out.println("******************");
-            System.out.print("Commande (l, r, q) : ");
+            System.out.println("+========================+");
+            System.out.println();
+            System.out.println("Commandes : (l)eft, (r)ight, (q)uit");
+            System.out.print("Entrez : ");
             input = s.nextLine();
                    
             switch (input) {

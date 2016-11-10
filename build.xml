@@ -3,33 +3,28 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="acl2016_master2">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ACL2016">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="../../../../../../../Applications/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
-        <pathelement location="../../../../../../../Applications/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
-    </path>
-    <path id="acl2016_master2.classpath">
+    <path id="ACL2016.classpath">
         <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="plugins/junit.jar"/>
+        <pathelement location="plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.ucls"/>
-                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="test">
                 <exclude name="**/*.ucls"/>
-                <exclude name="**/*.useq"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -45,7 +40,7 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <src path="test"/>
-            <classpath refid="acl2016_master2.classpath"/>
+            <classpath refid="ACL2016.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -67,21 +62,23 @@
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="game.element.InvaderTest" todir="${junit.output.dir}"/>
-            <classpath refid="acl2016_master2.classpath"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="ACL2016.classpath"/>
         </junit>
-    </target>
-    <target name="Main">
-        <java classname="main.Main" failonerror="true" fork="yes">
-            <classpath refid="acl2016_master2.classpath"/>
-        </java>
     </target>
     <target name="SpaceShipTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="game.element.SpaceShipTest" todir="${junit.output.dir}"/>
-            <classpath refid="acl2016_master2.classpath"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="ACL2016.classpath"/>
         </junit>
+    </target>
+    <target name="Main">
+        <java classname="main.Main" failonerror="true" fork="yes">
+            <classpath refid="ACL2016.classpath"/>
+        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">

@@ -73,7 +73,7 @@ public abstract class GameElement {
 	 * donne le nom de l'element et sa position
 	 */
 	public String toString() {
-		String s="position : "+this.position.getX()+", "+this.position.getY()+".\n";
+		String s="    Position : "+this.position.getX()+", "+this.position.getY()+".\n";
 		return s;
 	}
 }

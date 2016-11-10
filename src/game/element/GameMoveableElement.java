@@ -58,6 +58,8 @@ public abstract class GameMoveableElement extends GameElement{
             // If LEFT then x' = x + distance and y' = y
             setRelativePosition(distance, 0);
             break;
+        default:
+            break;
         }
     }
 
@@ -102,7 +104,7 @@ public abstract class GameMoveableElement extends GameElement{
     public String toString(){
         StringBuilder sb = new StringBuilder("");
         sb.append(super.toString());
-        sb.append("Direction ? " + direction + "\n");
+        sb.append("    Direction : " + direction + "\n");
         return sb.toString();
     }
 

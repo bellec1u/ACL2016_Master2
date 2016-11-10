@@ -19,7 +19,7 @@ import java.awt.geom.Point2D;
 public class World {
     
     public final static int WIDTH = 200;
-    public final static int HEIGHT = 200;
+    public final static int HEIGHT = 400;
     
     public Invader invader;
     public SpaceShip spaceShip; 
@@ -29,14 +29,6 @@ public class World {
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(150, 100));
     }
     
-    public static int getWidth() {
-		return WIDTH;
-	}
-
-	public static int getHeight() {
-		return HEIGHT;
-	}
-
 	public Invader getInvader() {
 		return invader;
 	}
@@ -56,7 +48,7 @@ public class World {
         StringBuilder sb = new StringBuilder();
         sb.append("INVADER :\n");
         sb.append(invader.toString());
-        sb.append("\n******************\n");
+        sb.append("\n-------------------------\n");
         sb.append("SPACE SHIP :\n");
         sb.append(spaceShip.toString());
         
