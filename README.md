@@ -8,23 +8,23 @@
 # Planned features
 
 V 1.0 :
-	Déplacer un GameMoveable :
-	 - le SpaceShip peut aller à gauche, droite ou peut ne pas bouger.
-	 - le SpaceShip ne peut pas sortir de l'écran par la gauche ni la droite.
-	 - l'Invader se déplace vers le bas.
+* Déplacer un GameMoveable :
+ - le SpaceShip peut aller à gauche, droite ou peut ne pas bouger.
+ - le SpaceShip ne peut pas sortir de l'écran par la gauche ni la droite.
+ - l'Invader se déplace vers le bas.
 	
 V 1.1 :
-	Afficher les GameElement :
-	 - le SpaceShip, l'Invader et le Laser ont une image.
-	 - le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu.
-	Interactions joueur/machine (listeners) :
-	 - le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuis sur la flèche gauche.
-	 - le SpaceShip se déplace vers la droite lorsque l'utilisateur appuis sur la flèche droite.
-	 - le SpaceShip ne bouge pas si l'utilisateur ne fait rien.
-	 - le SpaceShip tire un Laser lorsque l'utilisateur appuis sur la barre espace.
-	Tirer un Laser :
-	 - un Laser apparait devant le vaisseau lors d'un pression de la barre espace.
-	 - le Laser se déplace automatiquement vers le haut
+* Afficher les GameElement :
+ - le SpaceShip, l'Invader et le Laser ont une image.
+ - le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu.
+* Interactions joueur/machine (listeners) :
+ - le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuis sur la flèche gauche.
+ - le SpaceShip se déplace vers la droite lorsque l'utilisateur appuis sur la flèche droite.
+ - le SpaceShip ne bouge pas si l'utilisateur ne fait rien.
+ - le SpaceShip tire un Laser lorsque l'utilisateur appuis sur la barre espace.
+* Tirer un Laser :
+ - un Laser apparait devant le vaisseau lors d'un pression de la barre espace.
+ - le Laser se déplace automatiquement vers le haut
 
 # Diagrams
 
