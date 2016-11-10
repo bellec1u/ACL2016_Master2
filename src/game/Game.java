@@ -23,12 +23,17 @@ public class Game {
         
     }
     
+    /**
+     * methode qui lance le jeu
+     */
     public void start() {
         Scanner s = new Scanner(System.in);
         String input = "";
         
         while (!input.equals("q")) {
+        	System.out.println("-------------------------");
             System.out.println(world);
+            System.out.println("******************");
             System.out.print("Commande (l, r, q) : ");
             input = s.nextLine();
                    

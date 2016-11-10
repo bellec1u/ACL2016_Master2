@@ -16,16 +16,15 @@ import java.awt.geom.Rectangle2D;
  */
 public abstract class GameElement {
 	
-	/*
+	/**
 	 * position du GameElement
 	 */
 	private Point2D position;
-	
 
 	/**
 	 * Constructeur vide de GameElement, initialise tout a 0
 	 */
-	public GameElement(){
+	public GameElement() {
 		position=new Point2D.Double(0,0);
 	}
 	
@@ -33,8 +32,8 @@ public abstract class GameElement {
 	 * Constructeur pour un element sans hitbox (juste un points)
 	 * @param pos positions de l'element
 	 */
-	public GameElement(Point2D pos){
-		position=new Point2D.Double(pos.getX(),pos.getY());
+	public GameElement(Point2D pos) {
+		position = new Point2D.Double(pos.getX(), pos.getY());
 	}
 	
 	
@@ -42,7 +41,7 @@ public abstract class GameElement {
 	 * Getter de position
 	 * @return position
 	 */
-	public Point2D getPosition(){
+	public Point2D getPosition() {
 		return (Point2D) position.clone();
 	}
 
@@ -51,7 +50,7 @@ public abstract class GameElement {
 	 * @param x position dans l'axe X
 	 * @param y position dans l'axe Y
 	 */
-	public void setPosition(double x, double y){
+	public void setPosition(double x, double y) {
 		if (x >= 0 && y >= 0 && x < World.WIDTH && y < World.HEIGHT) {
 			position.setLocation(x, y);
 		}
@@ -73,7 +72,7 @@ public abstract class GameElement {
 	/**
 	 * donne le nom de l'element et sa position
 	 */
-	public String toString(){
+	public String toString() {
 		String s="position : "+this.position.getX()+", "+this.position.getY()+".\n";
 		return s;
 	}
