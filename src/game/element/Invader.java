@@ -18,4 +18,5 @@ public abstract class Invader extends GameMoveableElement{
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }
