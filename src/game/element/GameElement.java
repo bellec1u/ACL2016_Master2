@@ -43,7 +43,7 @@ public abstract class GameElement {
 	 * @return position
 	 */
 	public Point2D getPosition(){
-		return position;
+		return (Point2D) position.clone();
 	}
 
 	/**
@@ -52,7 +52,7 @@ public abstract class GameElement {
 	 * @param y position dans l'axe Y
 	 */
 	public void setPosition(double x, double y){
-		if(x>0 && y>0 && x<World.WIDTH && y<World.HEIGHT){
+		if(x>=0 && y>=0 && x<World.WIDTH && y<World.HEIGHT){
 			position.setLocation(x, y);
 		}
 	}
