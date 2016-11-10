@@ -1,5 +1,7 @@
 package main;
 
+import game.Game;
+
 /**
  * Project "Space Invader"
  * M1 Informatique 2016/2017
@@ -16,6 +18,6 @@ public class Main {
 	 * @param args arguments
 	 */
 	public static void main(String[] args){	
-		//test
+		Game game = new Game();
 	}
 }
