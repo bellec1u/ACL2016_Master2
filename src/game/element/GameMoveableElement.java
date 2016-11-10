@@ -112,9 +112,13 @@ public abstract class GameMoveableElement extends GameElement{
 	}
 	
 	/** Returns the GameMoveableElement's direction **/
-	protected Direction getDirection(){
+	public Direction getDirection(){
 		return this.direction;
 	}
+	
+	public boolean getIsMoving() {
+        return this.isMoving;
+    }
 	
 	public void setIsMoving(boolean val) {
 	    isMoving = val;
@@ -128,5 +132,5 @@ public abstract class GameMoveableElement extends GameElement{
         sb.append("Moves ? " + isMoving + "\n");
         return sb.toString();
     }
-    
+
 }
