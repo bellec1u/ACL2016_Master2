@@ -63,19 +63,19 @@ public abstract class GameMoveableElement extends GameElement{
 			switch(direction){
 			case UP :
 				// If UP then x' = x and y' = y - distance
-				set(x,(y - distance));
+				setPosition(x,(y - distance));
 				break;
 			case DOWN :
 				// If DOWN then x' = x and y' = y + distance
-				set(x,(y + distance));
+				setPosition(x,(y + distance));
 				break;
 			case LEFT :
 				// If LEFT then x' = x - distance and y' = y
-				set((x - distance),y);
+				setPosition((x - distance),y);
 				break;
 			case RIGHT :
 				// If LEFT then x' = x + distance and y' = y
-				set((x + distance),y);
+				setPosition((x + distance),y);
 				break;
 			}
 		}
