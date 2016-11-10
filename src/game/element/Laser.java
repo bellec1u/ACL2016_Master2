@@ -1,5 +1,7 @@
 package game.element;
 
+import java.awt.geom.Point2D;
+
 /**
  * Project "Space Invader"
  * M1 Informatique 2016/2017
@@ -9,6 +11,11 @@ package game.element;
  * @author LIPSKI Guillaume
  *
  */
-public abstract class Laser {
+public abstract class Laser extends GameMoveableElement{
+
+	public Laser(Point2D pos, double spd) {
+		super(pos, spd);
+		// TODO Auto-generated constructor stub
+	}
 
 }
