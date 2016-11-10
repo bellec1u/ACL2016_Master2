@@ -1,13 +1,23 @@
-package game;
+package game.element;
 
 import static org.junit.Assert.*;
+import game.World;
 import game.element.SpaceShip;
 
 import org.junit.Test;
 
 public class SpaceShipTest {
 
-	
+	/**
+	 * test si le SpaceShip ne bouge pas
+	 */
+	@Test
+	public void SpaceShipDontMove() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		
+		assertFalse(s.getIsMoving());
+	}
 	
 	/**
 	 * test si le SpaceShip peut aller a gauche
@@ -16,6 +26,9 @@ public class SpaceShipTest {
 	public void SpaceShipTurnLeft() {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
+		
+		
+		assertEquals(s.turnLeft(), );
 	}
 
 	/**

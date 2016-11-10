@@ -121,8 +121,12 @@ public abstract class GameMoveableElement extends GameElement{
 	}
 	
 	/** Returns the GameMoveableElement's direction **/
-	protected Direction getDirection(){
+	public Direction getDirection(){
 		return this.direction;
+	}
+	
+	public boolean getIsMoving() {
+		return this.isMoving;
 	}
 	
 }
