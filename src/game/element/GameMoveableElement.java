@@ -17,10 +17,10 @@ public abstract class GameMoveableElement extends GameElement{
     private double speed;
 
     /** Direction of movement **/
-    protected enum Direction { UP, DOWN, LEFT, RIGHT };
+    protected enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
 
     /** Attribute Direction **/
-    protected Direction direction = null;
+    protected Direction direction = Direction.NONE;
 
     /**
      * Constructs a GameMoveableElement.java with the given parameter(s)
@@ -37,10 +37,6 @@ public abstract class GameMoveableElement extends GameElement{
      * @param delta time between 2 frames
      */
     protected void move(double delta) {
-        if (direction == null) {
-            return;
-        }
-        
         // v = (d / t) so d = v * t;
         double distance = speed * delta;
 
@@ -89,7 +85,7 @@ public abstract class GameMoveableElement extends GameElement{
     }
     
     public void stopMove() {
-        direction = null;
+        direction = Direction.NONE;
     }
 
     /** Returns the speed **/

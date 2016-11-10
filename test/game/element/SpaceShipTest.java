@@ -18,7 +18,7 @@ public class SpaceShipTest {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
 		
-		assertTrue(s.getDirection() == null);
+		assertEquals(s.getDirection(), Direction.NONE);
 	}
 	
 	/**
@@ -32,6 +32,20 @@ public class SpaceShipTest {
 		
 		assertEquals(Direction.LEFT, s.getDirection());
 	}
+	
+	/**
+	 * test si le SpaceShip se déplace vers la gauche
+	 */
+	@Test
+	public void SpaceShipForwardLeft() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		Double xInit = s.getPosition().getX();
+		s.turnLeft();
+		s.update(2);
+		
+		assertTrue(xInit - 2*s.getSpeed() == s.getPosition().getX());
+	}
 
 	/**
 	 * test si le SpaceShip peut aller a droite
@@ -43,6 +57,20 @@ public class SpaceShipTest {
 		s.turnRight();
 		
 		assertEquals(Direction.RIGHT, s.getDirection());
+	}
+	
+	/**
+	 * test si le SpaceShip se déplace vers la gauche
+	 */
+	@Test
+	public void SpaceShipForwardRight() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		Double xInit = s.getPosition().getX();
+		s.turnRight();
+		s.update(2);
+		
+		assertTrue(xInit + 2*s.getSpeed() == s.getPosition().getX());
 	}
 	
 	/**
