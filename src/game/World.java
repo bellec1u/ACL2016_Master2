@@ -43,7 +43,7 @@ public class World {
 	    invader.update(delta);
 	}
 	
-	public void rendre(Graphics g) {
+	public void render(Graphics g) {
 	    spaceShip.render(g);
 	    invader.render(g);
 	}

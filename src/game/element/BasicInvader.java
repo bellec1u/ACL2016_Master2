@@ -1,12 +1,10 @@
 package game.element;
 
-import game.TextureFactory;
-
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
-import javax.swing.Timer;
+import game.TextureFactory;
 
 /**
  * Project "Space Invader"
@@ -22,9 +20,8 @@ public class BasicInvader extends Invader {
 	/** Speed of a BasicInvader **/
 	private static final double spd = 3.0;
 
-	private Timer animator;
-	private int delay = 50;
-	private int currentFrame = 0;
+	private int textureIndex = 0;
+	private int frameCount = 0;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -34,32 +31,26 @@ public class BasicInvader extends Invader {
 		super(pos, spd);
 		//turnDown();
 	}
+	
+	@Override
+    public BufferedImage[] getTexture() {
+        return TextureFactory.getInstance().getInvaderAImg();
+    }
 
 	@Override
 	public void update(double delta) {
 		move(delta);
-	}
-
-	@Override
-	public BufferedImage[] getTexture() {
-		return TextureFactory.getInstance().getInvaderAImg();
+		
+		// Change texture to render each 15 frames
+		if (frameCount % 15 == 0) {
+		    textureIndex = ++textureIndex % getTexture().length; // [0 1]
+		    frameCount = 0; // to prevent integer overflow
+		}
 	}
 
 	@Override
 	public void render(Graphics g) {
-		if (this.currentFrame >= this.getTexture().length-1) {
-			this.currentFrame = 0;
-		} else {
-			this.currentFrame++;
-		}
-
-		g.drawImage(this.getTexture()[this.currentFrame], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-
-		// TODO: sleep right amount of time
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	    frameCount++;
+		g.drawImage(getTexture()[textureIndex], (int)getPosition().getX(), (int)getPosition().getY(), null);
 	}
 }
