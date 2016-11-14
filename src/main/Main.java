@@ -20,8 +20,7 @@ public class Main {
 	 */
 	public static void main(String[] args){	
 		Game game = new Game();
-		GameScreen gs = new GameScreen(game.getWorld());
-		game.start();
+		//game.start();
 		
 		System.out.println("END");
 	}

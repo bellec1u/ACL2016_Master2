@@ -1,35 +1,30 @@
 package game.view;
 
 import game.World;
+import game.element.SpaceShip;
 
 import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.Graphics;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GameScreen extends JFrame {
-
+public class GameScreen extends JPanel {
+	
 	private World world;
-	private final static String title = "Space invader";
 	
 	public GameScreen(World w) {
 		this.world = w;
-		this.setTitle(title);
-		this.setPreferredSize(new Dimension(this.world.WIDTH, this.world.HEIGHT));
-		this.setResizable(false);
+		this.setBackground(Color.BLACK);
+	}
 		
-		JPanel game = new JPanel();
+	@Override
+	public void paintComponent(Graphics g) { 
+		super.paintComponent(g);
+		
+		SpaceShip s = this.world.getSpaceShip();
+		g.drawImage(s.getTexture(), (int)s.getPosition().getX(), (int)s.getPosition().getY(), null);
 
-		game.setBackground(Color.BLACK);
-		
-		this.add(game);
-		
-		//Defaults operations
-		this.pack();
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.repaint();
 	}
 	
 }

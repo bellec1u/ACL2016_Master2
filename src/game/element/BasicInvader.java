@@ -1,6 +1,9 @@
 package game.element;
 
+import game.TextureFactory;
+
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Project "Space Invader"
@@ -28,5 +31,10 @@ public class BasicInvader extends Invader{
 	@Override
 	public void update(double delta) {
 		move(delta);
+	}
+
+	@Override
+	public BufferedImage getTexture() {
+		return TextureFactory.getInstance().getInvaderAImg();
 	}
 }

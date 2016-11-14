@@ -1,6 +1,9 @@
 package game.element;
 
+import game.TextureFactory;
+
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Project "Space Invader"
@@ -30,6 +33,11 @@ public class BasicLaser extends Laser{
 	public void update(double delta) {
 		// TODO Auto-generated method stub
 		move(delta);
+	}
+
+	@Override
+	public BufferedImage getTexture() {
+		return TextureFactory.getInstance().getShootImg();
 	}
 
 }

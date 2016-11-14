@@ -4,6 +4,7 @@ import game.World;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 
 /**
  * Project "Space Invader"
@@ -68,6 +69,8 @@ public abstract class GameElement {
             position.setLocation(newX, newY);
         }
     }
+    
+    public abstract BufferedImage getTexture();
 	
 	/**
 	 * donne le nom de l'element et sa position
