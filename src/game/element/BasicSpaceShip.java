@@ -2,6 +2,7 @@ package game.element;
 
 import game.TextureFactory;
 
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -25,18 +26,21 @@ public class BasicSpaceShip extends SpaceShip{
 	 */
 	public BasicSpaceShip(Point2D pos) {
 		super(pos, spd);
-		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+    public BufferedImage getTexture() {
+        return TextureFactory.getInstance().getSpaceShipImg();
+    }
 
 	@Override
 	public void update(double delta) {
-		// TODO Auto-generated method stub
 		move(delta);
 	}
 
-	@Override
-	public BufferedImage getTexture() {
-		return TextureFactory.getInstance().getSpaceShipImg();
-	}
+    @Override
+    public void render(Graphics g) {
+        g.drawImage(this.getTexture(), (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+    }
 
 }

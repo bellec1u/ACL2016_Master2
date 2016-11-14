@@ -1,13 +1,13 @@
 package game.view;
 
 import game.World;
-import game.element.SpaceShip;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class GameScreen extends JPanel {
 	
 	private World world;
@@ -21,8 +21,15 @@ public class GameScreen extends JPanel {
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		
-		SpaceShip s = this.world.getSpaceShip();
-		g.drawImage(s.getTexture(), (int)s.getPosition().getX(), (int)s.getPosition().getY(), null);
+		world.update(1);
+		world.rendre(g);
+		
+		// TODO: sleep right amount of time
+		try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 		this.repaint();
 	}

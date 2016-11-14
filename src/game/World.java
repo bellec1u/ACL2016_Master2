@@ -1,11 +1,12 @@
 package game;
 
+import java.awt.Graphics;
+import java.awt.geom.Point2D;
+
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
 import game.element.Invader;
 import game.element.SpaceShip;
-
-import java.awt.geom.Point2D;
 
 /**
  * Project "Space Invader"
@@ -26,7 +27,7 @@ public class World {
     
     public World() {
         this.invader = new BasicInvader(new Point2D.Double(10, 10));
-        this.spaceShip = new BasicSpaceShip(new Point2D.Double(150, 100));
+        this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2-15, HEIGHT-100));
     }
     
 	public Invader getInvader() {
@@ -40,6 +41,11 @@ public class World {
 	public void update(double delta) {
 	    spaceShip.update(delta);
 	    invader.update(delta);
+	}
+	
+	public void rendre(Graphics g) {
+	    spaceShip.render(g);
+	    invader.render(g);
 	}
 	
 

@@ -1,7 +1,6 @@
 package main;
 
 import game.Game;
-import game.view.GameScreen;
 
 /**
  * Project "Space Invader"
@@ -21,7 +20,5 @@ public class Main {
 	public static void main(String[] args){	
 		Game game = new Game();
 		//game.start();
-		
-		System.out.println("END");
 	}
 }

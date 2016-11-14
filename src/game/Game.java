@@ -1,15 +1,13 @@
 package game;
 
-import game.controler.GameListener;
-import game.view.GameScreen;
-
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import game.controler.GameListener;
+import game.view.GameScreen;
 
 /**
  * Project "Space Invader"
@@ -20,10 +18,11 @@ import javax.swing.Timer;
  * @author LIPSKI Guillaume
  *
  */
-public class Game extends JFrame{
+@SuppressWarnings("serial")
+public class Game extends JFrame {
     
     private World world;
-	private final static String title = "Space invader";
+	private final static String TITLE = "Space Invader";
     
 	// Timer and FPS
 	private Timer timer;
@@ -31,24 +30,26 @@ public class Game extends JFrame{
 	
     public Game() {
         this.world = new World();
-        
-        this.setTitle(title);
-		this.setPreferredSize(new Dimension(this.world.WIDTH, this.world.HEIGHT));
-		this.setResizable(false);
+        initGraphics();
 		
 		GameScreen gs = new GameScreen(this.world);
 		this.add(gs);
-		
-		// Defaults operations
-		this.pack();
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+	
 		// Timer uses to manage fps
 		timer = new Timer(fps, new GameListener());
 		timer.setRepeats(true);
 		timer.start();
+    }
+    
+    private void initGraphics() {
+        this.setTitle(TITLE);
+        this.setPreferredSize(new Dimension(World.WIDTH, World.HEIGHT));
+        this.setResizable(false);
+        
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null); // display window in the middle of the screen
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     /**
@@ -86,8 +87,5 @@ public class Game extends JFrame{
         s.close();
     }
     
-    public World getWorld() {
-    	return this.world;
-    }
-   
+ 
 }

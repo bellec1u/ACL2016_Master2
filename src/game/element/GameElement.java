@@ -1,10 +1,10 @@
 package game.element;
 
-import game.World;
-
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+
+import game.World;
 
 /**
  * Project "Space Invader"
@@ -65,12 +65,12 @@ public abstract class GameElement {
     public void setRelativePosition(double x, double y) {
         double newX = position.getX() + x;
         double newY = position.getY() + y;
-        if (newX >= 0 && newY >= 0 && newX < World.WIDTH && newY < World.HEIGHT) {
-            position.setLocation(newX, newY);
-        }
+        this.setPosition(newX, newY);
     }
     
     public abstract BufferedImage getTexture();
+    
+    public abstract void render(Graphics g);
 	
 	/**
 	 * donne le nom de l'element et sa position

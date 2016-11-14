@@ -2,6 +2,7 @@ package game.element;
 
 import game.TextureFactory;
 
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -39,5 +40,11 @@ public class BasicLaser extends Laser{
 	public BufferedImage getTexture() {
 		return TextureFactory.getInstance().getShootImg();
 	}
+
+    @Override
+    public void render(Graphics g) {
+        // TODO Auto-generated method stub
+        
+    }
 
 }

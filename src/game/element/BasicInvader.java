@@ -2,6 +2,7 @@ package game.element;
 
 import game.TextureFactory;
 
+import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -25,7 +26,7 @@ public class BasicInvader extends Invader{
 	 */
 	public BasicInvader(Point2D pos) {
 		super(pos, spd);
-		turnDown();
+		//turnDown();
 	}
 
 	@Override
@@ -37,4 +38,9 @@ public class BasicInvader extends Invader{
 	public BufferedImage getTexture() {
 		return TextureFactory.getInstance().getInvaderAImg();
 	}
+
+    @Override
+    public void render(Graphics g) {
+        g.drawImage(this.getTexture(), (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+    }
 }
