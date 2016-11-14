@@ -29,7 +29,7 @@ public class BasicSpaceShip extends SpaceShip{
 	}
 	
 	@Override
-    public BufferedImage getTexture() {
+    public BufferedImage[] getTexture() {
         return TextureFactory.getInstance().getSpaceShipImg();
     }
 
@@ -40,7 +40,7 @@ public class BasicSpaceShip extends SpaceShip{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(this.getTexture(), (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+        g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
     }
 
 }

@@ -23,10 +23,6 @@ public class Game extends JFrame {
     
     private World world;
 	private final static String TITLE = "Space Invader";
-    
-	// Timer and FPS
-	private Timer timer;
-	private int fps = 16 ; // ~60 fps = ( 1 / 60 ) * 1000 
 	
     public Game() {
         this.world = new World();
@@ -34,11 +30,6 @@ public class Game extends JFrame {
 		
 		GameScreen gs = new GameScreen(this.world);
 		this.add(gs);
-	
-		// Timer uses to manage fps
-		timer = new Timer(fps, new GameListener());
-		timer.setRepeats(true);
-		timer.start();
     }
     
     private void initGraphics() {

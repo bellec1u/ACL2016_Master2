@@ -37,7 +37,7 @@ public class BasicLaser extends Laser{
 	}
 
 	@Override
-	public BufferedImage getTexture() {
+	public BufferedImage[] getTexture() {
 		return TextureFactory.getInstance().getShootImg();
 	}
 

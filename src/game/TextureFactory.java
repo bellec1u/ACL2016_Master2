@@ -8,11 +8,11 @@ import javax.imageio.ImageIO;
 
 public class TextureFactory {
 
-	private BufferedImage spaceShipImg;
-	private BufferedImage shootImg;
-	private BufferedImage invaderAImg;
-	private BufferedImage invaderBImg;
-	private BufferedImage invaderCImg;
+	private BufferedImage[] spaceShipImg = new BufferedImage[1];
+	private BufferedImage[] shootImg = new BufferedImage[1];
+	private BufferedImage[] invaderAImg = new BufferedImage[2];
+	private BufferedImage[] invaderBImg = new BufferedImage[2];
+	private BufferedImage[] invaderCImg = new BufferedImage[2];
 
 	/**
 	 * Instance unique pré-initialisée
@@ -24,11 +24,14 @@ public class TextureFactory {
 	 */
 	private TextureFactory() {
 		try {
-			this.spaceShipImg = ImageIO.read(new File("img/Ship.png"));
-			this.shootImg = ImageIO.read(new File("img/tire.png"));
-			this.invaderAImg = ImageIO.read(new File("img/InvaderA_00@2x.png"));
-			this.invaderBImg = ImageIO.read(new File("img/InvaderB_00@2x.png"));
-			this.invaderCImg = ImageIO.read(new File("img/InvaderC_00@2x.png"));
+			this.spaceShipImg[0] = ImageIO.read(new File("img/Ship.png"));
+			this.shootImg[0] = ImageIO.read(new File("img/tire.png"));
+			this.invaderAImg[0] = ImageIO.read(new File("img/InvaderA_00.png"));
+			this.invaderAImg[1] = ImageIO.read(new File("img/InvaderA_01.png"));
+			this.invaderBImg[0] = ImageIO.read(new File("img/InvaderB_00.png"));
+			this.invaderBImg[1] = ImageIO.read(new File("img/InvaderB_01.png"));
+			this.invaderCImg[0] = ImageIO.read(new File("img/InvaderC_00.png"));
+			this.invaderCImg[1] = ImageIO.read(new File("img/InvaderC_01.png"));
 		} catch (IOException e) {
 			System.out.println("image loading error");
 		}
@@ -42,23 +45,23 @@ public class TextureFactory {
 		return INSTANCE;
 	}
 
-	public BufferedImage getSpaceShipImg() {
+	public BufferedImage[] getSpaceShipImg() {
 		return spaceShipImg;
 	}
 
-	public BufferedImage getShootImg() {
+	public BufferedImage[] getShootImg() {
 		return shootImg;
 	}
 
-	public BufferedImage getInvaderAImg() {
+	public BufferedImage[] getInvaderAImg() {
 		return invaderAImg;
 	}
 
-	public BufferedImage getInvaderBImg() {
+	public BufferedImage[] getInvaderBImg() {
 		return invaderBImg;
 	}
 
-	public BufferedImage getInvaderCImg() {
+	public BufferedImage[] getInvaderCImg() {
 		return invaderCImg;
 	}
 	

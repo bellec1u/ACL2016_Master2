@@ -68,7 +68,7 @@ public abstract class GameElement {
         this.setPosition(newX, newY);
     }
     
-    public abstract BufferedImage getTexture();
+    public abstract BufferedImage[] getTexture();
     
     public abstract void render(Graphics g);
 	
