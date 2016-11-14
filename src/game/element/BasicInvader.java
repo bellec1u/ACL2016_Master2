@@ -3,6 +3,8 @@ package game.element;
 import game.TextureFactory;
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -22,8 +24,7 @@ public class BasicInvader extends Invader {
 	/** Speed of a BasicInvader **/
 	private static final double spd = 3.0;
 
-	private Timer animator;
-	private int delay = 50;
+	private int delay = 500;
 	private int currentFrame = 0;
 
 	/**
@@ -32,7 +33,16 @@ public class BasicInvader extends Invader {
 	 */
 	public BasicInvader(Point2D pos) {
 		super(pos, spd);
-		//turnDown();
+		Timer timer = new Timer(this.delay, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (currentFrame >= getTexture().length-1) {
+        			currentFrame = 0;
+        		} else {
+        			currentFrame++;
+        		}
+            }
+        });
+        timer.start();
 	}
 
 	@Override
@@ -47,19 +57,7 @@ public class BasicInvader extends Invader {
 
 	@Override
 	public void render(Graphics g) {
-		if (this.currentFrame >= this.getTexture().length-1) {
-			this.currentFrame = 0;
-		} else {
-			this.currentFrame++;
-		}
-
 		g.drawImage(this.getTexture()[this.currentFrame], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-
-		// TODO: sleep right amount of time
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
+
 }
