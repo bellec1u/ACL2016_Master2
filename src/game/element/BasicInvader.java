@@ -44,15 +44,15 @@ public class BasicInvader extends Invader {
         });
         timer.start();
 	}
+	
+	@Override
+    public BufferedImage[] getTexture() {
+        return TextureFactory.getInstance().getInvaderAImg();
+    }
 
 	@Override
 	public void update(double delta) {
 		move(delta);
-	}
-
-	@Override
-	public BufferedImage[] getTexture() {
-		return TextureFactory.getInstance().getInvaderAImg();
 	}
 
 	@Override

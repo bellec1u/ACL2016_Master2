@@ -22,7 +22,7 @@ public class GameScreen extends JPanel {
 		super.paintComponent(g);
 		
 		world.update(1);
-		world.rendre(g);
+		world.render(g);
 		
 		// TODO: sleep right amount of time
 		try {
