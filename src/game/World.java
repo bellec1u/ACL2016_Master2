@@ -18,8 +18,8 @@ import java.awt.geom.Point2D;
  */
 public class World {
     
-    public final static int WIDTH = 200;
-    public final static int HEIGHT = 400;
+    public final static int WIDTH = 500;
+    public final static int HEIGHT = 600;
     
     public Invader invader;
     public SpaceShip spaceShip; 

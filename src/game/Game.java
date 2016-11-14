@@ -19,7 +19,6 @@ public class Game {
         this.world = new World();
     }
     
-    
     /**
      * methode qui lance le jeu
      */
@@ -55,5 +54,8 @@ public class Game {
         s.close();
     }
     
+    public World getWorld() {
+    	return this.world;
+    }
    
 }
