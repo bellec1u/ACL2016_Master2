@@ -30,7 +30,7 @@ public class GameListener implements KeyListener {
             break;
         case KeyEvent.VK_SPACE :
             //then spaceship shots a missile
-            ship.shot();
+            ship.shoot();
             break;
         }
     }
@@ -40,7 +40,7 @@ public class GameListener implements KeyListener {
      */
     @Override
     public void keyReleased(KeyEvent arg0) {
-
+        ship.stopMove();
     }
 
     /* (non-Javadoc)

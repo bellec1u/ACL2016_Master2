@@ -5,9 +5,8 @@ import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
-import javax.swing.Timer;
 
-import game.controler.GameListener;
+import game.controler.*;
 import game.view.GameScreen;
 
 /**
@@ -33,7 +32,6 @@ public class Game extends JFrame {
 		GameScreen gs = new GameScreen(this.world);
 		this.add(gs);
 		
-		// adds the keylistener
 		addKeyListener(listener);
 		
 		initGraphics();

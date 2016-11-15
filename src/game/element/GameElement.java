@@ -21,12 +21,12 @@ public abstract class GameElement {
 	/**
 	 * position du GameElement
 	 */
-	private Point2D position;
+	protected Point2D position;
 	
 	/**
 	 * Bounding box de l'element
 	 */
-	private Rectangle2D boundingBox;
+	protected Rectangle2D boundingBox;
 
 	/**
 	 * Constructeur vide de GameElement, initialise tout a 0
@@ -67,13 +67,9 @@ public abstract class GameElement {
 	 * @param x position dans l'axe X
 	 * @param y position dans l'axe Y
 	 */
-	private void setPosition(double x, double y) {
-		// if a supprimer, après verifications
-		if (x >= 0 && y >= 0 && x < World.WIDTH && y < World.HEIGHT) {
-			position.setLocation(x, y);
-			boundingBox.setRect(x, y, boundingBox.getWidth(), boundingBox.getHeight());
-			return;
-		}
+	protected void setPosition(double x, double y) {
+    	position.setLocation(x, y);
+    	boundingBox.setRect(x, y, boundingBox.getWidth(), boundingBox.getHeight());
 	}
 	
 	/**
@@ -84,27 +80,7 @@ public abstract class GameElement {
     public void setRelativePosition(double x, double y) {
         double newX = position.getX() + x;
         double newY = position.getY() + y;
-        
-		/*
-		 *  Plusieurs cas a gérer: 
-		 *  - Le cas où le deplacement ne pose pas de probleme.
-		 *  - Le cas où le deplacement depasse la bordure droite
-		 *  - Le cas où le deplacement depasse les bordures (haut, bas)
-		 */
-        if((newX + boundingBox.getWidth()) > World.WIDTH) {
-        	// cas où l'element depasse à droite
-        	newX = World.WIDTH - boundingBox.getWidth();
-        }
-        
-        if((newY + boundingBox.getHeight() > World.HEIGHT)) {
-        	// cas où l'element depasse en bas
-        	newY = World.HEIGHT - boundingBox.getHeight();
-        }
-        
-        if((newY + boundingBox.getHeight() < 0 )) {
-        	// cas où l'element depasse en haut
-        	newY = boundingBox.getHeight();
-        }
+ 
         this.setPosition(newX, newY);
     }
     

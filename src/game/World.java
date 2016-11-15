@@ -27,8 +27,8 @@ public class World {
     
     public World() {
         this.invader = new BasicInvader(new Point2D.Double(16, 16));
-        this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2-15, HEIGHT-100));
-        this.invader.turnDown();
+        this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
+        this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
     }
     
 	public Invader getInvader() {
@@ -42,11 +42,6 @@ public class World {
 	public void update(double delta) {
 	    spaceShip.update(delta);
 	    invader.update(delta);
-	    
-	    /* then we stop the spaceShip movement
-	     * waiting for the next keyboard input...
-	     */
-	    spaceShip.stopMove();
 	}
 	
 	public void render(Graphics g) {

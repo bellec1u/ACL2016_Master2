@@ -25,5 +25,5 @@ public abstract class SpaceShip extends GameMoveableElement{
 	}
 
 	/** Shot a Laser **/
-	public abstract void shot() ;
+	public abstract void shoot();
 }

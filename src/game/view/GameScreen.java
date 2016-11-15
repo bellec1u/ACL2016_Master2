@@ -1,16 +1,14 @@
 package game.view;
 
-import game.World;
-import game.controler.GameListener;
-import game.controler.RefreshListener;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import game.World;
+import game.controler.RefreshListener;
 
 @SuppressWarnings("serial")
 public class GameScreen extends JPanel {
@@ -25,9 +23,9 @@ public class GameScreen extends JPanel {
 	private Timer timer;
 	
 	public GameScreen(World w) {
-		this.world = w;
-		
-		this.setPreferredSize(new Dimension(World.HEIGHT, World.WIDTH));
+		super();
+	    this.world = w;
+
 		this.setBackground(Color.BLACK);
 		
 		// Calls paintComponent() each 16 ms
@@ -39,7 +37,7 @@ public class GameScreen extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
-		
+
 		world.update(1); // TODO: calculate time elapsed since last update
 		world.render(g);
 	}
