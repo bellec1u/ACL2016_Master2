@@ -41,6 +41,11 @@ public class World {
 	public void update(double delta) {
 	    spaceShip.update(delta);
 	    invader.update(delta);
+	    
+	    /* then we stop the spaceShip movement
+	     * waiting for the next keyboard input...
+	     */
+	    spaceShip.stopMove();
 	}
 	
 	public void render(Graphics g) {
