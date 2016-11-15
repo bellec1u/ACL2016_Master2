@@ -20,7 +20,7 @@ public class GameScreen extends JPanel {
 	/**
 	 * FPS Management
 	 */
-	private final int fps = 16; // (1 / 60) * 1000 (ms value)
+	private final int frameDuration = 16; //  1000ms / 60fps (ms value)
 	private final double delay = ( 1.0 / 60.0 );
 	private Timer timer;
 	
@@ -30,7 +30,8 @@ public class GameScreen extends JPanel {
 		this.setPreferredSize(new Dimension(World.HEIGHT, World.WIDTH));
 		this.setBackground(Color.BLACK);
 		
-		timer = new Timer(fps, new RefreshListener(this));
+		// Calls paintComponent() each 16 ms
+		timer = new Timer(frameDuration, new RefreshListener(this));
 		timer.setRepeats(true);
 		timer.start();
 	}
@@ -39,10 +40,8 @@ public class GameScreen extends JPanel {
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		
-		world.update( delay ); // <- 60 fps
+		world.update(1); // TODO: calculate time elapsed since last update
 		world.render(g);
-		
-		this.repaint();
 	}
 	
 }

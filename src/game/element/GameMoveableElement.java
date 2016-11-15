@@ -68,22 +68,22 @@ public abstract class GameMoveableElement extends GameElement{
     public abstract void update(double delta);
 
     /** Sets the Direction to the LEFT **/
-    public void turnLeft(){
+    public void turnLeft() {
         direction = Direction.LEFT;
     }
 
     /** Sets the Direction to the RIGHT **/
-    public void turnRight(){
+    public void turnRight() {
         direction = Direction.RIGHT;
     }
 
     /** Sets the Direction to UP **/
-    public void turnUp(){
+    public void turnUp() {
         direction = Direction.UP;
     }
 
     /** Sets the Direction to DOWN **/
-    public void turnDown(){
+    public void turnDown() {
         direction = Direction.DOWN;
     }
     
@@ -92,17 +92,17 @@ public abstract class GameMoveableElement extends GameElement{
     }
 
     /** Returns the speed **/
-    public double getSpeed(){
+    public double getSpeed() {
         return speed;
     }
 
     /** Returns the GameMoveableElement's direction **/
-    public Direction getDirection(){
+    public Direction getDirection() {
         return this.direction;
     }
 
     /** toString **/
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder("");
         sb.append(super.toString());
         sb.append("    Direction : " + direction + "\n");

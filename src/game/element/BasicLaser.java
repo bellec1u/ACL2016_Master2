@@ -20,24 +20,23 @@ public class BasicLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double spd = 0.07;
+	private static final double SPEED = 7.0;
 	
 	/** Dimension (width and height) **/
-	private final static int width = 4;	
-	private final static int height = 16;
+	private final static int WIDTH = 4;	
+	private final static int HEIGHT = 16;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
 	 */
 	public BasicLaser(Point2D pos) {
-		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  width,  height), spd);
-		// TODO Auto-generated constructor stub
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT), SPEED);
+		turnUp();
 	}
 
 	@Override
 	public void update(double delta) {
-		// TODO Auto-generated method stub
 		move(delta);
 	}
 
@@ -48,8 +47,7 @@ public class BasicLaser extends Laser{
 
     @Override
     public void render(Graphics g) {
-        // TODO Auto-generated method stub
-        
+        g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
     }
 
 }

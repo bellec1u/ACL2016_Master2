@@ -28,7 +28,6 @@ public class Game extends JFrame {
 	
     public Game() {
         this.world = new World();
-        
 		this.listener = new GameListener(world.getSpaceShip());
 		
 		GameScreen gs = new GameScreen(this.world);
