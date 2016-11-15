@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
@@ -22,8 +23,12 @@ import javax.swing.Timer;
 public class BasicInvader extends Invader {
 
 	/** Speed of a BasicInvader **/
-	private static final double spd = 3300.0;
-
+	private static final double spd = 0.10;
+	
+	/** Dimension (width and height) **/
+	private final static int width = 24;	
+	private final static int height = 16;
+	
 	private int delay = 500;
 	private int currentFrame = 0;
 
@@ -32,7 +37,7 @@ public class BasicInvader extends Invader {
 	 * @param pos the position
 	 */
 	public BasicInvader(Point2D pos) {
-		super(pos, spd);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  width,  height), spd);
 		Timer timer = new Timer(this.delay, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if (currentFrame >= getTexture().length-1) {

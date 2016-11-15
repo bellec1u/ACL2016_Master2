@@ -4,6 +4,7 @@ import game.TextureFactory;
 
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -18,14 +19,18 @@ import java.awt.image.BufferedImage;
 public class BasicSpaceShip extends SpaceShip{
 
 	/** Speed of a BasicSpaceShip **/
-	private static final double spd = 3000.0;
+	private static final double spd = 300.0;
+	
+	/** Dimension (width and height) **/
+	private final static int width = 30;	
+	private final static int height = 16;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
 	 */
 	public BasicSpaceShip(Point2D pos) {
-		super(pos, spd);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  width,  height), spd);
 	}
 	
 	@Override

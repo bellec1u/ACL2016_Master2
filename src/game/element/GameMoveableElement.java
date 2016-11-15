@@ -1,6 +1,7 @@
 package game.element;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Project "Space Invader"
@@ -27,8 +28,8 @@ public abstract class GameMoveableElement extends GameElement{
      * @param pos
      * @param spd
      */
-    public GameMoveableElement(Point2D pos, double spd) {
-        super(pos);
+    public GameMoveableElement(Point2D pos, Rectangle2D box, double spd) {
+        super(pos, box);
         speed = spd;
     }
 

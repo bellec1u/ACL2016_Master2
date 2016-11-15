@@ -1,6 +1,7 @@
 package game.element;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public abstract class SpaceShip extends GameMoveableElement{
 	/** Laser's list **/
 	protected List<Laser> lasers;
 	
-	public SpaceShip(Point2D pos, double spd) {
-		super(pos, spd);
+	public SpaceShip(Point2D pos, Rectangle2D box,  double spd) {
+		super(pos, box, spd);
 		lasers = new ArrayList<Laser>();
 	}
 

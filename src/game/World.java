@@ -26,7 +26,7 @@ public class World {
     public SpaceShip spaceShip; 
     
     public World() {
-        this.invader = new BasicInvader(new Point2D.Double(10, 10));
+        this.invader = new BasicInvader(new Point2D.Double(16, 16));
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2-15, HEIGHT-100));
     }
     

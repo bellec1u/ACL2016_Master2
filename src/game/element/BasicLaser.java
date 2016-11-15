@@ -4,6 +4,7 @@ import game.TextureFactory;
 
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -19,14 +20,18 @@ public class BasicLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double spd = 4300.0;
+	private static final double spd = 0.07;
+	
+	/** Dimension (width and height) **/
+	private final static int width = 4;	
+	private final static int height = 16;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
 	 */
 	public BasicLaser(Point2D pos) {
-		super(pos, spd);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  width,  height), spd);
 		// TODO Auto-generated constructor stub
 	}
 

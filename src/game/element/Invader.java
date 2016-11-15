@@ -1,6 +1,7 @@
 package game.element;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * Project "Space Invader"
@@ -13,8 +14,8 @@ import java.awt.geom.Point2D;
  */
 public abstract class Invader extends GameMoveableElement{
 
-	public Invader(Point2D pos, double spd) {
-		super(pos, spd);
+	public Invader(Point2D pos, Rectangle2D box, double spd) {
+		super(pos, box, spd);
 		// TODO Auto-generated constructor stub
 	}
 
