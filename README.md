@@ -15,16 +15,16 @@ V 1.0 :
 
 V 1.1 :
 * Afficher les GameElement :
- - [x] le SpaceShip, l'Invader et le Laser ont une image.
- - [x] le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu.
+ - [x] le SpaceShip, l'Invader et le Laser ont une image. **Léopold**
+ - [x] le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu. **Léopold**
 * Interactions joueur/machine (listeners) :
- - [ ] le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuie sur la flèche gauche.
- - [ ] le SpaceShip se déplace vers la droite lorsque l'utilisateur appuie sur la flèche droite.
- - [ ] le SpaceShip ne bouge pas si l'utilisateur ne fait rien.
- - [ ] le SpaceShip tire un Laser lorsque l'utilisateur appuie sur la barre espace.
+ - [ ] le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuie sur la flèche gauche. **PIMA**
+ - [ ] le SpaceShip se déplace vers la droite lorsque l'utilisateur appuie sur la flèche droite. **PIMA**
+ - [ ] le SpaceShip ne bouge pas si l'utilisateur ne fait rien. **PIMA**
+ - [ ] le SpaceShip tire un Laser lorsque l'utilisateur appuie sur la barre espace. **PIMA**
 * Tirer un Laser :
- - [ ] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace.
- - [ ] le Laser se déplace automatiquement vers le haut.
+ - [ ] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace. **Juozas**
+ - [ ] le Laser se déplace automatiquement vers le haut. **Juozas**
 
 
 # Diagrams
