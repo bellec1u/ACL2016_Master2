@@ -1,6 +1,8 @@
 package game.element;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project "Space Invader"
@@ -13,9 +15,14 @@ import java.awt.geom.Point2D;
  */
 public abstract class SpaceShip extends GameMoveableElement{
 
+	/** Laser's list **/
+	protected List<Laser> lasers;
+	
 	public SpaceShip(Point2D pos, double spd) {
 		super(pos, spd);
-		// TODO Auto-generated constructor stub
+		lasers = new ArrayList<Laser>();
 	}
 
+	/** Shot a Laser **/
+	public abstract void shot() ;
 }

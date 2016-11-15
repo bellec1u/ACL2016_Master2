@@ -1,9 +1,11 @@
 package game.view;
 
 import game.World;
+import game.controler.GameListener;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 

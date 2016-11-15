@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Dimension;
+import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -22,14 +23,21 @@ import game.view.GameScreen;
 public class Game extends JFrame {
     
     private World world;
+    private KeyListener listener;
 	private final static String TITLE = "Space Invader";
 	
     public Game() {
         this.world = new World();
-        initGraphics();
+        
+		this.listener = new GameListener(world.getSpaceShip());
 		
 		GameScreen gs = new GameScreen(this.world);
 		this.add(gs);
+		
+		// adds the keylistener
+		addKeyListener(listener);
+		
+		initGraphics();
     }
     
     private void initGraphics() {

@@ -36,11 +36,34 @@ public class BasicSpaceShip extends SpaceShip{
 	@Override
 	public void update(double delta) {
 		move(delta);
+		
+		/*
+		 *	Updates Lasers position 
+		 */
+		for(Laser laser : lasers) {
+			laser.move(delta);
+		}
 	}
 
     @Override
     public void render(Graphics g) {
         g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
     }
+
+	/**
+	 * Shot a BasicLaser
+	 */
+	@Override
+	public void shot() {
+		// create a laser above spaceship's position
+		Point2D pos = getPosition();
+		pos.setLocation(pos.getX(), (pos.getY() - 1));
+		
+		// Instanciate BasicLaser
+		Laser laser = new BasicLaser(pos);
+		
+		// add it to the laser's list
+		lasers.add(laser);
+	}
 
 }
