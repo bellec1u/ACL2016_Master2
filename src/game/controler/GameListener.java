@@ -25,17 +25,14 @@ public class GameListener implements KeyListener {
 		switch(key.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
 				// then spaceship moves to the left
-				System.out.println("LEFT");
 				ship.turnLeft();
 				break;
 		case KeyEvent.VK_RIGHT :
 				// then spaceship moves to the right
-				System.out.println("RIGHT");
 				ship.turnRight();
 				break;
 		case KeyEvent.VK_SPACE :
 				//then spaceship shots a missile
-			System.out.println("SHOT");
 			ship.shot();
 			break;
 		}

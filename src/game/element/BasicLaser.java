@@ -19,7 +19,7 @@ public class BasicLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double spd = 3.0;
+	private static final double spd = 4300.0;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments

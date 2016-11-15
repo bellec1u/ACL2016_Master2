@@ -22,7 +22,7 @@ import javax.swing.Timer;
 public class BasicInvader extends Invader {
 
 	/** Speed of a BasicInvader **/
-	private static final double spd = 3.0;
+	private static final double spd = 3300.0;
 
 	private int delay = 500;
 	private int currentFrame = 0;

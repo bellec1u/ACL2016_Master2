@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
 public class BasicSpaceShip extends SpaceShip{
 
 	/** Speed of a BasicSpaceShip **/
-	private static final double spd = 3.0;
+	private static final double spd = 3000.0;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
