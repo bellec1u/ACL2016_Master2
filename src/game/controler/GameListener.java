@@ -39,8 +39,14 @@ public class GameListener implements KeyListener {
      * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
      */
     @Override
-    public void keyReleased(KeyEvent arg0) {
-        ship.stopMove();
+    public void keyReleased(KeyEvent key) {
+        switch(key.getKeyCode()) {
+        case KeyEvent.VK_LEFT :
+        case KeyEvent.VK_RIGHT :
+            ship.stopMove();
+            break;
+        }
+        
     }
 
     /* (non-Javadoc)

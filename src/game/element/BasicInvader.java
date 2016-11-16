@@ -23,7 +23,7 @@ import javax.swing.Timer;
 public class BasicInvader extends Invader {
 
 	/** Speed of a BasicInvader **/
-	private static final double SPEED = 3;
+	private static final double SPEED = 1;
 	
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 24;	

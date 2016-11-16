@@ -28,7 +28,7 @@ public class GameScreen extends JPanel {
 
 		this.setBackground(Color.BLACK);
 		
-		// Calls paintComponent() each 16 ms
+		// calls paintComponent() each 16 ms
 		timer = new Timer(frameDuration, new RefreshListener(this));
 		timer.setRepeats(true);
 		timer.start();
@@ -38,7 +38,7 @@ public class GameScreen extends JPanel {
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 
-		world.update(1); // TODO: calculate time elapsed since last update
+		world.update(1);
 		world.render(g);
 	}
 	
