@@ -20,7 +20,7 @@ public class BasicLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double SPEED = 7.0;
+	private static final double SPEED = 180.0; // 3 pixels every refresh call
 	
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 4;	

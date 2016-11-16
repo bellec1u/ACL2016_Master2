@@ -14,7 +14,13 @@ import java.awt.geom.Rectangle2D;
  */
 public abstract class GameMoveableElement extends GameElement{
 
-    /** Speed of movement */
+    /** Speed of movement 
+     * Since we decide to update every 0.0166 second ( 60 fps purpose )
+     * the value of speed has too be greater or equals than 60 ( >= 60 );
+     * mathematical explanation :
+     *  (1 / 60 ) * 60 = 1 <- object moves at 1 pixel LEFT / RIGHT / UP / DOWN every refresh
+     * because we can draw only integers coordinates (cf : drawImage() method )
+     * */
     private double speed;
 
     /** Direction of movement **/

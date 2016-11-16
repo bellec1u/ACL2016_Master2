@@ -38,8 +38,13 @@ public class GameScreen extends JPanel {
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 
-		world.update(1);
+		/*
+		 * Our Timer calls repaint() method every 16 ms which means we have to
+		 * update the world with a delta Time equals to ( 1 / 60 ) second = 0.16666 second
+		 */
+		world.update(delay);
 		world.render(g);
+
 	}
 	
 }
