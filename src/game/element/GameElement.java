@@ -1,11 +1,9 @@
 package game.element;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-
-import game.World;
 
 /**
  * Project "Space Invader"
@@ -84,15 +82,22 @@ public abstract class GameElement {
         this.setPosition(newX, newY);
     }
     
-    public abstract BufferedImage[] getTexture();
+    /**
+     * Returns  Image[] of a GameElement
+     * @return
+     */
+    public abstract Image[] getTexture();
     
+    /**
+     * Draws the GameElement in g
+     * @param g Graphics where the GameElement is drawn
+     */
     public abstract void render(Graphics g);
 	
 	/**
 	 * donne le nom de l'element et sa position
 	 */
 	public String toString() {
-		String s="    Position : "+this.position.getX()+", "+this.position.getY()+".\n";
-		return s;
+		return "    Position : "+this.position.getX()+", "+this.position.getY()+".\n";
 	}
 }

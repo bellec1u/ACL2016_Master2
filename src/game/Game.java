@@ -22,21 +22,35 @@ import game.view.GameScreen;
 public class Game extends JFrame {
     
     private World world;
+    private GameScreen gameScreen;
     private KeyListener listener;
 	private final static String TITLE = "Space Invader";
 	
     public Game() {
         this.world = new World();
+        
+        /**
+         * Create and add the GameScreen
+         */
+		this.gameScreen = new GameScreen(this.world);
+		this.add(gameScreen);
+		
+		/** 
+		 * Create and add the KeyListener
+		 **/
 		this.listener = new GameListener(world.getSpaceShip());
-		
-		GameScreen gs = new GameScreen(this.world);
-		this.add(gs);
-		
 		addKeyListener(listener);
 		
 		initGraphics();
     }
     
+    /**
+     * Initializes JFrame's options such as
+     * - The title
+     * - The Size
+     * - The Visibility
+     *  ...
+     */
     private void initGraphics() {
         this.setTitle(TITLE);
         this.setPreferredSize(new Dimension(World.WIDTH, World.HEIGHT));

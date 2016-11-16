@@ -4,6 +4,15 @@ import game.element.SpaceShip;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class GameListener implements KeyListener {
 
     /** SpaceShip to control **/
@@ -13,8 +22,9 @@ public class GameListener implements KeyListener {
         this.ship = space;
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+    /**
+     * Changes SpaceShip's direction or shoot a Laser
+     * if the user press one Key
      */
     @Override
     public void keyPressed(KeyEvent key) {
@@ -35,8 +45,9 @@ public class GameListener implements KeyListener {
         }
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+    /**
+     * Sets the SpaceShip's direction to NONE when
+     * the user already pressed one key : LEFT or RIGHT 
      */
     @Override
     public void keyReleased(KeyEvent key) {
@@ -49,9 +60,6 @@ public class GameListener implements KeyListener {
         
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
-     */
     @Override
     public void keyTyped(KeyEvent arg0) {
 

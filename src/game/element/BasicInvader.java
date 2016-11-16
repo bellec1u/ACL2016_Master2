@@ -3,12 +3,11 @@ package game.element;
 import game.TextureFactory;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-
 import javax.swing.Timer;
 
 /**
@@ -29,7 +28,8 @@ public class BasicInvader extends Invader {
 	private final static int WIDTH = 24;	
 	private final static int HEIGHT = 16;
 	
-	private int delay = 500;
+	/** Attributes used to manage the Element's animation **/
+	private int delay = 500; 
 	private int currentFrame = 0;
 
 	/**
@@ -47,16 +47,27 @@ public class BasicInvader extends Invader {
         timer.start();
 	}
 	
+	/**
+	 * Returns Image[] of a BasicInvader
+	 */
 	@Override
-    public BufferedImage[] getTexture() {
+    public Image[] getTexture() {
         return TextureFactory.getInstance().getInvaderAImg();
     }
 
+	/**
+	 * Updates BasicInvader's position
+	 * @param delta lap of time between 2 displays
+	 */
 	@Override
 	public void update(double delta) {
 		move(delta);
 	}
 
+	/**
+	 * Draws a BasicInvader in g
+	 * @param g : Graphics where the BasicInvader is drawn
+	 */
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(this.getTexture()[this.currentFrame], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);

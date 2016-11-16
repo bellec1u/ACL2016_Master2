@@ -9,9 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @author JUNGES Pierre-Marie - M1 Informatique 2016/2017
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
  *
- * Nov 15, 2016
  */
 public class RefreshListener implements ActionListener{
 

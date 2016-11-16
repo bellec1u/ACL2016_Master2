@@ -1,18 +1,28 @@
 package game;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class TextureFactory {
 
-	private BufferedImage[] spaceShipImg = new BufferedImage[1];
-	private BufferedImage[] shootImg = new BufferedImage[1];
-	private BufferedImage[] invaderAImg = new BufferedImage[2];
-	private BufferedImage[] invaderBImg = new BufferedImage[2];
-	private BufferedImage[] invaderCImg = new BufferedImage[2];
+	private Image[] spaceShipImg = new BufferedImage[1];
+	private Image[] shootImg = new BufferedImage[1];
+	private Image[] invaderAImg = new BufferedImage[2];
+	private Image[] invaderBImg = new BufferedImage[2];
+	private Image[] invaderCImg = new BufferedImage[2];
 
 	/**
 	 * Instance unique pré-initialisée
@@ -45,23 +55,23 @@ public class TextureFactory {
 		return INSTANCE;
 	}
 
-	public BufferedImage[] getSpaceShipImg() {
+	public Image[] getSpaceShipImg() {
 		return spaceShipImg;
 	}
 
-	public BufferedImage[] getShootImg() {
+	public Image[] getShootImg() {
 		return shootImg;
 	}
 
-	public BufferedImage[] getInvaderAImg() {
+	public Image[] getInvaderAImg() {
 		return invaderAImg;
 	}
 
-	public BufferedImage[] getInvaderBImg() {
+	public Image[] getInvaderBImg() {
 		return invaderBImg;
 	}
 
-	public BufferedImage[] getInvaderCImg() {
+	public Image[] getInvaderCImg() {
 		return invaderCImg;
 	}
 	

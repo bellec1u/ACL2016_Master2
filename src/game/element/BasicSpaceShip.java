@@ -1,11 +1,9 @@
 package game.element;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-
 import game.TextureFactory;
 import game.World;
 
@@ -27,6 +25,7 @@ public class BasicSpaceShip extends SpaceShip {
 	private final static int WIDTH = 30;	
 	private final static int HEIGHT = 16;
 	
+	/** delay until the BasicSpaceShip can shoot again **/
 	private long lastShotTime;
 	
 	/**
@@ -38,10 +37,14 @@ public class BasicSpaceShip extends SpaceShip {
 		this.lastShotTime = System.currentTimeMillis();
 	}
 	
+	/**
+	 * Returns Image[] of a BasicSpaceShip
+	 */
 	@Override
-    public BufferedImage[] getTexture() {
+    public Image[] getTexture() {
         return TextureFactory.getInstance().getSpaceShipImg();
     }
+	
 	
 	@Override
 	protected void setPosition(double x, double y) {
@@ -55,6 +58,10 @@ public class BasicSpaceShip extends SpaceShip {
         }
     }
 
+	/**
+	 * Updates BasicSpaceShip's position
+	 * @param delta lap of time between 2 displays
+	 */
 	@Override
 	public void update(double delta) {
 		move(delta);
@@ -63,6 +70,10 @@ public class BasicSpaceShip extends SpaceShip {
 		}
 	}
 
+	/**
+	 * Draws a BasicSpaceShip and his laser(s) in g
+	 * @param g : Graphics where the BasicLaser is drawn
+	 */
     @Override
     public void render(Graphics g) {
         g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
@@ -71,6 +82,10 @@ public class BasicSpaceShip extends SpaceShip {
         }
     }
 
+    /**
+     * Shoots a BasicLaser with UP direction,
+     * The BasicLaser is created just above the BasicSpaceShip's coordinates
+     */
 	@Override
 	public void shoot() {
 	    // limit a bit the number of lasers

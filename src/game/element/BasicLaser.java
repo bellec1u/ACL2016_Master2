@@ -3,9 +3,9 @@ package game.element;
 import game.TextureFactory;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
 /**
  * Project "Space Invader"
@@ -35,16 +35,27 @@ public class BasicLaser extends Laser{
 		turnUp();
 	}
 
+	/**
+	 * Returns Image[] of a BasicLaser
+	 */
+	@Override
+	public Image[] getTexture() {
+		return TextureFactory.getInstance().getShootImg();
+	}
+
+	/**
+	 * Updates BasicLaser's position
+	 * @param delta lap of time between 2 displays
+	 */
 	@Override
 	public void update(double delta) {
 		move(delta);
 	}
 
-	@Override
-	public BufferedImage[] getTexture() {
-		return TextureFactory.getInstance().getShootImg();
-	}
-
+	/**
+	 * Draws a BasicInvader in g
+	 * @param g : Graphics where the BasicLaser is drawn
+	 */
     @Override
     public void render(Graphics g) {
         g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);

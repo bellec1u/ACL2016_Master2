@@ -1,7 +1,6 @@
 package game.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -10,6 +9,15 @@ import javax.swing.Timer;
 import game.World;
 import game.controler.RefreshListener;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 @SuppressWarnings("serial")
 public class GameScreen extends JPanel {
 	
@@ -20,7 +28,7 @@ public class GameScreen extends JPanel {
 	 */
 	private final int frameDuration = 16; //  1000ms / 60fps (ms value)
 	private final double delay = ( 1.0 / 60.0 );
-	private Timer timer;
+	private Timer timer; // use to call repaint() every frameDuration
 	
 	public GameScreen(World w) {
 		super();

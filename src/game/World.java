@@ -19,9 +19,11 @@ import game.element.SpaceShip;
  */
 public class World {
     
+	/** World dimensions **/
     public final static int WIDTH = 500;
     public final static int HEIGHT = 600;
     
+    /** Invader and SpaceShip(Player) **/
     public Invader invader;
     public SpaceShip spaceShip; 
     

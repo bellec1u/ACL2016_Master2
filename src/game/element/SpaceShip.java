@@ -19,11 +19,18 @@ public abstract class SpaceShip extends GameMoveableElement{
 	/** Laser's list **/
 	protected List<Laser> lasers;
 	
+	/**
+	 * 
+	 * Constructs a SpaceShip with the given parameter(s)
+	 * @param pos the SpaceShip's position
+	 * @param box the SpaceShip's bounding box
+	 * @param spd the current speed
+	 */
 	public SpaceShip(Point2D pos, Rectangle2D box,  double spd) {
 		super(pos, box, spd);
 		lasers = new ArrayList<Laser>();
 	}
 
-	/** Shot a Laser **/
+	/** Shoot a Laser **/
 	public abstract void shoot();
 }
