@@ -23,8 +23,8 @@ V 1.1 :
  - [x] le SpaceShip ne bouge pas si l'utilisateur ne fait rien. **Pierre-Marie**
  - [x] le SpaceShip tire un Laser lorsque l'utilisateur appuie sur la barre espace. **Pierre-Marie**
 * Tirer un Laser :
- - [ ] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace. **Juozas**
- - [ ] le Laser se déplace automatiquement vers le haut. **Juozas**
+ - [x] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace. **Juozas**
+ - [x] le Laser se déplace automatiquement vers le haut. **Juozas**
 
 
 # Diagrams
