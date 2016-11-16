@@ -38,6 +38,7 @@ public class BasicInvader extends Invader {
 	 */
 	public BasicInvader(Point2D pos) {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT), SPEED);
+		this.turnDown();
 		Timer timer = new Timer(this.delay, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	currentFrame = ++currentFrame % getTexture().length;
