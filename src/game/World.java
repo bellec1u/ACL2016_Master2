@@ -24,8 +24,8 @@ public class World {
     public final static int HEIGHT = 600;
     
     /** Invader and SpaceShip(Player) **/
-    public Invader invader;
-    public SpaceShip spaceShip; 
+    private Invader invader;
+    private SpaceShip spaceShip; 
     
     public World() {
         this.invader = new BasicInvader(new Point2D.Double(16, 16));
@@ -50,7 +50,6 @@ public class World {
 	    spaceShip.render(g);
 	    invader.render(g);
 	}
-	
 
 	@Override
     public String toString() {

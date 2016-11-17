@@ -80,13 +80,13 @@ public class Game extends JFrame {
                    
             switch (input) {
             case "l":
-                world.spaceShip.turnLeft();
+                world.getSpaceShip().turnLeft();
                 break;
             case "r":
-                world.spaceShip.turnRight();
+                world.getSpaceShip().turnRight();
                 break;
             default:
-                world.spaceShip.stopMove();
+                world.getSpaceShip().stopMove();
                 break;
             }
             
