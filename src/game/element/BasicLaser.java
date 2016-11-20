@@ -31,7 +31,7 @@ public class BasicLaser extends Laser{
 	 * @param pos the position
 	 */
 	public BasicLaser(Point2D pos) {
-		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT), SPEED);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		turnUp();
 	}
 
@@ -60,5 +60,11 @@ public class BasicLaser extends Laser{
     public void render(Graphics g) {
         g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
     }
+
+	@Override
+	public double getSpeed() {
+		// TODO Auto-generated method stub
+		return SPEED;
+	}
 
 }

@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import game.TextureFactory;
-import game.World;
 
 /**
  * Project "Space Invader"
@@ -33,7 +32,7 @@ public class BasicSpaceShip extends SpaceShip {
 	 * @param pos the position
 	 */
 	public BasicSpaceShip(Point2D pos) {
-		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT), SPEED);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		this.lastShotTime = System.currentTimeMillis();
 	}
 	
@@ -43,19 +42,6 @@ public class BasicSpaceShip extends SpaceShip {
 	@Override
     public Image[] getTexture() {
         return TextureFactory.getInstance().getSpaceShipImg();
-    }
-	
-	
-	@Override
-	protected void setPosition(double x, double y) {
-        if ((x + boundingBox.getWidth()) > World.WIDTH) {
-            // cas où l'element depasse à droite
-            x = World.WIDTH - boundingBox.getWidth();
-        }
-        if (x >= 0) {
-            //System.out.println("X : " + x);
-            super.setPosition(x, y);
-        }
     }
 
 	/**
@@ -103,6 +89,12 @@ public class BasicSpaceShip extends SpaceShip {
 		laser.setRelativePosition(x, -2);
 		
 		lasers.add(laser);
+	}
+
+	@Override
+	public double getSpeed() {
+		// TODO Auto-generated method stub
+		return SPEED;
 	}
 
 }

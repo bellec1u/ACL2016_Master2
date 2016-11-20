@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
  * @author LIPSKI Guillaume
  *
  */
-public abstract class Invader extends GameMoveableElement{
+public abstract class Invader extends GameElement{
 
 	/**
 	 * 
@@ -21,8 +21,8 @@ public abstract class Invader extends GameMoveableElement{
 	 * @param box the Invader's bounding box
 	 * @param spd the current speed
 	 */
-	public Invader(Point2D pos, Rectangle2D box, double spd) {
-		super(pos, box, spd);
+	public Invader(Point2D pos, Rectangle2D box) {
+		super(pos, box);
 		// TODO Auto-generated constructor stub
 	}
 

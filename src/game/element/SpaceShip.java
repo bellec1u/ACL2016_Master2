@@ -14,7 +14,7 @@ import java.util.List;
  * @author LIPSKI Guillaume
  *
  */
-public abstract class SpaceShip extends GameMoveableElement{
+public abstract class SpaceShip extends GameElement{
 
 	/** Laser's list **/
 	protected List<Laser> lasers;
@@ -26,8 +26,8 @@ public abstract class SpaceShip extends GameMoveableElement{
 	 * @param box the SpaceShip's bounding box
 	 * @param spd the current speed
 	 */
-	public SpaceShip(Point2D pos, Rectangle2D box,  double spd) {
-		super(pos, box, spd);
+	public SpaceShip(Point2D pos, Rectangle2D box) {
+		super(pos, box);
 		lasers = new ArrayList<Laser>();
 	}
 

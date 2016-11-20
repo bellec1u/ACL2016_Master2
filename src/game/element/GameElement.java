@@ -1,5 +1,7 @@
 package game.element;
 
+import game.World;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
@@ -14,36 +16,148 @@ import java.awt.geom.Rectangle2D;
  * @author LIPSKI Guillaume
  *
  */
-public abstract class GameElement {
+public abstract class GameElement{
+	
 	
 	/**
 	 * position du GameElement
 	 */
-	protected Point2D position;
+	private Point2D position;
 	
 	/**
 	 * Bounding box de l'element
 	 */
-	protected Rectangle2D boundingBox;
+	private Rectangle2D boundingBox;
+	
+	
+    /** Speed of movement 
+     * Since we decide to update every 0.0166 second ( 60 fps purpose )
+     * the value of speed has too be greater or equals than 60 ( >= 60 );
+     * mathematical explanation :
+     *  (1 / 60 ) * 60 = 1 <- object moves at 1 pixel LEFT / RIGHT / UP / DOWN every refresh
+     * because we can draw only integers coordinates (cf : drawImage() method )
+     * 
+     * 	THIS ATTRIBUTE IS VISIBLE ONLY IN SUB CLASSES (basicInvader, basicSpaceShip etc...)
+     * */
+    //private double speed;
 
-	/**
-	 * Constructeur vide de GameElement, initialise tout a 0
-	 */
-	public GameElement() {
-		position = new Point2D.Double(0,0);
-		boundingBox = new Rectangle2D.Double(0,0,0,0);
-	}
-	
-	/**
-	 * Constructeur pour un element sans hitbox (juste un points)
-	 * @param pos positions de l'element
-	 */
-	public GameElement(Point2D pos, Rectangle2D box) {
-		position = new Point2D.Double(pos.getX(), pos.getY());
+    /** Direction of movement **/
+    protected enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
+
+    /** Attribute Direction **/
+    protected Direction direction = Direction.NONE;
+
+    /**
+     * Constructs a GameMoveableElement.java with the given parameter(s)
+     * @param pos
+     * @param spd
+     */
+    public GameElement(Point2D pos, Rectangle2D box) {
+    	position = new Point2D.Double(pos.getX(), pos.getY());
 		boundingBox = new Rectangle2D.Double(box.getX(), box.getY(), box.getWidth(), box.getHeight());
+    }
+
+    /**
+     * Returns  Image[] of a GameElement
+     * @return
+     */
+    public abstract Image[] getTexture();
+    
+    /**
+     * Draws the GameElement in g
+     * @param g Graphics where the GameElement is drawn
+     */
+    public abstract void render(Graphics g);
+    
+    /** Updates the position and behavior of the GameMoveableElement **/
+    public abstract void update(double delta);
+    
+    /** Returns the speed **/
+    public abstract double getSpeed();
+    
+	/**
+	 * Set la position du GameElement
+	 * @param x position dans l'axe X
+	 * @param y position dans l'axe Y
+	 */
+	protected void setPosition(double x, double y) {	
+    	position.setLocation(x, y);
+    	boundingBox.setRect(x, y, boundingBox.getWidth(), boundingBox.getHeight());
 	}
 	
-	
+	/**
+     * Set la position relative du GameElement
+     * @param x valeur relative à l'axe X
+     * @param y valeur relative à l'axe Y
+     */
+    public void setRelativePosition(double x, double y) {
+        double newX = position.getX() + x;
+        double newY = position.getY() + y;
+        
+        if ((newX + boundingBox.getWidth()) > World.WIDTH) {
+            // cas où l'element depasse à droite
+            newX = World.WIDTH - boundingBox.getWidth();
+        }
+        if(newX < 0) {
+        	newX = 0;
+        }
+        this.setPosition(newX, newY);
+    }
+
+    /** Moves the object toward a direction with given parameter :
+     * @param delta time between 2 frames
+     */
+    protected void move(double delta) {
+        // v = (d / t) so d = v * t;
+        double distance = getSpeed() * delta;
+
+        // Calculate the new coordinate
+        switch (direction) {
+        case UP :
+            // If UP then x' = x and y' = y - distance
+            setRelativePosition(0, -distance);
+            break;
+        case DOWN :
+            // If DOWN then x' = x and y' = y + distance
+            setRelativePosition(0, distance);
+            break;
+        case LEFT :
+            // If LEFT then x' = x - distance and y' = y
+            setRelativePosition(-distance, 0);
+            break;
+        case RIGHT :
+            // If LEFT then x' = x + distance and y' = y
+            setRelativePosition(distance, 0);
+            break;
+        default:
+            break;
+        }
+    }
+
+    /** Sets the Direction to the LEFT **/
+    public void turnLeft() {
+        direction = Direction.LEFT;
+    }
+
+    /** Sets the Direction to the RIGHT **/
+    public void turnRight() {
+        direction = Direction.RIGHT;
+    }
+
+    /** Sets the Direction to UP **/
+    public void turnUp() {
+        direction = Direction.UP;
+    }
+
+    /** Sets the Direction to DOWN **/
+    public void turnDown() {
+        direction = Direction.DOWN;
+    }
+    
+    public void stopMove() {
+        direction = Direction.NONE;
+    }
+    
 	/**
 	 * Getter de position
 	 * @return position
@@ -59,45 +173,18 @@ public abstract class GameElement {
 	public Rectangle2D getBoundingBox() {
 		return (Rectangle2D) boundingBox.clone();
 	}
-	
-	/**
-	 * Set la position du GameElement
-	 * @param x position dans l'axe X
-	 * @param y position dans l'axe Y
-	 */
-	protected void setPosition(double x, double y) {
-    	position.setLocation(x, y);
-    	boundingBox.setRect(x, y, boundingBox.getWidth(), boundingBox.getHeight());
-	}
-	
-	/**
-     * Set la position relative du GameElement
-     * @param x valeur relative à l'axe X
-     * @param y valeur relative à l'axe Y
-     */
-    public void setRelativePosition(double x, double y) {
-        double newX = position.getX() + x;
-        double newY = position.getY() + y;
- 
-        this.setPosition(newX, newY);
+    
+    /** Updates the position and behavior of the GameElement's direction **/
+    public Direction getDirection() {
+        return this.direction;
     }
-    
-    /**
-     * Returns  Image[] of a GameElement
-     * @return
-     */
-    public abstract Image[] getTexture();
-    
-    /**
-     * Draws the GameElement in g
-     * @param g Graphics where the GameElement is drawn
-     */
-    public abstract void render(Graphics g);
-	
-	/**
-	 * donne le nom de l'element et sa position
-	 */
-	public String toString() {
-		return "    Position : "+this.position.getX()+", "+this.position.getY()+".\n";
-	}
+
+    /** toString **/
+    public String toString() {
+        StringBuilder sb = new StringBuilder("");
+        sb.append("    Direction : " + direction + "\n");
+        sb.append("    Position : " + position + "\n");
+        return sb.toString();
+    }
+
 }

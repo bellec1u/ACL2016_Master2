@@ -2,7 +2,7 @@ package game.element;
 
 import static org.junit.Assert.*;
 import game.World;
-import game.element.GameMoveableElement.Direction;
+import game.element.GameElement.Direction;
 
 import org.junit.Test;
 

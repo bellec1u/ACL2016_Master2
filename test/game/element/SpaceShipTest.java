@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.World;
-import game.element.GameMoveableElement.Direction;
+import game.element.GameElement.Direction;
 
 import org.junit.Test;
 

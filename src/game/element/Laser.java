@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
  * @author LIPSKI Guillaume
  *
  */
-public abstract class Laser extends GameMoveableElement{
+public abstract class Laser extends GameElement{
 
 	/**
 	 * 
@@ -21,8 +21,8 @@ public abstract class Laser extends GameMoveableElement{
 	 * @param box the Laser's bounding box
 	 * @param spd the current speed
 	 */
-	public Laser(Point2D pos, Rectangle2D box,  double spd) {
-		super(pos, box, spd);
+	public Laser(Point2D pos, Rectangle2D box) {
+		super(pos, box);
 		// TODO Auto-generated constructor stub
 	}
 

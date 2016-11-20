@@ -37,7 +37,7 @@ public class BasicInvader extends Invader {
 	 * @param pos the position
 	 */
 	public BasicInvader(Point2D pos) {
-		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT), SPEED);
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		this.turnDown();
 		Timer timer = new Timer(this.delay, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +71,13 @@ public class BasicInvader extends Invader {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(this.getTexture()[this.currentFrame], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+	}
+
+
+	@Override
+	public double getSpeed() {
+		// TODO Auto-generated method stub
+		return SPEED;
 	}
 
 }
