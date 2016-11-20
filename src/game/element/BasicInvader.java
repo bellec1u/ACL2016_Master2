@@ -28,9 +28,8 @@ public class BasicInvader extends Invader {
 	private final static int WIDTH = 24;	
 	private final static int HEIGHT = 16;
 	
-	/** Attributes used to manage the Element's animation **/
-	private int delay = 500; 
-	private int currentFrame = 0;
+	/** Attribute used to manage the Element's animation **/
+	private int indice;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -39,12 +38,7 @@ public class BasicInvader extends Invader {
 	public BasicInvader(Point2D pos) {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		this.turnDown();
-		Timer timer = new Timer(this.delay, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	currentFrame = ++currentFrame % getTexture().length;
-            }
-        });
-        timer.start();
+		this.indice = 0;
 	}
 	
 	/**
@@ -62,6 +56,11 @@ public class BasicInvader extends Invader {
 	@Override
 	public void update(double delta) {
 		move(delta);
+		
+		/*
+		 * Change the indice without using a second Timer
+		 */
+		this.indice = (((System.currentTimeMillis()) % (getTexture().length)) == 0) ? 1 : 0;
 	}
 
 	/**
@@ -70,7 +69,7 @@ public class BasicInvader extends Invader {
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(this.getTexture()[this.currentFrame], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+		g.drawImage(this.getTexture()[indice], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
 	}
 
 
