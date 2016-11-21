@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author LIPSKI Guillaume
  *
  */
-public class RefreshListener implements ActionListener{
+public class RefreshListener implements ActionListener {
 
 	/**
 	 * Class to manage

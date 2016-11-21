@@ -28,18 +28,6 @@ public abstract class GameElement{
 	 * Bounding box de l'element
 	 */
 	private Rectangle2D boundingBox;
-	
-	
-    /** Speed of movement 
-     * Since we decide to update every 0.0166 second ( 60 fps purpose )
-     * the value of speed has too be greater or equals than 60 ( >= 60 );
-     * mathematical explanation :
-     *  (1 / 60 ) * 60 = 1 <- object moves at 1 pixel LEFT / RIGHT / UP / DOWN every refresh
-     * because we can draw only integers coordinates (cf : drawImage() method )
-     * 
-     * 	THIS ATTRIBUTE IS VISIBLE ONLY IN SUB CLASSES (basicInvader, basicSpaceShip etc...)
-     * */
-    //private double speed;
 
     /** Direction of movement **/
     protected enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
