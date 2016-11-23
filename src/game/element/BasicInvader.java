@@ -1,14 +1,11 @@
 package game.element;
 
-import game.TextureFactory;
-
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import javax.swing.Timer;
+
+import game.TextureFactory;
 
 /**
  * Project "Space Invader"
@@ -23,6 +20,7 @@ public class BasicInvader extends Invader {
 
 	/** Speed of a BasicInvader **/
 	private static final double SPEED = 90.0; // 1.5 pixels every refresh call
+	private static final int TEXTURE_CHANGE_DELAY = 500;
 	
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 24;	
@@ -60,9 +58,9 @@ public class BasicInvader extends Invader {
 		move(delta);
 		
 		/*
-		 * Change the indice without using a second Timer
+		 * Change the indice without using a Timer
 		 */
-		if (System.currentTimeMillis() > lastTextureChange + 500) {
+		if (System.currentTimeMillis() > lastTextureChange + TEXTURE_CHANGE_DELAY) {
 		    textureIndex = ++textureIndex % getTexture().length;
 		    lastTextureChange = System.currentTimeMillis();
 		}
@@ -80,7 +78,6 @@ public class BasicInvader extends Invader {
 
 	@Override
 	public double getSpeed() {
-		// TODO Auto-generated method stub
 		return SPEED;
 	}
 

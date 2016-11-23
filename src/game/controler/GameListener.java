@@ -39,7 +39,7 @@ public class GameListener implements KeyListener {
             ship.turnRight();
             break;
         case KeyEvent.VK_SPACE :
-            //then spaceship shots a missile
+            // then spaceship shoots a laser
             ship.shoot();
             break;
         }

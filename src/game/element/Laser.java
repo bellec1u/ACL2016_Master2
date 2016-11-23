@@ -23,7 +23,6 @@ public abstract class Laser extends GameElement{
 	 */
 	public Laser(Point2D pos, Rectangle2D box) {
 		super(pos, box);
-		// TODO Auto-generated constructor stub
 	}
 
 }

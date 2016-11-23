@@ -66,6 +66,11 @@
             <classpath refid="ACL2016.classpath"/>
         </junit>
     </target>
+    <target name="Main">
+        <java classname="main.Main" failonerror="true" fork="yes">
+            <classpath refid="ACL2016.classpath"/>
+        </java>
+    </target>
     <target name="SpaceShipTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -74,11 +79,6 @@
             <jvmarg line="-ea"/>
             <classpath refid="ACL2016.classpath"/>
         </junit>
-    </target>
-    <target name="Main">
-        <java classname="main.Main" failonerror="true" fork="yes">
-            <classpath refid="ACL2016.classpath"/>
-        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">

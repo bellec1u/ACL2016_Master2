@@ -18,7 +18,8 @@ import game.TextureFactory;
 public class BasicSpaceShip extends SpaceShip {
 
 	/** Speed of a BasicSpaceShip **/
-	private static final double SPEED = 200.0 ; // 4 pixels every refresh call
+	private static final double SPEED = 200.0; // 4 pixels every refresh call
+	private static final int SHOT_DELAY = 200;
 
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 30;	
@@ -75,7 +76,7 @@ public class BasicSpaceShip extends SpaceShip {
 	@Override
 	public void shoot() {
 	    // limit a bit the number of lasers
-	    if (!(lastShotTime + 100 < System.currentTimeMillis())) {
+	    if (!(lastShotTime + SHOT_DELAY < System.currentTimeMillis())) {
 	        return;
 	    }
 	    lastShotTime = System.currentTimeMillis();
@@ -93,7 +94,6 @@ public class BasicSpaceShip extends SpaceShip {
 
 	@Override
 	public double getSpeed() {
-		// TODO Auto-generated method stub
 		return SPEED;
 	}
 

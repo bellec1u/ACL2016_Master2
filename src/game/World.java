@@ -33,7 +33,7 @@ public class World {
     public World() {
     	invaders = new ArrayList<Invader>();
     	int nbInvaders = 1;
-    	for(int i = 1 ; i < (nbInvaders + 1); i++) {
+    	for (int i = 1; i < (nbInvaders + 1); i++) {
     		invaders.add(new BasicInvader(new Point2D.Double((24+5) * i, 16)));
     	}
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
@@ -50,14 +50,14 @@ public class World {
 	
 	public void update(double delta) {
 	    spaceShip.update(delta);
-	    for(Invader invader : invaders) {
+	    for (Invader invader : invaders) {
 	    	invader.update(delta);
 	    }
 	}
 	
 	public void render(Graphics g) {
 	    spaceShip.render(g);
-	    for(Invader invader : invaders) {
+	    for (Invader invader : invaders) {
 	    	invader.render(g);
 	    }
 	}
@@ -66,7 +66,7 @@ public class World {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("INVADER :\n");
-        for(Invader invader : invaders) {
+        for (Invader invader : invaders) {
         	sb.append(invader.toString());
         }
         sb.append("\n-------------------------\n");

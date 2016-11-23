@@ -23,7 +23,6 @@ public abstract class Invader extends GameElement{
 	 */
 	public Invader(Point2D pos, Rectangle2D box) {
 		super(pos, box);
-		// TODO Auto-generated constructor stub
 	}
 
 	

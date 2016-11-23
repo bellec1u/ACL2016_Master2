@@ -63,7 +63,6 @@ public class BasicLaser extends Laser{
 
 	@Override
 	public double getSpeed() {
-		// TODO Auto-generated method stub
 		return SPEED;
 	}
 

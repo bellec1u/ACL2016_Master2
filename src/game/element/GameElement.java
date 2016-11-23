@@ -86,7 +86,7 @@ public abstract class GameElement{
             // cas où l'element depasse à droite
             newX = World.WIDTH - boundingBox.getWidth();
         }
-        if(newX < 0) {
+        if (newX < 0) {
         	newX = 0;
         }
         this.setPosition(newX, newY);
