@@ -32,7 +32,7 @@ public class World {
     
     public World() {
     	invaders = new ArrayList<Invader>();
-    	int nbInvaders = 1;
+    	int nbInvaders = 20;
     	for(int i = 1 ; i < (nbInvaders + 1); i++) {
     		invaders.add(new BasicInvader(new Point2D.Double((24+5) * i, 16)));
     	}

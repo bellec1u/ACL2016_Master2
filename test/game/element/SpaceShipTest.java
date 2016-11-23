@@ -42,9 +42,10 @@ public class SpaceShipTest {
 		SpaceShip s = w.getSpaceShip();
 		Double xInit = s.getPosition().getX();
 		s.turnLeft();
-		s.update(2);
-		
-		assertTrue(xInit - 2*s.getSpeed() == s.getPosition().getX());
+		double delay = 1.0 / 60.0;
+		s.update(delay);
+
+		assertTrue(xInit - delay*s.getSpeed() == s.getPosition().getX());
 	}
 
 	/**
@@ -68,9 +69,10 @@ public class SpaceShipTest {
 		SpaceShip s = w.getSpaceShip();
 		Double xInit = s.getPosition().getX();
 		s.turnRight();
-		s.update(2);
+		double delay = 1.0 / 60.0;
+		s.update(delay);
 		
-		assertTrue(xInit + 2*s.getSpeed() == s.getPosition().getX());
+		assertTrue(xInit + delay*s.getSpeed() == s.getPosition().getX());
 	}
 	
 	/**
