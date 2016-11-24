@@ -101,4 +101,43 @@ public class SpaceShipTest {
 		assertTrue(World.WIDTH >= s.getPosition().getX());
 	}
 	
+	/**
+	 * Test si un SpaceShip a sa liste de laser vide
+	 */
+	@Test
+	public void SpaceShipNoShoot() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		
+		assertTrue(s.getNbLaser() == 0);
+	}
+	
+	/**
+	 * Test si un SpaceShip a sa liste de laser est egale à 1
+	 */
+	@Test
+	public void SpaceShipShoot() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		s.shoot();
+		
+		assertTrue(s.getNbLaser() == 1);
+	}
+
+	/**
+	 * Test si un SpaceShip a sa liste de laser est egale à 0
+	 * car tire( +1 ) et delete ( -1 )
+	 */
+	@Test
+	public void SpaceShipShootThenDelete() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		s.shoot(); // on tire
+		s.deleteLaser(s.getLaser(0)); // et on supprime le Laser créé
+		
+		assertTrue(s.getNbLaser() == 0);
+	}
+	
+	
+	
 }

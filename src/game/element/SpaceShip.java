@@ -67,4 +67,21 @@ public abstract class SpaceShip extends GameElement{
 		lasers.remove(laser);
 	}
 
+	/**
+	 * Returns the number of Laser in the Laser list
+	 */
+	public int getNbLaser() {
+		return lasers.size();
+	}
+	
+	/**
+	 * Returns Laser i, use for test
+	 */
+	public Laser getLaser(int i) {
+		if(i >= 0 && i < lasers.size()) {
+			return lasers.get(i);
+		}
+		
+		return null; // unreachable
+	}
 }
