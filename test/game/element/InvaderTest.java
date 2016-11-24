@@ -48,9 +48,24 @@ public class InvaderTest {
 	public void invaderOutOfScreenRemove() {
 	    World w = new World();
         Invader i = w.getInvader();
-        
-        w.update(100);
-        assertEquals(w.getInvaderNumber(), 0);
+        w.update(0);
+        int invaderNb = w.getInvaderNumber();
+        i.update(200);
+        w.update(0);
+        assertEquals(w.getInvaderNumber(), invaderNb-1);
+	}
+	
+	@Test
+	public void invaderGeneration() {
+	    World w = new World();
+	    int nbInvader=w.getInvaderNumber();
+	    try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+	    w.update(1);
+	    assertTrue(nbInvader<w.getInvaderNumber());
 	}
 
 }
