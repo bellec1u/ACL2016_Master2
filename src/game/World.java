@@ -10,6 +10,7 @@ import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Project "Space Invader"
@@ -30,6 +31,12 @@ public class World {
     /** Invaders and SpaceShip(Player) **/
     private List<Invader> invaders;
     private SpaceShip spaceShip; 
+
+	private final int SPAWN_MIN_RATE=200;
+	private int spawnDelay=1000;    
+	private int spawnNumber=1;
+	private boolean[] spawnTab;
+	private long lastSpawn;
     
     public World() {
     	invaders = new LinkedList<Invader>();
@@ -70,6 +77,30 @@ public class World {
                 deleteInvader(it);
             }
 	    }
+	    
+		if (System.currentTimeMillis() > lastSpawn + SPAWN_MIN_RATE+spawnDelay) {
+			generateInvaders();
+			lastSpawn=System.currentTimeMillis();
+		}	
+	}
+	
+	private void generateInvaders(){
+		int x;
+		Random rand=new Random();
+		/*
+		 * Change the indice without using a Timer
+		 */
+		spawnTab=new boolean[World.WIDTH/29];
+		for(int i=0;i<spawnNumber;i++){
+			x=rand.nextInt(World.WIDTH/29);
+			while(spawnTab[x]==true){
+				x=rand.nextInt(World.WIDTH/29);
+			}
+			spawnTab[x]=true;
+			invaders.add(new BasicInvader(new Point2D.Double((29) * x, 16)));
+		}
+		spawnDelay=rand.nextInt(500)+200;
+		spawnNumber=rand.nextInt(3)+1;
 	}
 	
 	private void manageCollision(Invader invader, Iterator<Invader> i) {
