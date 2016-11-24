@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Iterator;
 
 import game.TextureFactory;
 

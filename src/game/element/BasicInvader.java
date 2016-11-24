@@ -27,9 +27,12 @@ public class BasicInvader extends Invader {
 	private final static int WIDTH = 24;	
 	private final static int HEIGHT = 16;
 	
-	/** Attribute used to manage the Element's animation **/
+	/** Attributes used to manage the Element's animation **/
 	private int textureIndex;
 	private long lastTextureChange;
+	
+	/** Score value**/
+	public static final int SCORE = 10;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -84,6 +87,11 @@ public class BasicInvader extends Invader {
 	@Override
 	public double getSpeed() {
 		return SPEED;
+	}
+
+	/** Returns Invader's score value **/
+	public int getScore() {
+		return SCORE;
 	}
 
 }

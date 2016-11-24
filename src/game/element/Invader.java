@@ -25,5 +25,6 @@ public abstract class Invader extends GameElement{
 		super(pos, box);
 	}
 
-	
+	/** Returns Invader's score value **/
+	public abstract int getScore() ;
 }

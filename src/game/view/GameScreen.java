@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import game.TextureFactory;
 import game.World;
 import game.controler.RefreshListener;
 
@@ -52,7 +53,21 @@ public class GameScreen extends JPanel {
 		 */
 		world.update(delay);
 		world.render(g);
-
+		
+		/**
+		 * Draws the score
+		 */
+		drawScore(g);
+	}
+	
+	public void drawScore(Graphics g) {
+	    /**
+	     * Sets the Graphics g to draw the Score with a custom Font
+	     * deriveFont in order to increase font's size
+	     */
+	    g.setFont(TextureFactory.getInstance().getFont().deriveFont(20.0f));
+	    g.setColor(Color.WHITE); 
+	    g.drawString("SCORE " + world.getScore(), (int)(World.WIDTH * 0.45), (World.HEIGHT - 50));
 	}
 	
 }

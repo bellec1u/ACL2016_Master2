@@ -27,6 +27,8 @@ public class World {
     public final static int WIDTH = 500;
     public final static int HEIGHT = 600;
     
+    /** Score **/
+    private int score;
     
     /** Invaders and SpaceShip(Player) **/
     private List<Invader> invaders;
@@ -46,16 +48,24 @@ public class World {
     	}
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
         this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
+        score = 0;
     }
     
-	public Invader getInvader() {
-		return invaders.get(0);
+    /** Returns the ith Invader **/
+	public Invader getInvader(int i) {
+		if( i >= 0 && i < invaders.size()) {
+			return invaders.get(i);
+		} else {
+			return null;
+		}
 	}
 
+	/** Returns the SpaceShip **/
 	public SpaceShip getSpaceShip() {
 		return spaceShip;
 	}
 	
+	/** Returns the number of invaders available in the List **/
 	public int getInvaderNumber() {
 	    return invaders.size();
 	}
@@ -64,6 +74,7 @@ public class World {
 	    it.remove();
 	}
 	
+	/** Updates all the GameElement present in the World **/
 	public void update(double delta) {
 	    spaceShip.update(delta);
 	    
@@ -108,15 +119,22 @@ public class World {
 		
 		//si une collision c'est produit
 		if (hasCollision) {
-			this.deleteInvader(i);
+			score += invader.getScore(); // incremente le score
+			this.deleteInvader(i);		
 		}
 	}
 
+	/** Draws inside g all the GameElement's images with their current positions **/
 	public void render(Graphics g) {
 	    spaceShip.render(g);
 	    for (Invader invader : invaders) {
 	    	invader.render(g);
 	    }
+	}
+	
+	/** Returns the score **/
+	public int getScore() {
+		return score;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -23,6 +25,8 @@ public class TextureFactory {
 	private Image[] invaderAImg = new BufferedImage[2];
 	private Image[] invaderBImg = new BufferedImage[2];
 	private Image[] invaderCImg = new BufferedImage[2];
+	private Font font;
+	
 
 	/**
 	 * Instance unique pré-initialisée
@@ -42,8 +46,11 @@ public class TextureFactory {
 			this.invaderBImg[1] = ImageIO.read(new File("img/InvaderB_01.png"));
 			this.invaderCImg[0] = ImageIO.read(new File("img/InvaderC_00.png"));
 			this.invaderCImg[1] = ImageIO.read(new File("img/InvaderC_01.png"));
+			this.font = Font.createFont(Font.TRUETYPE_FONT, new File("font/arcade.ttf"));
 		} catch (IOException e) {
 			System.out.println("image loading error");
+		} catch (FontFormatException e) {
+			System.out.println("font loading error");
 		}
 	}
 
@@ -73,6 +80,10 @@ public class TextureFactory {
 
 	public Image[] getInvaderCImg() {
 		return invaderCImg;
+	}
+	
+	public Font getFont() {
+		return font;
 	}
 	
 }
