@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Iterator;
+
 import game.TextureFactory;
 
 /**
@@ -51,9 +53,16 @@ public class BasicSpaceShip extends SpaceShip {
 	 */
 	@Override
 	public void update(double delta) {
-		move(delta);
-		for (Laser laser : lasers) {
-			laser.update(delta);
+		move(delta); // moves the SpaceShip
+		Laser laser;
+		// Iterates through the Laser's List available
+		for(int i = 0 ; i < lasers.size() ; i++) {
+			laser = lasers.get(i);
+			laser.update(delta); // moves Laser
+			if (laser.isOutOfScreen() ) {
+				// deletes the laser whom is out of screen
+				deleteLaser(laser); 
+			}
 		}
 	}
 
@@ -96,5 +105,5 @@ public class BasicSpaceShip extends SpaceShip {
 	public double getSpeed() {
 		return SPEED;
 	}
-
+	
 }

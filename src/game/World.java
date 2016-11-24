@@ -2,7 +2,6 @@ package game;
 
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
-import game.element.GameElement;
 import game.element.Invader;
 import game.element.SpaceShip;
 
@@ -61,6 +60,7 @@ public class World {
 	    while (it.hasNext()) {
 	        Invader invader = it.next();
 	    	invader.update(delta);
+	    	manageCollision(invader, it);
 	    	
 	    	if (invader.isOutOfScreen()) {
                 deleteInvader(it);
@@ -68,6 +68,15 @@ public class World {
 	    }
 	}
 	
+	private void manageCollision(Invader invader, Iterator<Invader> i) {
+		boolean hasCollision = this.spaceShip.manageLaserCollision(invader);
+		
+		//si une collision c'est produit
+		if (hasCollision) {
+			this.deleteInvader(i);
+		}
+	}
+
 	public void render(Graphics g) {
 	    spaceShip.render(g);
 	    for (Invader invader : invaders) {

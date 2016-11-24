@@ -24,5 +24,11 @@ public abstract class Laser extends GameElement{
 	public Laser(Point2D pos, Rectangle2D box) {
 		super(pos, box);
 	}
-
+	
+	/**
+	 * Indicates if the Laser is out of screen,
+	 * in order to do so,
+	 * we will check if the y axis is stricly < 0
+	 */
+	public abstract boolean isOutOfScreen();
 }
