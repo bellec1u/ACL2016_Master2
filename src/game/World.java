@@ -58,12 +58,17 @@ public class World {
 	    	Invader invader = i.next();
 	    	invader.update(delta);
 	    	
-	    	this.manageCollision(invader);
+	    	this.manageCollision(invader, i);
 	    }
 	}
 	
-	private void manageCollision(Invader invader) {
+	private void manageCollision(Invader invader, Iterator<Invader> i) {
 		boolean hasCollision = this.spaceShip.manageLaserCollision(invader);
+		
+		//si une collision c'est produit
+		if (hasCollision) {
+			this.deleteInvader(i);
+		}
 	}
 
 	public void render(Graphics g) {

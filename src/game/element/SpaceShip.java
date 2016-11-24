@@ -46,7 +46,7 @@ public abstract class SpaceShip extends GameElement{
 	    	Laser laser = l.next();
 	    	
 	    	if (hasCollision) {
-	    		//this.deleteLaser(laser);
+	    		this.deleteLaser(laser);
 	    		return true;
 	    	}
 	    	
