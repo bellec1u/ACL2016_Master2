@@ -33,4 +33,13 @@ public abstract class SpaceShip extends GameElement{
 
 	/** Shoot a Laser **/
 	public abstract void shoot();
+	
+	/**
+	 * Deletes the Laser laser whom is out of screen
+	 * @param laser The Laser to remove from the List
+	 */
+	public void deleteLaser(Laser laser) {
+		lasers.remove(laser);
+	}
+	
 }

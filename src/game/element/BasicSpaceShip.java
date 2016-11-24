@@ -54,6 +54,9 @@ public class BasicSpaceShip extends SpaceShip {
 		move(delta);
 		for (Laser laser : lasers) {
 			laser.update(delta);
+			if (laser.isOutOfScreen() ) {
+				deleteLaser(laser);
+			}
 		}
 	}
 
@@ -96,5 +99,5 @@ public class BasicSpaceShip extends SpaceShip {
 	public double getSpeed() {
 		return SPEED;
 	}
-
+	
 }
