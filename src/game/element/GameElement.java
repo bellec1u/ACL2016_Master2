@@ -30,7 +30,7 @@ public abstract class GameElement{
 	private Rectangle2D boundingBox;
 
     /** Direction of movement **/
-    protected enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
+    public enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
 
     /** Attribute Direction **/
     protected Direction direction = Direction.NONE;

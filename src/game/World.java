@@ -2,7 +2,7 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import game.element.BasicInvader;
@@ -31,7 +31,7 @@ public class World {
     private SpaceShip spaceShip; 
     
     public World() {
-    	invaders = new ArrayList<Invader>();
+    	invaders = new LinkedList<Invader>();
     	int nbInvaders = 1;
     	for (int i = 1; i < (nbInvaders + 1); i++) {
     		invaders.add(new BasicInvader(new Point2D.Double((24+5) * i, 16)));

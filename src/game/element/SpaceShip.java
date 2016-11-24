@@ -2,7 +2,7 @@ package game.element;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,7 +28,7 @@ public abstract class SpaceShip extends GameElement{
 	 */
 	public SpaceShip(Point2D pos, Rectangle2D box) {
 		super(pos, box);
-		lasers = new ArrayList<Laser>();
+		lasers = new LinkedList<Laser>();
 	}
 
 	/** Shoot a Laser **/
