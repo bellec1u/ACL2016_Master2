@@ -1,14 +1,16 @@
 package game;
 
-import java.awt.Graphics;
-import java.awt.geom.Point2D;
-import java.util.LinkedList;
-import java.util.List;
-
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
+import game.element.GameElement;
 import game.element.Invader;
 import game.element.SpaceShip;
+
+import java.awt.Graphics;
+import java.awt.geom.Point2D;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Project "Space Invader"
@@ -48,10 +50,21 @@ public class World {
 		return spaceShip;
 	}
 	
+	public void deleteInvader(Iterator<Invader> it) {
+	    it.remove();
+	}
+	
 	public void update(double delta) {
 	    spaceShip.update(delta);
-	    for (Invader invader : invaders) {
+	    
+	    Iterator<Invader> it = invaders.iterator();
+	    while (it.hasNext()) {
+	        Invader invader = it.next();
 	    	invader.update(delta);
+	    	
+	    	if (invader.isOutOfScreen()) {
+                deleteInvader(it);
+            }
 	    }
 	}
 	

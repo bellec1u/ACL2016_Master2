@@ -1,11 +1,12 @@
 package game.element;
 
+import game.TextureFactory;
+import game.World;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-
-import game.TextureFactory;
 
 /**
  * Project "Space Invader"
@@ -48,6 +49,10 @@ public class BasicInvader extends Invader {
     public Image[] getTexture() {
         return TextureFactory.getInstance().getInvaderAImg();
     }
+	
+	public boolean isOutOfScreen() {
+	    return position.getY() > World.HEIGHT;
+	}
 
 	/**
 	 * Updates BasicInvader's position

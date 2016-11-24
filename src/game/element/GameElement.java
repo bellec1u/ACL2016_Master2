@@ -22,7 +22,7 @@ public abstract class GameElement{
 	/**
 	 * position du GameElement
 	 */
-	private Point2D position;
+	protected Point2D position;
 	
 	/**
 	 * Bounding box de l'element
@@ -145,6 +145,8 @@ public abstract class GameElement{
     public void stopMove() {
         direction = Direction.NONE;
     }
+    
+    public boolean isOutOfScreen() {return false;}
     
 	/**
 	 * Getter de position
