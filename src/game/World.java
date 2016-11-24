@@ -49,6 +49,10 @@ public class World {
 		return spaceShip;
 	}
 	
+	public int getInvaderNumber() {
+	    return invaders.size();
+	}
+	
 	public void deleteInvader(Iterator<Invader> it) {
 	    it.remove();
 	}

@@ -12,7 +12,7 @@ public class InvaderTest {
 	 * test si l'Invader ne bouge pas -> doit retourner faux
 	 */
 	@Test
-	public void InvaderCantMove() {
+	public void invaderCantMove() {
 		World w = new World();
 		Invader i = w.getInvader();
 		
@@ -23,7 +23,7 @@ public class InvaderTest {
 	 * test si l'Invader vas vers le bas
 	 */
 	@Test
-	public void InvaderGoDown() {
+	public void invaderGoDown() {
 		World w = new World();
 		Invader i = w.getInvader();
 		
@@ -34,7 +34,7 @@ public class InvaderTest {
 	 * test si l'Invader avance vers le bas
 	 */
 	@Test
-	public void InvaderForwardDown() {
+	public void invaderForwardDown() {
 		World w = new World();
 		Invader i = w.getInvader();
 		Double yInit = i.getPosition().getY();
@@ -42,6 +42,15 @@ public class InvaderTest {
 		i.update(2);
 
 		assertTrue(yInit + 2*i.getSpeed() == i.getPosition().getY());
+	}
+	
+	@Test
+	public void invaderOutOfScreenRemove() {
+	    World w = new World();
+        Invader i = w.getInvader();
+        
+        w.update(100);
+        assertEquals(w.getInvaderNumber(), 0);
 	}
 
 }
