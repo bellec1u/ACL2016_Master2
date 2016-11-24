@@ -36,16 +36,12 @@ public abstract class SpaceShip extends GameElement{
 	public abstract void shoot();
 
 	public boolean manageLaserCollision(Invader invader) {
-		// gestion collision
-		//V 2.1
-		Boolean hasCollision = false;
-		//
 		
 		Iterator<Laser> l = this.lasers.iterator();
 	    while (l.hasNext()) {
 	    	Laser laser = l.next();
 	    	
-	    	if (hasCollision) {
+	    	if (this.hasCollision(invader, laser)) {
 	    		this.deleteLaser(laser);
 	    		return true;
 	    	}
@@ -56,6 +52,13 @@ public abstract class SpaceShip extends GameElement{
 		
 	}
 	
+	private boolean hasCollision(Invader invader, Laser laser) {
+		if (invader.getBoundingBox().intersects(laser.getBoundingBox())) {
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * Deletes the Laser laser whom is out of screen
 	 * @param laser The Laser to remove from the List
