@@ -1,14 +1,16 @@
 package game;
 
-import java.awt.Graphics;
-import java.awt.geom.Point2D;
-import java.util.LinkedList;
-import java.util.List;
-
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
+import game.element.GameElement;
 import game.element.Invader;
 import game.element.SpaceShip;
+
+import java.awt.Graphics;
+import java.awt.geom.Point2D;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Project "Space Invader"
@@ -50,11 +52,20 @@ public class World {
 	
 	public void update(double delta) {
 	    spaceShip.update(delta);
-	    for (Invader invader : invaders) {
+	    
+	    Iterator<Invader> i = this.invaders.iterator();
+	    while (i.hasNext()) {
+	    	Invader invader = i.next();
 	    	invader.update(delta);
+	    	
+	    	this.manageCollision(invader);
 	    }
 	}
 	
+	private void manageCollision(Invader invader) {
+		boolean hasCollision = this.spaceShip.manageLaserCollision(invader);
+	}
+
 	public void render(Graphics g) {
 	    spaceShip.render(g);
 	    for (Invader invader : invaders) {
