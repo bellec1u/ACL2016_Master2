@@ -26,6 +26,16 @@ V 1.1 :
  - [x] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace. 
  - [x] le Laser se déplace automatiquement vers le haut. 
 
+V 2.0
+* Generer des Invaders :
+ - [x] Fait apparaitre x invaders à des position aléatoires en haut de l’écran tout les y temps (hors de l’écran).
+ - [] Faire en sorte que les invaders ne se superposent pas.
+* Faire disparaitre un laser.
+ - [x] le laser disparait lorsqu'il sort de l'ecran :
+* Faire disparaitre un invader.
+ - [x] l'invader disparait lorsqu'il sort de l'ecran :
+* Faire disparaitre un invader et le laser lors d'une simulation de collision.
+ - [x] l'invader et le laser disparaissent lorsqu'une simulation de collision est vraie.
 
 # Diagrams
 
