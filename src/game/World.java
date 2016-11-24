@@ -33,6 +33,9 @@ public class World {
     /** Invaders and SpaceShip(Player) **/
     private List<Invader> invaders;
     private SpaceShip spaceShip; 
+    
+    /** sert a savoir si le jeu est fini **/
+    private boolean gameOver = false;
 
 	private final int SPAWN_MIN_RATE=200;
 	private int spawnDelay=1000;    
@@ -115,10 +118,14 @@ public class World {
 	}
 	
 	private void manageCollision(Invader invader, Iterator<Invader> i) {
-		boolean hasCollision = this.spaceShip.manageLaserCollision(invader);
+		//si une collision c'est produit entre un invader et le spaceship
+		if (this.spaceShip.getBoundingBox().intersects(invader.getBoundingBox())) {
+			this.gameOver = true;
+		}
 		
-		//si une collision c'est produit
-		if (hasCollision) {
+		boolean hasCollisionLaserInvader = this.spaceShip.manageLaserCollision(invader);
+		//si une collision c'est produit entre un invader et un tire
+		if (hasCollisionLaserInvader) {
 			score += invader.getScore(); // incremente le score
 			this.deleteInvader(i);		
 		}
@@ -135,6 +142,10 @@ public class World {
 	/** Returns the score **/
 	public int getScore() {
 		return score;
+	}
+	
+	public boolean getGameOver() {
+		return this.gameOver;
 	}
 
 	@Override

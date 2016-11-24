@@ -58,6 +58,13 @@ public class GameScreen extends JPanel {
 		 * Draws the score
 		 */
 		drawScore(g);
+		
+		/**
+		 * si gameOver est a true, le jeu est fini
+		 */
+		if (this.world.getGameOver()) {
+			this.timer.stop();
+		}
 	}
 	
 	public void drawScore(Graphics g) {
