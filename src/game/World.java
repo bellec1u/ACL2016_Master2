@@ -139,6 +139,15 @@ public class World {
 	    }
 	}
 	
+	public void restart(){
+		this.score=0;
+		this.invaders.clear();
+		invaders.add(new BasicInvader(new Point2D.Double((24+5), 16)));
+        this.spaceShip.setPosition(WIDTH/2, HEIGHT-100);
+		this.gameOver=false;
+		
+	}
+	
 	/** Returns the score **/
 	public int getScore() {
 		return score;

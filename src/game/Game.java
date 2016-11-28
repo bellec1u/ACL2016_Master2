@@ -24,6 +24,8 @@ public class Game extends JFrame {
     private World world;
     private GameScreen gameScreen;
     private KeyListener listener;
+    private KeyListener resetListener;
+    
 	private final static String TITLE = "Space Invader";
 	
     public Game() {
@@ -40,6 +42,8 @@ public class Game extends JFrame {
 		 **/
 		this.listener = new GameListener(world.getSpaceShip());
 		addKeyListener(listener);
+		this.resetListener = new RestartListener(world);
+		addKeyListener(resetListener);
 		
 		initGraphics();
     }

@@ -68,7 +68,7 @@ public abstract class GameElement{
 	 * @param x position dans l'axe X
 	 * @param y position dans l'axe Y
 	 */
-	protected void setPosition(double x, double y) {	
+	public void setPosition(double x, double y) {	
     	position.setLocation(x, y);
     	boundingBox.setRect(x, y, boundingBox.getWidth(), boundingBox.getHeight());
 	}
