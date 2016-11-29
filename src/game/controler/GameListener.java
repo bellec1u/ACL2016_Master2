@@ -1,6 +1,7 @@
 package game.controler;
 
-import game.element.SpaceShip;
+import game.World;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -15,53 +16,58 @@ import java.awt.event.KeyListener;
  */
 public class GameListener implements KeyListener {
 
-    /** SpaceShip to control **/
-    private SpaceShip ship;
+	/** SpaceShip to control **/
+	private World world;
 
-    public GameListener(SpaceShip space) {
-        this.ship = space;
-    }
+	public GameListener(World w) {
+		this.world = w;
+	}
 
-    /**
-     * Changes SpaceShip's direction or shoot a Laser
-     * if the user press one Key
-     */
-    @Override
-    public void keyPressed(KeyEvent key) {
+	/**
+	 * Changes SpaceShip's direction or shoot a Laser
+	 * if the user press one Key
+	 */
+	@Override
+	public void keyPressed(KeyEvent key) {
 
-        switch(key.getKeyCode()) {
-        case KeyEvent.VK_LEFT :
-            // then spaceship moves to the left
-            ship.turnLeft();
-            break;
-        case KeyEvent.VK_RIGHT :
-            // then spaceship moves to the right
-            ship.turnRight();
-            break;
-        case KeyEvent.VK_SPACE :
-            // then spaceship shoots a laser
-            ship.shoot();
-            break;
-        }
-    }
+		switch(key.getKeyCode()) {
+		case KeyEvent.VK_LEFT :
+			// then spaceship moves to the left
+			this.world.getSpaceShip().turnLeft();
+			break;
+		case KeyEvent.VK_RIGHT :
+			// then spaceship moves to the right
+			this.world.getSpaceShip().turnRight();
+			break;
+		case KeyEvent.VK_SPACE :
+			// then spaceship shoots a laser
+			this.world.getSpaceShip().shoot();
+			break;
+		case KeyEvent.VK_R : 
+			if (this.world.getGameOver()) {
+				this.world.restart();
+			}
+			break;
+		}
+	}
 
-    /**
-     * Sets the SpaceShip's direction to NONE when
-     * the user already pressed one key : LEFT or RIGHT 
-     */
-    @Override
-    public void keyReleased(KeyEvent key) {
-        switch(key.getKeyCode()) {
-        case KeyEvent.VK_LEFT :
-        case KeyEvent.VK_RIGHT :
-            ship.stopMove();
-            break;
-        }
-        
-    }
+	/**
+	 * Sets the SpaceShip's direction to NONE when
+	 * the user already pressed one key : LEFT or RIGHT 
+	 */
+	@Override
+	public void keyReleased(KeyEvent key) {
+		switch(key.getKeyCode()) {
+		case KeyEvent.VK_LEFT :
+		case KeyEvent.VK_RIGHT :
+			this.world.getSpaceShip().stopMove();
+			break;
+		}
 
-    @Override
-    public void keyTyped(KeyEvent arg0) {
+	}
 
-    }
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+
+	}
 }

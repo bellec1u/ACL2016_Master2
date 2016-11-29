@@ -28,7 +28,7 @@ V 1.1 :
 
 V 2.0
 * Generer des Invaders :
- - [x] Fait apparaitre x invaders à des position aléatoires en haut de l’écran tout les y temps (hors de l’écran).
+ - [x] Fait apparaitre x invaders à des position aléatoires en haut de l’écran tout les y temps (hors de l’écran en haut).
  - [x] Faire en sorte que les invaders ne se superposent pas.
 * Faire disparaitre un laser.
  - [x] le laser disparait lorsqu'il sort de l'ecran :
@@ -36,6 +36,7 @@ V 2.0
  - [x] l'invader disparait lorsqu'il sort de l'ecran :
 * Gestion des collisions Invader-Laser.
  - [x] les 2 elements sont eliminés.
+ - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une
 
 # Diagrams
 

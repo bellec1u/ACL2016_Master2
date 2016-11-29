@@ -40,10 +40,8 @@ public class Game extends JFrame {
 		/** 
 		 * Create and add the KeyListener
 		 **/
-		this.listener = new GameListener(world.getSpaceShip());
+		this.listener = new GameListener(world);
 		addKeyListener(listener);
-		this.resetListener = new RestartListener(world);
-		addKeyListener(resetListener);
 		
 		initGraphics();
     }

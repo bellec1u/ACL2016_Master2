@@ -1,14 +1,15 @@
 package game.view;
 
+import game.TextureFactory;
+import game.World;
+
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-import game.TextureFactory;
-import game.World;
-import game.controler.RefreshListener;
 
 /**
  * Project "Space Invader"
@@ -38,7 +39,14 @@ public class GameScreen extends JPanel {
 		this.setBackground(Color.BLACK);
 
 		// calls paintComponent() each 16 ms
-		timer = new Timer(frameDuration, new RefreshListener(this));
+		timer = new Timer(frameDuration, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				repaint();
+			}
+			
+		});
 		timer.setRepeats(true);
 		timer.start();
 	}
