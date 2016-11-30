@@ -30,5 +30,8 @@ public abstract class Laser extends GameElement{
 	 * in order to do so,
 	 * we will check if the y axis is stricly < 0
 	 */
-	public abstract boolean isOutOfScreen();
+	public boolean isOutOfScreen() {
+		Point2D position = getPosition();
+		return (position.getY() < 0);
+	}
 }

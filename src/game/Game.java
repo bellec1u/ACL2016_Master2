@@ -23,8 +23,6 @@ public class Game extends JFrame {
     
     private World world;
     private GameScreen gameScreen;
-    private KeyListener listener;
-    private KeyListener resetListener;
     
 	private final static String TITLE = "Space Invader";
 	
@@ -40,8 +38,7 @@ public class Game extends JFrame {
 		/** 
 		 * Create and add the KeyListener
 		 **/
-		this.listener = new GameListener(world);
-		addKeyListener(listener);
+		addKeyListener(new GameListener(world));
 		
 		initGraphics();
     }

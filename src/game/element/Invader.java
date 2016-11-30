@@ -1,5 +1,7 @@
 package game.element;
 
+import game.World;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -27,4 +29,9 @@ public abstract class Invader extends GameElement{
 
 	/** Returns Invader's score value **/
 	public abstract int getScore() ;
+	
+	public boolean isOutOfScreen() {
+		return position.getY() > World.HEIGHT;
+	}
+
 }

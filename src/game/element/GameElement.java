@@ -146,8 +146,6 @@ public abstract class GameElement{
         direction = Direction.NONE;
     }
     
-    public boolean isOutOfScreen() {return false;}
-    
 	/**
 	 * Getter de position
 	 * @return position

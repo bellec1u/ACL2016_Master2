@@ -65,11 +65,7 @@ public class BasicInvader extends Invader {
 			return TextureFactory.getInstance().getInvaderCImg();
 		}
 	}
-
-	public boolean isOutOfScreen() {
-		return position.getY() > World.HEIGHT;
-	}
-
+	
 	/**
 	 * Updates BasicInvader's position
 	 * @param delta lap of time between 2 displays
