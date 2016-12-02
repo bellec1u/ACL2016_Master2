@@ -36,7 +36,19 @@ V 2.0
  - [x] l'invader disparait lorsqu'il sort de l'ecran :
 * Gestion des collisions Invader-Laser.
  - [x] les 2 elements sont eliminés.
- - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une
+ 
+ V2.1
+ * Gestion de fin de partie :
+ - [x] faire apparaitre le message "GAME OVER" et le score quand la partie est finie.
+ - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une.
+ * Gestion des collisions Invader-Spaceship.
+ - [x] les 2 elements sont eliminés.
+ * Gestion du score de la partie :
+ - [x] le score s'affiche sur l'écran
+ - [x] le score augmente lorsque l'on tue un Invader.
+  * Gestion des vies de la partie :
+ - [ ] les vies s'affichent sur l'écran.
+ - [ ] les vies décrémentes lors d'une collision Invader-Spaceship.
 
 # Diagrams
 
