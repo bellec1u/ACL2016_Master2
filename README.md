@@ -31,13 +31,13 @@ V 2.0
  - [x] Fait apparaitre x invaders à des position aléatoires en haut de l’écran tout les y temps (hors de l’écran en haut).
  - [x] Faire en sorte que les invaders ne se superposent pas.
 * Faire disparaitre un laser :
- - [x] le laser disparait lorsqu'il sort de l'ecran.
+ - [x] le laser disparaît lorsqu'il sort de l'écran.
 * Faire disparaitre un invader :
- - [x] l'invader disparait lorsqu'il sort de l'ecran.
+ - [x] l'invader disparaît lorsqu'il sort de l'écran.
 * Gestion des collisions Invader-Laser :
- - [x] les 2 elements sont eliminés.
+ - [x] les 2 élements sont eliminés.
  
- V2.1
+V2.1
 * Gestion de fin de partie :
  - [x] faire apparaitre le message "GAME OVER" et le score quand la partie est finie.
  - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une.
