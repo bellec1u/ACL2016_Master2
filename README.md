@@ -37,7 +37,7 @@ V 2.0 :
 * Gestion des collisions Invader-Laser :
  - [x] les 2 éléments sont éliminés.
 
-V2.1 :
+V 2.1 :
 * Gestion de fin de partie :
  - [x] faire apparaître le message "GAME OVER" et le score quand la partie est finie.
  - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une.
