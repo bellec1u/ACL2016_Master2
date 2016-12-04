@@ -19,6 +19,7 @@ public abstract class SpaceShip extends GameElement{
 
 	/** Laser's list **/
 	protected List<Laser> lasers;
+	protected int lives;
 	
 	/**
 	 * 
@@ -30,6 +31,14 @@ public abstract class SpaceShip extends GameElement{
 	public SpaceShip(Point2D pos, Rectangle2D box) {
 		super(pos, box);
 		lasers = new LinkedList<Laser>();
+	}
+	
+	public int getLives() {
+	    return lives;
+	}
+	
+	public void decrementLives() {
+	    --lives;
 	}
 
 	/** Shoot a Laser **/

@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 public class TextureFactory {
 
 	private Image[] spaceShipImg = new BufferedImage[1];
+	private Image spaceShipColorImg;
 	private Image[] shootImg = new BufferedImage[1];
 	private Image[] invaderAImg = new BufferedImage[2];
 	private Image[] invaderBImg = new BufferedImage[2];
@@ -39,6 +40,7 @@ public class TextureFactory {
 	private TextureFactory() {
 		try {
 			this.spaceShipImg[0] = ImageIO.read(new File("img/Ship.png"));
+			this.spaceShipColorImg = ImageIO.read(new File("img/Ship_color.png"));
 			this.shootImg[0] = ImageIO.read(new File("img/tire.png"));
 			this.invaderAImg[0] = ImageIO.read(new File("img/InvaderA_00.png"));
 			this.invaderAImg[1] = ImageIO.read(new File("img/InvaderA_01.png"));
@@ -65,6 +67,10 @@ public class TextureFactory {
 	public Image[] getSpaceShipImg() {
 		return spaceShipImg;
 	}
+	
+	public Image getSpaceShipColorImg() {
+        return spaceShipColorImg;
+    }
 
 	public Image[] getShootImg() {
 		return shootImg;

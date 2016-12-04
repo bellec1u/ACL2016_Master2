@@ -26,6 +26,7 @@ public class World {
 	/** World dimensions **/
     public final static int WIDTH = 500;
     public final static int HEIGHT = 600;
+    private final static int INVINCIBILITY_DURATION = 500;
     
     /** Score **/
     private int score;
@@ -42,6 +43,7 @@ public class World {
 	private int spawnNumber=1;
 	private boolean[] spawnTab;
 	private long lastSpawn;
+	private long lastShipCollision;
     
     public World() {
     	invaders = new LinkedList<Invader>();
@@ -49,9 +51,14 @@ public class World {
     	for (int i = 1; i < (nbInvaders + 1); i++) {
     		invaders.add(new BasicInvader(new Point2D.Double((24+5) * i, 16)));
     	}
+    	
+        addSpaceShip();
+        score = 0;
+    }
+    
+    private void addSpaceShip() {
         this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
         this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
-        score = 0;
     }
     
     /** Returns the ith Invader **/
@@ -120,14 +127,21 @@ public class World {
 	private void manageCollision(Invader invader, Iterator<Invader> i) {
 		//si une collision c'est produit entre un invader et le spaceship
 		if (this.spaceShip.getBoundingBox().intersects(invader.getBoundingBox())) {
-			this.gameOver = true;
+		    if (System.currentTimeMillis() > lastShipCollision + INVINCIBILITY_DURATION) {
+		        spaceShip.decrementLives();
+		        lastShipCollision = System.currentTimeMillis();
+		    }
+		    
+		    if (spaceShip.getLives() == 0) {
+		        this.gameOver = true;
+			}
 		}
 		
 		boolean hasCollisionLaserInvader = this.spaceShip.manageLaserCollision(invader);
 		//si une collision c'est produit entre un invader et un tire
 		if (hasCollisionLaserInvader) {
 			score += invader.getScore(); // incremente le score
-			this.deleteInvader(i);		
+			this.deleteInvader(i);	
 		}
 	}
 
@@ -139,13 +153,11 @@ public class World {
 	    }
 	}
 	
-	public void restart(){
-		this.score=0;
+	public void restart() {
+		this.score = 0;
 		this.invaders.clear();
-		invaders.add(new BasicInvader(new Point2D.Double((24+5), 16)));
-        this.spaceShip.setPosition(WIDTH/2, HEIGHT-100);
-		this.gameOver=false;
-		
+		addSpaceShip();
+		this.gameOver = false;
 	}
 	
 	/** Returns the score **/

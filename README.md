@@ -15,40 +15,40 @@ V 1.0 :
 
 V 1.1 :
 * Afficher les GameElement :
- - [x] le SpaceShip, l'Invader et le Laser ont une image. 
- - [x] le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu. 
+ - [x] le SpaceShip, l'Invader et le Laser ont une image.
+ - [x] le SpaceShip, l'Invader et le Laser apparaissent dans la zone de jeu.
 * Interactions joueur/machine (listeners) :
- - [x] le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuie sur la flèche gauche. 
- - [x] le SpaceShip se déplace vers la droite lorsque l'utilisateur appuie sur la flèche droite. 
- - [x] le SpaceShip ne bouge pas si l'utilisateur ne fait rien. 
- - [x] le SpaceShip tire un Laser lorsque l'utilisateur appuie sur la barre espace. 
+ - [x] le SpaceShip se déplace vers la gauche lorsque l'utilisateur appuie sur la flèche gauche.
+ - [x] le SpaceShip se déplace vers la droite lorsque l'utilisateur appuie sur la flèche droite.
+ - [x] le SpaceShip ne bouge pas si l'utilisateur ne fait rien.
+ - [x] le SpaceShip tire un Laser lorsque l'utilisateur appuie sur la barre espace.
 * Tirer un Laser :
- - [x] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace. 
- - [x] le Laser se déplace automatiquement vers le haut. 
+ - [x] un Laser apparaît devant le vaisseau lors d'une pression de la barre espace.
+ - [x] le Laser se déplace automatiquement vers le haut.
 
-V 2.0
-* Generer des Invaders :
- - [x] Fait apparaitre x invaders à des position aléatoires en haut de l’écran tout les y temps (hors de l’écran en haut).
- - [x] Faire en sorte que les invaders ne se superposent pas.
-* Faire disparaitre un laser :
+V 2.0 :
+* Générer des Invaders :
+ - [x] faire apparaître x invaders à des positions aléatoires en haut de l'écran tous les y temps (hors de l’écran en haut).
+ - [x] faire en sorte que les Invaders ne se superposent pas.
+* Faire disparaître un laser :
  - [x] le laser disparaît lorsqu'il sort de l'écran.
-* Faire disparaitre un invader :
- - [x] l'invader disparaît lorsqu'il sort de l'écran.
+* Faire disparaître un Invader :
+ - [x] l'Invader disparaît lorsqu'il sort de l'écran.
 * Gestion des collisions Invader-Laser :
- - [x] les 2 élements sont eliminés.
- 
-V2.1
+ - [x] les 2 éléments sont éliminés.
+
+V2.1 :
 * Gestion de fin de partie :
- - [x] faire apparaitre le message "GAME OVER" et le score quand la partie est finie.
+ - [x] faire apparaître le message "GAME OVER" et le score quand la partie est finie.
  - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une.
 * Gestion des collisions Invader-Spaceship.
- - [x] les 2 elements sont eliminés.
+ - [x] les deux éléments sont éliminés.
 * Gestion du score de la partie :
- - [x] le score s'affiche sur l'écran
+ - [x] le score s'affiche sur l'écran.
  - [x] le score augmente lorsque l'on tue un Invader.
 * Gestion des vies de la partie :
- - [ ] les vies s'affichent sur l'écran.
- - [ ] les vies décrémentes lors d'une collision Invader-Spaceship.
+ - [x] les vies s'affichent sur l'écran.
+ - [x] les vies décrémentent lors d'une collision Invader-Spaceship.
 
 # Diagrams
 

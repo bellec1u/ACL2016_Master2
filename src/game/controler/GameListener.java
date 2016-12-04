@@ -48,6 +48,9 @@ public class GameListener implements KeyListener {
 				this.world.restart();
 			}
 			break;
+		case KeyEvent.VK_Q :
+		    System.exit(0);
+		    break;
 		}
 	}
 

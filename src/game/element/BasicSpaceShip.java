@@ -36,6 +36,7 @@ public class BasicSpaceShip extends SpaceShip {
 	public BasicSpaceShip(Point2D pos) {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		this.lastShotTime = 0;
+		this.lives = 3;
 	}
 	
 	/**
