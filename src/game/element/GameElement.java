@@ -166,6 +166,14 @@ public abstract class GameElement{
     public Direction getDirection() {
         return this.direction;
     }
+    
+    /**
+     * Returns true if the parameter 'element' has a collision with 'this'
+     * @param element
+     */
+    public boolean hasCollision(GameElement element) {
+    	return boundingBox.intersects(element.getBoundingBox());
+    }
 
     /** toString **/
     public String toString() {

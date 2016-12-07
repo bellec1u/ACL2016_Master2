@@ -126,7 +126,7 @@ public class World {
 	
 	private void manageCollision(Invader invader, Iterator<Invader> i) {
 		//si une collision c'est produit entre un invader et le spaceship
-		if (this.spaceShip.getBoundingBox().intersects(invader.getBoundingBox())) {
+		if ( this.spaceShip.hasCollision(invader) ) {
 		    if (System.currentTimeMillis() > lastShipCollision + INVINCIBILITY_DURATION) {
 		        spaceShip.decrementLives();
 		        lastShipCollision = System.currentTimeMillis();

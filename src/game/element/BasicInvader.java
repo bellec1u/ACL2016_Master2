@@ -1,7 +1,6 @@
 package game.element;
 
 import game.TextureFactory;
-import game.World;
 
 import java.awt.Graphics;
 import java.awt.Image;
