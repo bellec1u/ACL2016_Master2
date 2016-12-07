@@ -138,6 +138,130 @@ public class SpaceShipTest {
 		assertTrue(s.getNbLaser() == 0);
 	}
 	
+	/**
+	 * Test la collision entre un SpaceShip et un Invader,
+	 * dans ce test aucune collision ce produit
+	 */
+	@Test
+	public void SpaceShipNoCollision() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		Invader i = w.getInvader(0); // recupere le premier Invader
+		
+		assertTrue(s.hasCollision(i) == false);
+	}
 	
+	/**
+	 * Test la collision entre un SpaceShip et un Invader,
+	 * dans ce test il y a collision
+	 */
+	@Test
+	public void SpaceShipCollision() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		// on place le spaceship a l'emplacement de l'Invader
+		s.setPosition(29, 16); 
+		
+		Invader i = w.getInvader(0); // recupere le premier Invader
+		
+		assertTrue(s.hasCollision(i) == true);
+	}
+	
+	/**
+	 * Test la reaction du World
+	 * pour la collision entre un SpaceShip et un Invader,
+	 * dans ce test il y a collision
+	 */
+	@Test
+	public void SpaceShipCollisionWorldReaction() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();
+		// on place le spaceship a l'emplacement de l'Invader
+		s.setPosition(29, 16); 
+		
+		w.update((1/60));
+		
+		/* Si la collision s'est produit( fct vérifiée ci-dessus )
+		 * La vie s'est décrémentée de 1,
+		 */
+		assertTrue(s.getLives() == 2); // 3 vies par défaut donc 3 - 1
+	}
+	
+	/**
+	 * Test la reaction du World
+	 * si il n'y a aucune collision entre un SpaceShip et un Invader,
+	 * dans ce test il y a collision
+	 */
+	@Test
+	public void SpaceShipNoCollisionWorldReaction() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();	
+		w.update((1/60));
+		
+		/* Si la collision ne s'est pas produit( fct vérifiée ci-dessus )
+		 * La vie reste a 3
+		 */
+		assertTrue(s.getLives() == 3); // 3 vies par défaut donc 3 - 1
+	}
+	
+	/**
+	 * On test si la collision entre un Laser tiré du SpaceShip et un Invader
+	 * supprime bien l'Invader et le Laser et incremente bien le score.
+	 * Pas de collision dans ce cas
+	 */
+	@Test
+	public void SpaceShipShotNoCollisionInvader() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();	
+		s.shoot();
+		int nbInvader = w.getInvaderNumber();
+		int nbLaser = s.getNbLaser();
+		w.update((1/60));
+		
+		/* Le nombre d'Invader ne doit pas avoir changé
+		 * -1 car le world a ajouté un invader via sa fonction generateInvaders
+		 */
+		assertTrue(nbInvader == ( w.getInvaderNumber() - 1));
+		
+		//Le nombre de Laser n'a pas du également changé
+		assertTrue(nbLaser == s.getNbLaser());
+		
+		//Le score doit etre resté vierge
+		assertTrue(w.getScore() == 0);
+	}
+	
+	/**
+	 * On test si la collision entre un Laser tiré du SpaceShip et un Invader
+	 * supprime bien l'Invader et le Laser et incremente bien le score.
+	 * Collision dans ce cas
+	 */
+	@Test
+	public void SpaceShipShotCollisionInvader() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();	
+		
+		// On recupere le score d'un basicInvader
+		int scoreInvader = w.getInvader(0).getScore();
+		s.shoot();
+		
+		// on recupere le laser
+		Laser l = s.getLaser(0); 
+		// on change sa position pour le faire rentrer en collision
+		l.setPosition(29, 16);
+		
+		// on update
+		w.update((1/60));
+		
+		/* Le nombre d'Invader doit avoir changé
+		 * = 1 , car entre temps le World a fait spawn 1 Invader
+		 */
+		assertTrue(w.getInvaderNumber() == 1);
+		
+		//Le nombre de Laser n'a pas du également changé
+		assertTrue(s.getNbLaser() == 0);
+		
+		//On verifie que le score ait été augmenté
+		assertTrue(w.getScore() == scoreInvader);
+	}
 	
 }

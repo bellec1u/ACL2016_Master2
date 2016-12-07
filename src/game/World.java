@@ -121,7 +121,7 @@ public class World {
 	
 	private void manageCollision(Invader invader, Iterator<Invader> i) {
 		//si une collision c'est produit entre un invader et le spaceship
-		if (this.spaceShip.getBoundingBox().intersects(invader.getBoundingBox())) {
+		if ( this.spaceShip.hasCollision(invader) ) {
 		    if (System.currentTimeMillis() > lastShipCollision + INVINCIBILITY_DURATION) {
 		        spaceShip.decrementLives();
 		        lastShipCollision = System.currentTimeMillis();
@@ -135,7 +135,8 @@ public class World {
 		boolean hasCollisionLaserInvader = this.spaceShip.manageLaserCollision(invader);
 		//si une collision c'est produit entre un invader et un tire
 		if (hasCollisionLaserInvader) {
-			score += invader.getScore(); // incremente le score
+			// incremente le score
+			incrementScore(invader.getScore());
 			this.deleteInvader(i);	
 		}
 	}
@@ -164,6 +165,11 @@ public class World {
 		return this.gameOver;
 	}
 
+	/** Adds value to the score **/
+	private void incrementScore(int value) {
+		score += value;
+	}
+	
 	@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
