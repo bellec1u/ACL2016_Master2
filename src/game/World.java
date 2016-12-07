@@ -170,9 +170,11 @@ public class World {
 		return this.gameOver;
 	}
 
+	/** Adds value to the score **/
 	private void incrementScore(int value) {
 		score += value;
 	}
+	
 	@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
