@@ -32,7 +32,7 @@ public class BasicInvader extends Invader {
 	private long lastTextureChange;
 
 	/** determine si l'invader est de type A, B ou C **/
-	private int typeInvader;
+	private int invaderType;
 
 	/** Score value**/
 	public static final int SCORE = 10;
@@ -47,7 +47,7 @@ public class BasicInvader extends Invader {
 		this.textureIndex = 0;
 		this.lastTextureChange = System.currentTimeMillis();
 		Random r = new Random();
-		this.typeInvader = r.nextInt(3);
+		this.invaderType = r.nextInt(3);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class BasicInvader extends Invader {
 	 */
 	@Override
 	public Image[] getTexture() {
-		switch (this.typeInvader) {
+		switch (this.invaderType) {
 		case 0 :
 			return TextureFactory.getInstance().getInvaderAImg();
 		case 1 :

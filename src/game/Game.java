@@ -1,12 +1,11 @@
 package game;
 
 import java.awt.Dimension;
-import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 
-import game.controler.*;
+import game.controler.GameListener;
 import game.view.GameScreen;
 
 /**

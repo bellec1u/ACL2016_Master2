@@ -1,16 +1,16 @@
 package game;
 
-import game.element.BasicInvader;
-import game.element.BasicSpaceShip;
-import game.element.Invader;
-import game.element.SpaceShip;
-
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import game.element.BasicInvader;
+import game.element.BasicSpaceShip;
+import game.element.Invader;
+import game.element.SpaceShip;
 
 /**
  * Project "Space Invader"
@@ -26,7 +26,6 @@ public class World {
 	/** World dimensions **/
     public final static int WIDTH = 500;
     public final static int HEIGHT = 600;
-    private final static int INVINCIBILITY_DURATION = 500;
     
     /** Score **/
     private int score;
@@ -43,7 +42,6 @@ public class World {
 	private int spawnNumber=1;
 	private boolean[] spawnTab;
 	private long lastSpawn;
-	private long lastShipCollision;
     
     public World() {
     	invaders = new LinkedList<Invader>();
@@ -119,25 +117,24 @@ public class World {
 		spawnNumber=rand.nextInt(3)+1;
 	}
 	
-	private void manageCollision(Invader invader, Iterator<Invader> i) {
+	private void manageCollision(Invader invader, Iterator<Invader> iter) {
 		//si une collision c'est produit entre un invader et le spaceship
 		if ( this.spaceShip.hasCollision(invader) ) {
-		    if (System.currentTimeMillis() > lastShipCollision + INVINCIBILITY_DURATION) {
-		        spaceShip.decrementLives();
-		        lastShipCollision = System.currentTimeMillis();
-		    }
+	        spaceShip.decrementLives();
+	        deleteInvader(iter);
 		    
 		    if (spaceShip.isWrecked()) {
-		        this.gameOver = true;
+		        gameOver = true;
 			}
-		}
-		
-		boolean hasCollisionLaserInvader = this.spaceShip.manageLaserCollision(invader);
-		//si une collision c'est produit entre un invader et un tire
-		if (hasCollisionLaserInvader) {
-			// incremente le score
-			incrementScore(invader.getScore());
-			this.deleteInvader(i);	
+		    
+		} else {
+    		boolean hasCollisionLaserInvader = this.spaceShip.manageLaserCollision(invader);
+    		//si une collision c'est produit entre un invader et un tire
+    		if (hasCollisionLaserInvader) {
+    			// incremente le score
+    			incrementScore(invader.getScore());
+    			deleteInvader(iter);
+    		}
 		}
 	}
 

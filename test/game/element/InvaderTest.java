@@ -14,6 +14,7 @@ public class InvaderTest {
 	@Test
 	public void invaderCantMove() {
 		World w = new World();
+		w.update(0);
 		Invader i = w.getInvader(0);
 		
 		assertNotEquals(i.getDirection(), Direction.NONE);
@@ -25,6 +26,7 @@ public class InvaderTest {
 	@Test
 	public void invaderGoDown() {
 		World w = new World();
+		w.update(0);
 		Invader i = w.getInvader(0);
 		
 		assertEquals(i.getDirection(), Direction.DOWN);
@@ -36,6 +38,7 @@ public class InvaderTest {
 	@Test
 	public void invaderForwardDown() {
 		World w = new World();
+		w.update(1/60);
 		Invader i = w.getInvader(0);
 		Double yInit = i.getPosition().getY();
 		i.turnDown();
@@ -47,8 +50,8 @@ public class InvaderTest {
 	@Test
 	public void invaderOutOfScreenRemove() {
 	    World w = new World();
+	    w.update(0);
         Invader i = w.getInvader(0);
-        w.update(0);
         int invaderNb = w.getInvaderNumber();
         i.update(200);
         w.update(0);

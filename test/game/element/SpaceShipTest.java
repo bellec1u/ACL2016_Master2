@@ -145,6 +145,7 @@ public class SpaceShipTest {
 	@Test
 	public void SpaceShipNoCollision() {
 		World w = new World();
+		w.update(1/60);
 		SpaceShip s = w.getSpaceShip();
 		Invader i = w.getInvader(0); // recupere le premier Invader
 		
@@ -161,8 +162,10 @@ public class SpaceShipTest {
 		SpaceShip s = w.getSpaceShip();
 		// on place le spaceship a l'emplacement de l'Invader
 		s.setPosition(29, 16); 
+		w.update(1/60);
 		
 		Invader i = w.getInvader(0); // recupere le premier Invader
+		s.setPosition(i.getPosition().getX(), i.getPosition().getY()); 
 		
 		assertTrue(s.hasCollision(i) == true);
 	}
@@ -176,8 +179,10 @@ public class SpaceShipTest {
 	public void SpaceShipCollisionWorldReaction() {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();
+		w.update(1/60);
+		Invader i = w.getInvader(0);
 		// on place le spaceship a l'emplacement de l'Invader
-		s.setPosition(29, 16); 
+		s.setPosition(i.getPosition().getX(), i.getPosition().getY());
 		
 		w.update((1/60));
 		
@@ -239,26 +244,28 @@ public class SpaceShipTest {
 	public void SpaceShipShotCollisionInvader() {
 		World w = new World();
 		SpaceShip s = w.getSpaceShip();	
+		w.update(1/60);
 		
+		Invader i = w.getInvader(0);
 		// On recupere le score d'un basicInvader
-		int scoreInvader = w.getInvader(0).getScore();
+		int scoreInvader = i.getScore();
 		s.shoot();
 		
+		int invadersNb = w.getInvaderNumber();
+		int lasersNb = s.getNbLaser();
 		// on recupere le laser
 		Laser l = s.getLaser(0); 
 		// on change sa position pour le faire rentrer en collision
-		l.setPosition(29, 16);
+		l.setPosition(i.getPosition().getX(), i.getPosition().getY());
 		
 		// on update
 		w.update((1/60));
 		
-		/* Le nombre d'Invader doit avoir changé
-		 * = 1 , car entre temps le World a fait spawn 1 Invader
-		 */
-		assertTrue(w.getInvaderNumber() == 1);
+		// Le nombre d'Invader doit avoir changé
+		assertTrue(w.getInvaderNumber() == invadersNb-1);
 		
-		//Le nombre de Laser n'a pas du également changé
-		assertTrue(s.getNbLaser() == 0);
+		//Le nombre de Laser aussi
+		assertTrue(s.getNbLaser() == lasersNb-1);
 		
 		//On verifie que le score ait été augmenté
 		assertTrue(w.getScore() == scoreInvader);
