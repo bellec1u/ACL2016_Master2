@@ -37,6 +37,10 @@ public abstract class SpaceShip extends GameElement{
 	    return lives;
 	}
 	
+	public boolean isWrecked() {
+	    return lives == 0;
+	}
+	
 	public void decrementLives() {
 	    --lives;
 	}

@@ -47,11 +47,6 @@ public class World {
     
     public World() {
     	invaders = new LinkedList<Invader>();
-    	int nbInvaders = 1;
-    	for (int i = 1; i < (nbInvaders + 1); i++) {
-    		invaders.add(new BasicInvader(new Point2D.Double((24+5) * i, 16)));
-    	}
-    	
         addSpaceShip();
         score = 0;
     }
@@ -101,7 +96,7 @@ public class World {
 	    
 		if (System.currentTimeMillis() > lastSpawn + SPAWN_MIN_RATE+spawnDelay) {
 			generateInvaders();
-			lastSpawn=System.currentTimeMillis();
+			lastSpawn = System.currentTimeMillis();
 		}	
 	}
 	
@@ -132,7 +127,7 @@ public class World {
 		        lastShipCollision = System.currentTimeMillis();
 		    }
 		    
-		    if (spaceShip.getLives() == 0) {
+		    if (spaceShip.isWrecked()) {
 		        this.gameOver = true;
 			}
 		}
