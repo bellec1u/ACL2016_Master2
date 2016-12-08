@@ -9,6 +9,7 @@ import java.util.Random;
 
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
+import game.element.Bomb;
 import game.element.Invader;
 import game.element.SpaceShip;
 
@@ -42,9 +43,11 @@ public class World {
 	private int spawnNumber=1;
 	private boolean[] spawnTab;
 	private long lastSpawn;
+    LinkedList<Invader> invaderShot;
     
     public World() {
     	invaders = new LinkedList<Invader>();
+    	invaderShot=new LinkedList<Invader>();
         addSpaceShip();
         score = 0;
     }
@@ -80,18 +83,23 @@ public class World {
 	/** Updates all the GameElement present in the World **/
 	public void update(double delta) {
 	    spaceShip.update(delta);
-	    
 	    Iterator<Invader> it = invaders.iterator();
 	    while (it.hasNext()) {
 	        Invader invader = it.next();
 	    	invader.update(delta);
 	    	manageCollision(invader, it);
+	    	if(invader.canShot()){
+	    		invaderShot.add(new Bomb(new Point2D.Double(invader.getPosition().getX()+10,invader.getPosition().getY()+8)));
+	    	}
 	    	
 	    	if (invader.isOutOfScreen()) {
                 deleteInvader(it);
             }
 	    }
-	    
+	    for(Invader i: invaderShot){
+	    	invaders.add(i);
+	    }
+	    invaderShot.clear();
 		if (System.currentTimeMillis() > lastSpawn + SPAWN_MIN_RATE+spawnDelay) {
 			generateInvaders();
 			lastSpawn = System.currentTimeMillis();
