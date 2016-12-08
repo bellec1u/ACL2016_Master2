@@ -5,6 +5,7 @@ import game.element.BasicSpaceShip;
 import game.element.Invader;
 import game.element.SpaceShip;
 import game.element.SpecialShootBonus;
+import game.element.Bomb;
 
 import java.awt.Graphics;
 import java.awt.geom.Point2D;
@@ -13,11 +14,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import game.element.BasicInvader;
-import game.element.BasicSpaceShip;
-import game.element.Bomb;
-import game.element.Invader;
-import game.element.SpaceShip;
 
 /**
  * Project "Space Invader"
