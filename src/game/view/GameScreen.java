@@ -1,5 +1,6 @@
 package game.view;
 
+import game.SoundFactory;
 import game.TextureFactory;
 import game.World;
 
@@ -8,7 +9,13 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -25,7 +32,12 @@ import javax.swing.Timer;
 public class GameScreen extends JPanel {
 
     private World world;
-
+    
+    /**
+     * Music
+     */
+    private Clip music;
+    
     /**
      * FPS Management
      */
@@ -51,10 +63,18 @@ public class GameScreen extends JPanel {
         });
         timer.setRepeats(true);
         timer.start();
+        
+        // loads music
+        music = SoundFactory.getInstance().getBackgroundSound();
     }
     
     public void togglePause() {
         paused = !paused;
+        if( paused ) {
+        	music.stop();
+        } else {
+        	music.loop(Clip.LOOP_CONTINUOUSLY);
+        }
     }
     
     public World getWorld() {

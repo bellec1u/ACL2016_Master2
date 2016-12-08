@@ -49,11 +49,11 @@ public class ShoopDaWhoopLaser extends Laser{
 	 */
     @Override
     public void render(Graphics g) {
-    	g.drawImage(TextureFactory.getInstance().getShoopDaWhoop()[0], 
+    	g.drawImage(this.getTexture()[0], 
 				(int)this.getPosition().getX() - 15, 500 - 8, 
 				60, 32, null);        
-    	//g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-    	g.fillRect((int)this.getPosition().getX() + 10, (int)this.getPosition().getY() + 8 - HEIGHT + 500, WIDTH, HEIGHT);
+    	g.drawImage(this.getTexture()[1], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+    	//g.fillRect((int)this.getPosition().getX() + 10, (int)this.getPosition().getY() + 8 - HEIGHT + 500, WIDTH, HEIGHT);
     }
 
 	@Override
