@@ -20,6 +20,9 @@ public class GameListener implements KeyListener {
 	/** SpaceShip to control **/
 	private World world;
 	private GameScreen gameScreen;
+	
+	//-1 = gauche | 0 = pas bouger | 1 = droite
+	private int directionDeplacement;
 
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
@@ -36,11 +39,11 @@ public class GameListener implements KeyListener {
 		switch(key.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
 			// then spaceship moves to the left
-			this.world.getSpaceShip().turnLeft();
+			this.directionDeplacement -= 1;
 			break;
 		case KeyEvent.VK_RIGHT :
 			// then spaceship moves to the right
-			this.world.getSpaceShip().turnRight();
+			this.directionDeplacement += 1;
 			break;
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
@@ -58,6 +61,7 @@ public class GameListener implements KeyListener {
 		    System.exit(0);
 		    break;
 		}
+		this.changeDirection();
 	}
 
 	/**
@@ -68,15 +72,33 @@ public class GameListener implements KeyListener {
 	public void keyReleased(KeyEvent key) {
 		switch(key.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
+			this.directionDeplacement += 1;
+			break;
 		case KeyEvent.VK_RIGHT :
-			this.world.getSpaceShip().stopMove();
+			this.directionDeplacement -= 1;
 			break;
 		}
-
+		this.changeDirection();
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 
+	}
+	
+	private void changeDirection() {
+		switch(this.directionDeplacement) {
+		case -1 :
+			this.world.getSpaceShip().turnLeft();
+			break;
+		case 0 :
+			this.world.getSpaceShip().stopMove();
+			break;
+		case 1 :
+			this.world.getSpaceShip().turnRight();
+			break;
+		default :
+			this.directionDeplacement = 0;
+		}
 	}
 }
