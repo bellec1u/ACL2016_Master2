@@ -279,9 +279,19 @@ public class World {
 	}
 
 	/** Adds value to the score **/
-	private void incrementScore(int value) {
+	public void incrementScore(int value) {
 		score += value;
 		updateLevel() ;
+	}
+	
+	/** Returns MEDIUM **/
+	public int getLevelMedium() {
+		return MEDIUM;
+	}
+	
+	/** Returns HARD **/
+	public int getLevelHard() {
+		return HARD;
 	}
 
 	@Override
