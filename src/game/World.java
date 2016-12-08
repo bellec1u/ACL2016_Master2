@@ -185,6 +185,7 @@ public class World {
 		this.score = 0;
 		this.invaders.clear();
 		addSpaceShip();
+		updateLevel();
 		this.gameOver = false;
 	}
 	
