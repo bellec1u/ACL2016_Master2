@@ -96,7 +96,7 @@ public class BasicSpaceShip extends SpaceShip {
 		
 		// place in right position (middle of spaceship)
 		double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
-		laser.setRelativePosition(x, -2);
+		laser.setRelativePosition(x, -10);
 		
 		lasers.add(laser);
 	}
