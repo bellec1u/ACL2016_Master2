@@ -37,7 +37,7 @@ public class Game extends JFrame {
 		/** 
 		 * Create and add the KeyListener
 		 **/
-		addKeyListener(new GameListener(world));
+		addKeyListener(new GameListener(gameScreen));
 		
 		initGraphics();
     }

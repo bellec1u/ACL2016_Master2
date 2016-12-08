@@ -27,6 +27,7 @@ public class TextureFactory {
 	private Image[] invaderBImg = new BufferedImage[2];
 	private Image[] invaderCImg = new BufferedImage[2];
 	private Font font;
+	private Font monospaced;
 	
 
 	/**
@@ -49,6 +50,7 @@ public class TextureFactory {
 			this.invaderCImg[0] = ImageIO.read(new File("img/InvaderC_00.png"));
 			this.invaderCImg[1] = ImageIO.read(new File("img/InvaderC_01.png"));
 			this.font = Font.createFont(Font.TRUETYPE_FONT, new File("font/arcade.ttf"));
+			this.monospaced = new Font("Monospaced", Font.BOLD, 15);
 		} catch (IOException e) {
 			System.out.println("image loading error");
 		} catch (FontFormatException e) {
@@ -90,6 +92,10 @@ public class TextureFactory {
 	
 	public Font getFont() {
 		return font;
+	}
+	
+	public Font getMonospacedFont() {
+	    return monospaced;
 	}
 	
 }

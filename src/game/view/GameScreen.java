@@ -1,6 +1,7 @@
 package game.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -32,6 +33,7 @@ public class GameScreen extends JPanel {
     private final int frameDuration = 16; //  1000ms / 60fps (ms value)
     private final double delay = ( 1.0 / 60.0 );
     private Timer timer; // use to call repaint() every frameDuration
+    private boolean paused = true;
 
     public GameScreen(World w) {
         super();
@@ -50,6 +52,14 @@ public class GameScreen extends JPanel {
         });
         timer.setRepeats(true);
         timer.start();
+    }
+    
+    public void togglePause() {
+        paused = !paused;
+    }
+    
+    public World getWorld() {
+        return world;
     }
 
     @Override
@@ -70,8 +80,14 @@ public class GameScreen extends JPanel {
              * Our Timer calls repaint() method every 16 ms which means we have to
              * update the world with a delta Time equals to ( 1 / 60 ) second = 0.16666 second
              */
-            world.update(delay);
+            if (!paused) {
+                world.update(delay);
+            }
             world.render(g);
+            
+            if (paused) {
+                drawPauseScreen(g);
+            }
 
         } else {
             drawGameOver(g);	
@@ -119,5 +135,31 @@ public class GameScreen extends JPanel {
         g.drawImage(TextureFactory.getInstance().getSpaceShipColorImg(), 20, World.HEIGHT - 62, null);
         String txt = "x " + world.getSpaceShip().getLives();
         g.drawString(txt, 45, (World.HEIGHT - 50));
+    }
+    
+    public void drawPauseScreen(Graphics g) {
+        g.setColor(new Color(.0f, .0f, .0f, .85f));
+        g.fillRect(0, 0, World.WIDTH, World.HEIGHT);
+        
+        g.setColor(Color.GREEN);
+        g.setFont(TextureFactory.getInstance().getFont().deriveFont(40.0f));
+        String txt = "PAUSE";
+        g.drawString(txt, getCenteredStringX(g, txt), 100);
+        
+        // Draw commands
+        g.setColor(Color.WHITE);
+        g.setFont(TextureFactory.getInstance().getMonospacedFont());
+        String[] texts = {" ESC    pause", 
+                          "  q     quit", 
+                          "  →     move right", 
+                          "  ←     move left", 
+                          "SPACE   shoot"};
+        int x = getCenteredStringX(g, texts[2]);
+        int y = 130;
+        
+        for (String str : texts) {
+            y += 20;
+            g.drawString(str, x, y);
+        }
     }
 }

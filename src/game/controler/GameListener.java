@@ -1,6 +1,7 @@
 package game.controler;
 
 import game.World;
+import game.view.GameScreen;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -18,9 +19,11 @@ public class GameListener implements KeyListener {
 
 	/** SpaceShip to control **/
 	private World world;
+	private GameScreen gameScreen;
 
-	public GameListener(World w) {
-		this.world = w;
+	public GameListener(GameScreen gscreen) {
+		this.gameScreen = gscreen;
+	    this.world = gscreen.getWorld();
 	}
 
 	/**
@@ -48,6 +51,9 @@ public class GameListener implements KeyListener {
 				this.world.restart();
 			}
 			break;
+		case KeyEvent.VK_ESCAPE :
+		    gameScreen.togglePause();
+		    break;
 		case KeyEvent.VK_Q :
 		    System.exit(0);
 		    break;
