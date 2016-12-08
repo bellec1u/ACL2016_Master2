@@ -122,7 +122,6 @@ public class World {
 			spawnTab[x] = true;
 			invaders.add(new BasicInvader(new Point2D.Double((29) * x, 16)));
 		}
-		updateLevel() ;
 	}
 	
 	/**
@@ -201,6 +200,7 @@ public class World {
 	/** Adds value to the score **/
 	private void incrementScore(int value) {
 		score += value;
+		updateLevel() ;
 	}
 	
 	@Override
