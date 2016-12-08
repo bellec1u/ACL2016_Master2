@@ -23,6 +23,8 @@ public class GameListener implements KeyListener {
 	
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
+	
+	private boolean continuousShoot = false;
 
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
