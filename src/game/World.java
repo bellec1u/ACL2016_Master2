@@ -38,9 +38,18 @@ public class World {
 	/** sert a savoir si le jeu est fini **/
 	private boolean gameOver = false;
 
-	private final int SPAWN_MIN_RATE=200;
-	private int spawnDelay=1000;    
-	private int spawnNumber=1;
+    /** Pallier de difficultés **/
+    private final int MEDIUM = 750; 
+    private final int HARD = 1500; 
+    
+    /** Nombre minimum d'Invader a créer par niveau de difficulté **/
+    private final int INVADER_EASY = 3;
+    private final int INVADER_MEDIUM = 6;
+    private final int INVADER_HARD = 10;
+    
+	private int SPAWN_MIN_RATE = 200;
+	private int spawnDelay = 1000;    
+	private int spawnNumber = 1;
 	private boolean[] spawnTab;
 	private long lastSpawn;
 
@@ -120,21 +129,47 @@ public class World {
 
 	private void generateInvaders(){
 		int x;
-		Random rand=new Random();
+		Random rand = new Random();
 		/*
 		 * Change the indice without using a Timer
 		 */
-		spawnTab=new boolean[World.WIDTH/29];
-		for(int i=0;i<spawnNumber;i++){
-			x=rand.nextInt(World.WIDTH/29);
-			while(spawnTab[x]==true){
-				x=rand.nextInt(World.WIDTH/29);
+		spawnTab = new boolean[World.WIDTH/29];
+		for(int i = 0 ; i < spawnNumber ; i++){
+			x = rand.nextInt(World.WIDTH / 29);
+			while( spawnTab[x] == true ){
+				x = rand.nextInt(World.WIDTH/29);
 			}
-			spawnTab[x]=true;
+			spawnTab[x] = true;
 			invaders.add(new BasicInvader(new Point2D.Double((29) * x, 16)));
 		}
-		spawnDelay=rand.nextInt(500)+200;
-		spawnNumber=rand.nextInt(3)+1;
+	}
+	
+	/**
+	 * Modifie le niveau du Jeu si le score de l'utilisateur
+	 * depasse certains palliers définies ci-dessus ( champs EASY, MEDIUM, HARD )
+	 * cette fonction modifiera le spawnDelay et le spawnNumber
+	 */
+	private void updateLevel() {
+		// Pour générer des nombres aleatoires
+		Random rand = new Random();
+		
+		// niveau facile
+		if ( score < MEDIUM ) {
+			spawnDelay = rand.nextInt(500) + SPAWN_MIN_RATE;
+			spawnNumber = rand.nextInt(INVADER_EASY) + 1;
+		}
+		
+		// niveau medium
+		if( score >= MEDIUM && score < HARD ) {
+			spawnDelay = rand.nextInt(400) + SPAWN_MIN_RATE;
+			spawnNumber = rand.nextInt(INVADER_MEDIUM) + 1;
+		}
+		
+		// niveau hard
+		if ( score >= HARD ) {
+			spawnDelay = rand.nextInt(200) + SPAWN_MIN_RATE;
+			spawnNumber = rand.nextInt(INVADER_HARD) + 1;
+		}
 	}
 
 	private void manageCollision(Invader invader, Iterator<Invader> iter) {
@@ -207,6 +242,7 @@ public class World {
 		this.score = 0;
 		this.invaders.clear();
 		addSpaceShip();
+		updateLevel();
 		this.gameOver = false;
 		
 		this.listSpecialShoot.clear();
@@ -229,6 +265,7 @@ public class World {
 	/** Adds value to the score **/
 	private void incrementScore(int value) {
 		score += value;
+		updateLevel() ;
 	}
 
 	@Override

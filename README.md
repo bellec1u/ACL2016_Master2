@@ -50,6 +50,15 @@ V 2.1 :
  - [x] les vies s'affichent sur l'écran.
  - [x] les vies décrémentent lors d'une collision Invader-Spaceship.
 
+V 3.0 :
+* Modification du niveau de difficulté en fonction du score :
+ - [x] plus le score est élevé plus les invaders apparaissent nombreux et rapidement.
+* Gestion des bonus tire spéciaux :
+ - [x] les bonus de tire spécaux ont une certaine probabilité a la mort des invaders
+ - [x] lorsque le vaisseau passe sur un bonus de tire spécial, le bonus disparait et s'ajoute a la liste de bonus de tire spécaux possédé par le vaisseau
+ - [x] si le joueur a 3 bonus de tire spécaux, celui-ci ne peut pas en accumuler plus
+ - [x] lorsque le bonus de tire spécial sort de l'écran (en bas), celui-ci disparait completement du monde.
+
 # Diagrams
 
 https://www.lucidchart.com/invitations/accept/3525ba89-ac91-4f6b-8123-3785bc5c30e2
