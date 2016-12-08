@@ -58,6 +58,10 @@ V 3.0 :
  - [x] lorsque le vaisseau passe sur un bonus de tire spécial, le bonus disparait et s'ajoute a la liste de bonus de tire spécaux possédé par le vaisseau
  - [x] si le joueur a 3 bonus de tire spécaux, celui-ci ne peut pas en accumuler plus
  - [x] lorsque le bonus de tire spécial sort de l'écran (en bas), celui-ci disparait completement du monde.
+* Les Invaders lâchent jusque des bombes de façon aléatoire
+ - [x] Les bombes apparaissent et interragissent comme les invaders.
+ - [x] Les bombes donnent un score plus élevé.
+ - [x] Chaque invader à entre 0 et 3 bombes.
 
 # Diagrams
 
