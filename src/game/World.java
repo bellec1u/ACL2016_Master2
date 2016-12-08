@@ -13,6 +13,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import game.element.BasicInvader;
+import game.element.BasicSpaceShip;
+import game.element.Bomb;
+import game.element.Invader;
+import game.element.SpaceShip;
+
 /**
  * Project "Space Invader"
  * M1 Informatique 2016/2017
@@ -33,6 +39,9 @@ public class World {
 
 	/** Invaders and SpaceShip(Player) **/
 	private List<Invader> invaders;
+	/** liste parralelle servant a eviter des bugs lors de la creation de bugs **/
+	private LinkedList<Invader> invaderShot;
+
 	private SpaceShip spaceShip; 
 
 	/** sert a savoir si le jeu est fini **/
@@ -52,6 +61,7 @@ public class World {
 	private int spawnNumber = 1;
 	private boolean[] spawnTab;
 	private long lastSpawn;
+	
 
 	private List<SpecialShootBonus> listSpecialShoot;
 	private int nbSpecialShoot;
@@ -59,7 +69,8 @@ public class World {
 	private double tauxSpawnBonus = 0.95;
 
 	public World() {
-		invaders = new LinkedList<Invader>();
+		invaders = new LinkedList<Invader>();    	
+		invaderShot=new LinkedList<Invader>();
 		this.listSpecialShoot = new LinkedList<SpecialShootBonus>();
 		addSpaceShip();
 		score = 0;
@@ -103,11 +114,20 @@ public class World {
 			invader.update(delta);
 			manageCollision(invader, it);
 
+			if(invader.canShot()){
+	    		invaderShot.add(new Bomb(new Point2D.Double(invader.getPosition().getX()+10,invader.getPosition().getY()+8)));
+	    	}
+			
 			if (invader.isOutOfScreen()) {
 				deleteInvader(it);
 			}
 		}
 
+		for(Invader i: invaderShot){
+	    	invaders.add(i);
+	    }
+	    invaderShot.clear();
+		
 		// gestion des bonus
 		Iterator<SpecialShootBonus> ssb = this.listSpecialShoot.iterator();
 		while (ssb.hasNext()) {
