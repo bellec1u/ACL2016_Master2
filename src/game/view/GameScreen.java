@@ -74,6 +74,7 @@ public class GameScreen extends JPanel {
              */
             drawScore(g);
             drawSpaceShipLives(g);
+            drawSpaceShipSpecialShoot(g);
 
             /*
              * Our Timer calls repaint() method every 16 ms which means we have to
@@ -136,6 +137,7 @@ public class GameScreen extends JPanel {
         g.drawString(txt, 45, (World.HEIGHT - 50));
     }
     
+
     public void drawPauseScreen(Graphics g) {
         g.setColor(new Color(.0f, .0f, .0f, .85f));
         g.fillRect(0, 0, World.WIDTH, World.HEIGHT);
@@ -160,5 +162,14 @@ public class GameScreen extends JPanel {
             y += 20;
             g.drawString(str, x, y);
         }
+    }
+
+    public void drawSpaceShipSpecialShoot(Graphics g) {
+    	 g.setFont(TextureFactory.getInstance().getFont().deriveFont(20.0f));
+         g.setColor(Color.WHITE);
+         g.drawImage(TextureFactory.getInstance().getSpecialShootBonus()[0], 20, World.HEIGHT - 47, null);
+         String txt = "x " + world.getNbSpecialShoot();
+         g.drawString(txt, 45, (World.HEIGHT - 30));
+
     }
 }

@@ -33,5 +33,7 @@ public abstract class Invader extends GameElement{
 	public boolean isOutOfScreen() {
 		return position.getY() > World.HEIGHT;
 	}
+	
+	public abstract boolean canShot();
 
 }

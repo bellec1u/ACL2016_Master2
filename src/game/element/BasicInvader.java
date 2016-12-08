@@ -36,6 +36,9 @@ public class BasicInvader extends Invader {
 
 	/** Score value**/
 	public static final int SCORE = 10;
+	
+	/** Munitions **/
+	private int amo;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -48,6 +51,7 @@ public class BasicInvader extends Invader {
 		this.lastTextureChange = System.currentTimeMillis();
 		Random r = new Random();
 		this.invaderType = r.nextInt(3);
+		this.amo=r.nextInt(3);
 	}
 
 	/**
@@ -100,6 +104,17 @@ public class BasicInvader extends Invader {
 	/** Returns Invader's score value **/
 	public int getScore() {
 		return SCORE;
+	}
+	
+	public boolean canShot(){
+		boolean shot=false;
+		if(amo>0){
+			if(new Random().nextInt(100)>98){
+				shot = true;
+				amo--;
+			}
+		}
+		return shot;
 	}
 
 }
