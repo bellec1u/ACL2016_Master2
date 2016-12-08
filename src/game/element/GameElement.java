@@ -175,7 +175,11 @@ public abstract class GameElement{
     	return boundingBox.intersects(element.getBoundingBox());
     }
 
-    /** toString **/
+    public void setBoundingBox(Rectangle2D boundingBox) {
+		this.boundingBox = boundingBox;
+	}
+
+	/** toString **/
     public String toString() {
         StringBuilder sb = new StringBuilder("");
         sb.append("    Direction : " + direction + "\n");

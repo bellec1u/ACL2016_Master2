@@ -1,10 +1,14 @@
 package game.element;
 
+import game.SoundFactory;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.sound.sampled.Clip;
 
 /**
  * Project "Space Invader"
@@ -21,6 +25,7 @@ public abstract class SpaceShip extends GameElement{
 	protected List<Laser> lasers;
 	protected int lives;
 	protected boolean shootShoopDaWhoop = false;
+	private Clip sound;
 	
 	/**
 	 * 
@@ -109,11 +114,15 @@ public abstract class SpaceShip extends GameElement{
 
 	public void startShootShoopDaWhoop() {
 		this.shootShoopDaWhoop = true;
+		sound = SoundFactory.getInstance().getShoopDaWhoop();
+		sound.loop(Clip.LOOP_CONTINUOUSLY);
+		sound.start();
 	}
 	
 	public void endShootShoopDaWhoop() {
 		this.shootShoopDaWhoop = false;
 		this.deleteLaserShoopDaWhoop();
+		sound.stop();
 	}
 
 }

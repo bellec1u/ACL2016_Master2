@@ -71,7 +71,7 @@ public class GameListener implements KeyListener {
 				
 				this.shoopDaWhoopAction = true;
 				
-				Timer timer = new Timer(10000, new ActionListener() {
+				Timer timer = new Timer(3600, new ActionListener() {
 
 		            @Override
 		            public void actionPerformed(ActionEvent e) {

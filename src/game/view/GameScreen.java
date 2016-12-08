@@ -65,7 +65,7 @@ public class GameScreen extends JPanel {
         timer.start();
         
         // loads music
-        music = SoundFactory.getInstance().getBackgroundSound();
+        //music = SoundFactory.getInstance().getBackgroundSound();
     }
     
     public void togglePause() {
