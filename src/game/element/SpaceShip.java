@@ -20,6 +20,7 @@ public abstract class SpaceShip extends GameElement{
 	/** Laser's list **/
 	protected List<Laser> lasers;
 	protected int lives;
+	protected boolean shootShoopDaWhoop = false;
 	
 	/**
 	 * 
@@ -49,13 +50,15 @@ public abstract class SpaceShip extends GameElement{
 	public abstract void shoot();
 
 	public boolean manageLaserCollision(Invader invader) {
-		
+
 		Iterator<Laser> l = this.lasers.iterator();
 	    while (l.hasNext()) {
 	    	Laser laser = l.next();
 	    	
 	    	if (this.hasCollision(invader, laser)) {
-	    		this.deleteLaser(laser);
+	    		if (!(laser instanceof ShoopDaWhoopLaser)) {
+	    			this.deleteLaser(laser);
+	    		}
 	    		return true;
 	    	}
 	    	
@@ -79,6 +82,10 @@ public abstract class SpaceShip extends GameElement{
 	public void deleteLaser(Laser laser) {
 		lasers.remove(laser);
 	}
+	
+	public void deleteLaserShoopDaWhoop() {
+		lasers.remove(this.lasers.size()-1);
+	}
 
 	/**
 	 * Returns the number of Laser in the Laser list
@@ -97,4 +104,14 @@ public abstract class SpaceShip extends GameElement{
 		
 		return null; // unreachable
 	}
+
+	public void startShootShoopDaWhoop() {
+		this.shootShoopDaWhoop = true;
+	}
+	
+	public void endShootShoopDaWhoop() {
+		this.shootShoopDaWhoop = false;
+		this.deleteLaserShoopDaWhoop();
+	}
+
 }

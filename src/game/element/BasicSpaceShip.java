@@ -25,10 +25,10 @@ public class BasicSpaceShip extends SpaceShip {
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 30;	
 	private final static int HEIGHT = 16;
-	
+
 	/** delay until the BasicSpaceShip can shoot again **/
 	private long lastShotTime;
-	
+
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
@@ -38,14 +38,14 @@ public class BasicSpaceShip extends SpaceShip {
 		this.lastShotTime = 0;
 		this.lives = 3;
 	}
-	
+
 	/**
 	 * Returns Image[] of a BasicSpaceShip
 	 */
 	@Override
-    public Image[] getTexture() {
-        return TextureFactory.getInstance().getSpaceShipImg();
-    }
+	public Image[] getTexture() {
+		return TextureFactory.getInstance().getSpaceShipImg();
+	}
 
 	/**
 	 * Updates BasicSpaceShip's position
@@ -70,40 +70,51 @@ public class BasicSpaceShip extends SpaceShip {
 	 * Draws a BasicSpaceShip and his laser(s) in g
 	 * @param g : Graphics where the BasicLaser is drawn
 	 */
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-        for (Laser laser : lasers) {
-            laser.render(g);
-        }
-    }
+	@Override
+	public void render(Graphics g) {
+		g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
+		for (Laser laser : lasers) {	
+			if (laser instanceof ShoopDaWhoopLaser) {
+				laser.setPosition((int)this.getPosition().getX(), 0);
+			}
+			laser.render(g);
+		}
+	}
 
-    /**
-     * Shoots a BasicLaser with UP direction,
-     * The BasicLaser is created just above the BasicSpaceShip's coordinates
-     */
+	/**
+	 * Shoots a BasicLaser with UP direction,
+	 * The BasicLaser is created just above the BasicSpaceShip's coordinates
+	 */
 	@Override
 	public void shoot() {
-	    // limit a bit the number of lasers
-	    if (!(lastShotTime + SHOT_DELAY < System.currentTimeMillis())) {
-	        return;
-	    }
-	    lastShotTime = System.currentTimeMillis();
-	    
-		// create a laser above spaceship's position
-		Point2D pos = getPosition();
-		Laser laser = new BasicLaser(pos);
-		
-		// place in right position (middle of spaceship)
-		double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
-		laser.setRelativePosition(x, -2);
-		
-		lasers.add(laser);
+		if (!this.shootShoopDaWhoop) {
+			// limit a bit the number of lasers
+			if (!(lastShotTime + SHOT_DELAY < System.currentTimeMillis())) {
+				return;
+			}
+			lastShotTime = System.currentTimeMillis();
+
+			// create a laser above spaceship's position
+			Point2D pos = getPosition();
+			Laser laser = new BasicLaser(pos);
+
+			// place in right position (middle of spaceship)
+			double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
+			laser.setRelativePosition(x, -2);
+
+			lasers.add(laser);
+		} else {
+			// create a laser above spaceship's position
+			Point2D pos = getPosition();
+			pos.setLocation(pos.getX(), 0);
+			Laser laser = new ShoopDaWhoopLaser(pos);
+			lasers.add(laser);
+		}
 	}
 
 	@Override
 	public double getSpeed() {
 		return SPEED;
 	}
-	
+
 }

@@ -1,10 +1,15 @@
 package game.controler;
 
+import game.TextureFactory;
 import game.World;
 import game.view.GameScreen;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.Timer;
 
 /**
  * Project "Space Invader"
@@ -23,8 +28,10 @@ public class GameListener implements KeyListener {
 	
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
-	
-	private boolean continuousShoot = false;
+		
+	private boolean shoopDaWhoopAction = false;
+	private int dureeActionShoopDaWhoop = 5000;
+	private long startTimerShoopDaWhoop = -1;
 
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
@@ -41,15 +48,41 @@ public class GameListener implements KeyListener {
 		switch(key.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
 			// then spaceship moves to the left
-			this.directionDeplacement -= 1;
+			if (this.directionDeplacement - 1 >= -1)
+				this.directionDeplacement -= 1;
 			break;
 		case KeyEvent.VK_RIGHT :
 			// then spaceship moves to the right
-			this.directionDeplacement += 1;
+			if (this.directionDeplacement + 1 <= 1)
+				this.directionDeplacement += 1;
 			break;
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
-			this.world.getSpaceShip().shoot();
+			if (!shoopDaWhoopAction) {
+				this.world.getSpaceShip().shoot();
+			}
+			break;
+		case KeyEvent.VK_N :
+			// generate a shoopDaWhoop
+			if (this.world.getNbSpecialShoot() >= 1 && !shoopDaWhoopAction) {
+				this.world.getSpaceShip().startShootShoopDaWhoop();
+				this.world.getSpaceShip().shoot();
+				this.world.decrementSpecialShoot();
+				
+				this.shoopDaWhoopAction = true;
+				
+				Timer timer = new Timer(10000, new ActionListener() {
+
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+						shoopDaWhoopAction = false;
+						world.getSpaceShip().endShootShoopDaWhoop();
+		            }
+
+		        });
+		        timer.start();
+			}
+			
 			break;
 		case KeyEvent.VK_R : 
 			if (this.world.getGameOver()) {
@@ -74,10 +107,12 @@ public class GameListener implements KeyListener {
 	public void keyReleased(KeyEvent key) {
 		switch(key.getKeyCode()) {
 		case KeyEvent.VK_LEFT :
-			this.directionDeplacement += 1;
+			if (this.directionDeplacement + 1 <= 1)
+				this.directionDeplacement += 1;
 			break;
 		case KeyEvent.VK_RIGHT :
-			this.directionDeplacement -= 1;
+			if (this.directionDeplacement - 1 >= -1)
+				this.directionDeplacement -= 1;
 			break;
 		}
 		this.changeDirection();

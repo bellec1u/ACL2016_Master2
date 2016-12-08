@@ -62,8 +62,8 @@ public class World {
 	private List<SpecialShootBonus> listSpecialShoot;
 	private int nbSpecialShoot;
 	private int nbMaxSpecialShoot = 3;
-	private double tauxSpawnBonus = 0.95;
-
+	private double tauxSpawnBonus = 0;
+	
 	public World() {
 		invaders = new LinkedList<Invader>();    	
 		invaderShot=new LinkedList<Invader>();
@@ -311,4 +311,9 @@ public class World {
 
 		return sb.toString();
 	}
+
+	public void decrementSpecialShoot() {
+		this.nbSpecialShoot--;
+	}
+
 }
