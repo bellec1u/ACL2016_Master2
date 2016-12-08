@@ -50,6 +50,10 @@ V 2.1 :
  - [x] les vies s'affichent sur l'écran.
  - [x] les vies décrémentent lors d'une collision Invader-Spaceship.
 
+V 3.0 :
+* Modification du niveau de difficulté en fonction du score :
+ - [x] plus le score est élevé plus les invaders apparaissent nombreux et rapidement.
+
 # Diagrams
 
 https://www.lucidchart.com/invitations/accept/3525ba89-ac91-4f6b-8123-3785bc5c30e2
