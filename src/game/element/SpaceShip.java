@@ -42,7 +42,9 @@ public abstract class SpaceShip extends GameElement{
 	}
 	
 	public void decrementLives() {
-	    --lives;
+		if(lives>0){
+			--lives;
+		}
 	}
 
 	/** Shoot a Laser **/
