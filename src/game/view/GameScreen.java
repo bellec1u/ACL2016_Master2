@@ -1,7 +1,9 @@
 package game.view;
 
+import game.TextureFactory;
+import game.World;
+
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -9,9 +11,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-import game.TextureFactory;
-import game.World;
 
 /**
  * Project "Space Invader"
