@@ -284,6 +284,10 @@ public class World {
 		updateLevel() ;
 	}
 
+	public List<SpecialShootBonus> getListSpecialShoot() {
+		return listSpecialShoot;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
