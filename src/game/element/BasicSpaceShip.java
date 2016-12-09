@@ -1,14 +1,9 @@
 package game.element;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.Clip;
-
-import game.SoundFactory;
 import game.TextureFactory;
 
 /**
@@ -71,21 +66,6 @@ public class BasicSpaceShip extends SpaceShip {
 	}
 
 	/**
-	 * Draws a BasicSpaceShip and his laser(s) in g
-	 * @param g : Graphics where the BasicLaser is drawn
-	 */
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-		for (Laser laser : lasers) {	
-			if (laser instanceof ShoopDaWhoopLaser) {
-				laser.setPosition((int)this.getPosition().getX(), 0);
-			}
-			laser.render(g);
-		}
-	}
-
-	/**
 	 * Shoots a BasicLaser with UP direction,
 	 * The BasicLaser is created just above the BasicSpaceShip's coordinates
 	 */
@@ -119,6 +99,14 @@ public class BasicSpaceShip extends SpaceShip {
 	@Override
 	public double getSpeed() {
 		return SPEED;
+	}
+
+	/**
+	 * Returns Image of a BasicSpaceShip
+	 */
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return getTexture()[0];
 	}
 
 }

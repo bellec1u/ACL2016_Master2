@@ -2,12 +2,12 @@ package game;
 
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
+import game.element.GameElement;
 import game.element.Invader;
 import game.element.SpaceShip;
 import game.element.SpecialShootBonus;
 import game.element.Bomb;
 
-import java.awt.Graphics;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,8 +35,6 @@ public class World {
 
 	/** Invaders and SpaceShip(Player) **/
 	private List<Invader> invaders;
-	/** liste parralelle servant a eviter des bugs lors de la creation de bugs **/
-	private LinkedList<Invader> invaderShot;
 
 	private SpaceShip spaceShip; 
 
@@ -66,12 +64,26 @@ public class World {
 	
 	public World() {
 		invaders = new LinkedList<Invader>();    	
-		invaderShot=new LinkedList<Invader>();
-		this.listSpecialShoot = new LinkedList<SpecialShootBonus>();
+		listSpecialShoot = new LinkedList<SpecialShootBonus>();
 		addSpaceShip();
 		score = 0;
 	}
 
+	/** Returns all Worl's element **/
+	public List<GameElement> getWorldElements() {
+		LinkedList<GameElement> elements = new LinkedList<GameElement>();
+		
+		// adds the SpaceShip
+		elements.add(spaceShip);
+		
+		// adds the invaders
+		elements.addAll(invaders);
+		
+		// adds bonuses
+		elements.addAll(listSpecialShoot);
+		
+		return elements;
+	}
 	private void addSpaceShip() {
 		this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
 		this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
@@ -105,6 +117,9 @@ public class World {
 		spaceShip.update(delta);
 
 		Iterator<Invader> it = invaders.iterator();
+		
+		// temporary list
+		LinkedList<Invader> invaderShot = new LinkedList<Invader>();
 		while (it.hasNext()) {
 			Invader invader = it.next();
 			invader.update(delta);
@@ -119,10 +134,7 @@ public class World {
 			}
 		}
 
-		for(Invader i: invaderShot){
-	    	invaders.add(i);
-	    }
-	    invaderShot.clear();
+		invaders.addAll(invaderShot);
 		
 		// gestion des bonus
 		Iterator<SpecialShootBonus> ssb = this.listSpecialShoot.iterator();
@@ -192,7 +204,7 @@ public class World {
 		//si une collision c'est produit entre un invader et le spaceship
 		if ( this.spaceShip.hasCollision(invader) ) {
 			spaceShip.decrementLives();
-			deleteInvader(iter);
+			iter.remove();
 
 			if (spaceShip.isWrecked()) {
 				gameOver = true;
@@ -207,7 +219,7 @@ public class World {
 
 				Point2D pos = invader.getPosition();
 
-				deleteInvader(iter);
+				iter.remove();
 
 				// proba de drop un bonus de tire spécial = 20%
 				if (Math.random() >= this.tauxSpawnBonus) {
@@ -240,18 +252,6 @@ public class World {
 
 	public void deleteSpecialShoot(Iterator<SpecialShootBonus> issb) {
 		issb.remove();
-	}
-
-	/** Draws inside g all the GameElement's images with their current positions **/
-	public void render(Graphics g) {
-		spaceShip.render(g);
-		for (Invader invader : invaders) {
-			invader.render(g);
-		}
-
-		for (SpecialShootBonus ssb : this.listSpecialShoot) {
-			ssb.render(g);
-		}
 	}
 
 	public void restart() {

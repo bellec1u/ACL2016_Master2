@@ -30,6 +30,10 @@ public class SoundFactory {
 	 * Attributs pour gérer la musique de fond
 	 */
 	AudioInputStream audio; 
+	
+	/**
+	 * Musique du jeu
+	 */
 	Clip backgroundSound;
 	Clip shoopDaWhoop;
 	
@@ -38,7 +42,7 @@ public class SoundFactory {
 	 */
 	private SoundFactory() {
 		try {
-			audio = AudioSystem.getAudioInputStream(new File("sound/Chinatown.wav"));
+			audio = AudioSystem.getAudioInputStream(new File("sound/background.wav"));
 			DataLine.Info info = new DataLine.Info(Clip.class, audio.getFormat());
 			backgroundSound = (Clip)AudioSystem.getLine(info);
 			backgroundSound.open(audio);

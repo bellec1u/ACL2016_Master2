@@ -20,12 +20,16 @@ public class ShoopDaWhoopLaser extends Laser{
 
 	private long startShoot;
 	
+	/** Image index **/
+	private int index;
+	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
 	 */
 	public ShoopDaWhoopLaser(Point2D pos) {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  0,  0));
+		this.index = 0;
 		this.startShoot = System.currentTimeMillis();
 	}
 
@@ -44,26 +48,27 @@ public class ShoopDaWhoopLaser extends Laser{
 	@Override
 	public void update(double delta) {
 		move(delta);
+		
+		if (System.currentTimeMillis() - this.startShoot >= 2700) {
+			setBoundingBox( new Rectangle2D.Double(this.position.getX(), this.position.getY(), WIDTH, HEIGHT) );
+			setRelativePosition(0, (HEIGHT + 490)); // + 490 ?
+			index = 1;
+		} else {
+			setRelativePosition( -15 , 492 ); // 492 ? -15 ? 
+			index = 0;
+		}
 	}
-
-	/**
-	 * Draws a BasicInvader in g
-	 * @param g : Graphics where the BasicLaser is drawn
-	 */
-    @Override
-    public void render(Graphics g) {
-    	g.drawImage(this.getTexture()[0], 
-				(int)this.getPosition().getX() - 15, 500 - 8, 
-				60, 32, null);        
-    	if (System.currentTimeMillis() - this.startShoot >= 2700) {
-    		this.setBoundingBox( new Rectangle2D.Double(this.position.getX(), this.position.getY(), WIDTH, HEIGHT) );
-    		g.drawImage(this.getTexture()[1], (int)this.getPosition().getX(), (int)this.getPosition().getY() + 10 - HEIGHT + 500, null);
-    	}
-    }
 
 	@Override
 	public double getSpeed() {
 		return SPEED;
+	}
+
+	/**
+	 * Returns Image of a ShoopDaWhoopLaser
+	 */
+	public Image getImage() {
+		return getTexture()[index];
 	}
 	
 }

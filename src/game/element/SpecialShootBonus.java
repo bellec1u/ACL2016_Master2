@@ -2,11 +2,19 @@ package game.element;
 
 import game.TextureFactory;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class SpecialShootBonus extends Bonus {
 
 	/** Speed of a BasicSpaceShip **/
@@ -25,12 +33,7 @@ public class SpecialShootBonus extends Bonus {
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getSpecialShootBonus();
 	}
-
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-	}
-
+	
 	@Override
 	public void update(double delta) {
 		move(delta);
@@ -39,6 +42,11 @@ public class SpecialShootBonus extends Bonus {
 	@Override
 	public double getSpeed() {
 		return SPEED;
+	}
+
+
+	public Image getImage() {
+		return getTexture()[0];
 	}
 
 }

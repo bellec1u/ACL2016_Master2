@@ -3,19 +3,19 @@ package game.view;
 import game.SoundFactory;
 import game.TextureFactory;
 import game.World;
+import game.element.GameElement;
+import game.element.Laser;
+import game.element.SpaceShip;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
+import java.util.List;
+
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -65,7 +65,7 @@ public class GameScreen extends JPanel {
         timer.start();
         
         // loads music
-        //music = SoundFactory.getInstance().getBackgroundSound();
+        music = SoundFactory.getInstance().getBackgroundSound();
     }
     
     public void togglePause() {
@@ -74,6 +74,7 @@ public class GameScreen extends JPanel {
         	music.stop();
         } else {
         	music.loop(Clip.LOOP_CONTINUOUSLY);
+        	music.start();
         }
     }
     
@@ -103,8 +104,8 @@ public class GameScreen extends JPanel {
             if (!paused) {
                 world.update(delay);
             }
-            world.render(g);
-            
+            //world.render(g):
+            renderWorld(g);
             if (paused) {
                 drawPauseScreen(g);
             }
@@ -114,7 +115,38 @@ public class GameScreen extends JPanel {
         }
 
     }
-
+    
+    /**
+     * Draws all the World's Element into Graphics g
+     */
+    private void renderWorld(Graphics g) {
+    	// get all worlds elements
+    	List<GameElement> elements = world.getWorldElements();
+    	
+    	// iterates and draw each element into g
+    	for(GameElement gameElement : elements) {
+    		
+    		/*
+    		 * If gameElement is a SpaceShip then we need to
+    		 * draw its lasers too.
+    		 */
+    		if(gameElement instanceof SpaceShip) {
+    			SpaceShip ship = (SpaceShip) gameElement;
+    			for( Laser l : ship.getListLasers() ) {
+    				g.drawImage(l.getImage(), 
+    	    				(int)l.getPosition().getX(),
+    	    				(int)l.getPosition().getY(), 
+    	    				null);
+    			}
+    				
+    		}
+    			
+    		g.drawImage(gameElement.getImage(), 
+    				(int)gameElement.getPosition().getX(),
+    				(int)gameElement.getPosition().getY(), 
+    				null);
+    	}
+    }
     /**
      * @return the abscissa of the centered string on sreen
      */
@@ -174,7 +206,8 @@ public class GameScreen extends JPanel {
                           "  q     quit", 
                           "  →     move right", 
                           "  ←     move left", 
-                          "SPACE   shoot"};
+                          "SPACE   shoot",
+                          "  n     special laser"};
         int x = getCenteredStringX(g, texts[2]);
         int y = 130;
         

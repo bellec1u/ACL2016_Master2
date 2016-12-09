@@ -2,7 +2,6 @@ package game.element;
 
 import game.World;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -52,10 +51,9 @@ public abstract class GameElement{
     public abstract Image[] getTexture();
     
     /**
-     * Draws the GameElement in g
-     * @param g Graphics where the GameElement is drawn
+     * Returns the current Image used by the GameElement
      */
-    public abstract void render(Graphics g);
+    public abstract Image getImage();    
     
     /** Updates the position and behavior of the GameMoveableElement **/
     public abstract void update(double delta);

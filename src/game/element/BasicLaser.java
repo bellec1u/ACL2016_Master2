@@ -2,7 +2,6 @@ package game.element;
 
 import game.TextureFactory;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -52,18 +51,16 @@ public class BasicLaser extends Laser{
 		move(delta);
 	}
 
-	/**
-	 * Draws a BasicInvader in g
-	 * @param g : Graphics where the BasicLaser is drawn
-	 */
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(this.getTexture()[0], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-    }
-
 	@Override
 	public double getSpeed() {
 		return SPEED;
+	}
+
+	/**
+	 * Returns Image of a BasicLaser
+	 */
+	public Image getImage() {
+		return getTexture()[0];
 	}
 
 }
