@@ -62,6 +62,16 @@ public class BasicSpaceShip extends SpaceShip {
 				// deletes the laser whom is out of screen
 				deleteLaser(laser); 
 			}
+			
+			if (laser instanceof ShoopDaWhoopLaser) {
+				laser.setPosition((int)this.getPosition().getX(), 0);
+				
+				if (((ShoopDaWhoopLaser) laser).canShowLaser()) {
+					laser.setBoundingBox( new Rectangle2D.Double(
+							laser.getPosition().getX(), laser.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)laser).getHeight() + 500, 
+							((ShoopDaWhoopLaser)laser).getWidth(),  ((ShoopDaWhoopLaser)laser).getHeight()) );
+				}
+			}
 		}
 	}
 

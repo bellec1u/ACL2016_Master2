@@ -1,5 +1,6 @@
 package game.element;
 
+import game.SoundFactory;
 import game.TextureFactory;
 import game.World;
 
@@ -7,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+
+import javax.sound.sampled.Clip;
 
 public class ShoopDaWhoopLaser extends Laser{
 
@@ -20,6 +23,8 @@ public class ShoopDaWhoopLaser extends Laser{
 
 	private long startShoot = -1;
 	
+	private Clip sound;
+	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
@@ -27,6 +32,9 @@ public class ShoopDaWhoopLaser extends Laser{
 	public ShoopDaWhoopLaser(Point2D pos) {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  0,  0));
 		this.startShoot = System.currentTimeMillis();
+		sound = SoundFactory.getInstance().getShoopDaWhoop();
+		sound.loop(Clip.LOOP_CONTINUOUSLY);
+		sound.start();
 	}
 
 	/**
@@ -44,6 +52,10 @@ public class ShoopDaWhoopLaser extends Laser{
 	@Override
 	public void update(double delta) {
 		move(delta);
+	}
+	
+	public boolean canShowLaser() {
+		return (System.currentTimeMillis() - this.getStartShoot() >= 2700);
 	}
 
 	@Override
@@ -67,6 +79,10 @@ public class ShoopDaWhoopLaser extends Laser{
 
 	public static int getHeight() {
 		return HEIGHT;
+	}
+
+	public void stopSound() {
+		sound.stop();
 	}
 	
 }

@@ -25,7 +25,6 @@ public abstract class SpaceShip extends GameElement{
 	protected List<Laser> lasers;
 	protected int lives;
 	protected boolean shootShoopDaWhoop = false;
-	private Clip sound;
 	
 	/**
 	 * 
@@ -96,7 +95,9 @@ public abstract class SpaceShip extends GameElement{
 	}
 	
 	public void deleteLaserShoopDaWhoop() {
-		lasers.remove(this.lasers.size()-1);
+		ShoopDaWhoopLaser laser = (ShoopDaWhoopLaser) lasers.get( this.lasers.size()-1 );
+		laser.stopSound();
+		lasers.remove( laser );
 	}
 
 	/**
@@ -119,15 +120,11 @@ public abstract class SpaceShip extends GameElement{
 
 	public void startShootShoopDaWhoop() {
 		this.shootShoopDaWhoop = true;
-		sound = SoundFactory.getInstance().getShoopDaWhoop();
-		sound.loop(Clip.LOOP_CONTINUOUSLY);
-		sound.start();
 	}
 	
 	public void endShootShoopDaWhoop() {
 		this.shootShoopDaWhoop = false;
 		this.deleteLaserShoopDaWhoop();
-		sound.stop();
 	}
 
 }

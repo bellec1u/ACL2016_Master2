@@ -142,24 +142,7 @@ public class GameScreen extends JPanel {
 					
 					if (l instanceof ShoopDaWhoopLaser) {
 						
-						//draw a shoop da whoop laser (special shoot)
-						//only head in first
-						l.setPosition((int)ship.getPosition().getX(), 0);
-						
-						g.drawImage(l.getTexture()[0], 
-								(int)ship.getPosition().getX() - 15, (int)ship.getPosition().getY() - 8, 
-								60, 32, 
-								null);        
-						
-						if (System.currentTimeMillis() - ((ShoopDaWhoopLaser)l).getStartShoot() >= 2700) {
-							//draw the laser
-							l.setBoundingBox( new Rectangle2D.Double(
-									l.getPosition().getX(), l.getPosition().getY(), 
-									((ShoopDaWhoopLaser)l).getWidth(),  ((ShoopDaWhoopLaser)l).getHeight()) );
-							g.drawImage(l.getTexture()[1], (int)l.getPosition().getX(), 
-									(int)l.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)l).getHeight() + 500,
-									null);
-						}
+						this.renderShoopDaWhoop(g, ship, l);
 							
 					} else {
 						g.drawImage(l.getImage(), 
@@ -172,6 +155,23 @@ public class GameScreen extends JPanel {
 			}
 		}
 	}
+	
+	public void renderShoopDaWhoop(Graphics g, SpaceShip ship, Laser l) {
+		//draw a shoop da whoop laser (special shoot)
+		//only head in first
+		g.drawImage(l.getTexture()[0], 
+				(int)ship.getPosition().getX() - 15, (int)ship.getPosition().getY() - 8, 
+				60, 32, 
+				null);        
+		
+		if (((ShoopDaWhoopLaser)l).canShowLaser()) {
+			//draw the laser
+			g.drawImage(l.getTexture()[1], (int)l.getPosition().getX(), 
+					(int)l.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)l).getHeight() + 500,
+					null);
+		}
+	}
+	
 	/**
 	 * @return the abscissa of the centered string on sreen
 	 */
