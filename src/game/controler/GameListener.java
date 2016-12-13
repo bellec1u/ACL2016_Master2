@@ -1,6 +1,5 @@
 package game.controler;
 
-import game.TextureFactory;
 import game.World;
 import game.view.GameScreen;
 

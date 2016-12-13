@@ -39,6 +39,11 @@ public abstract class SpaceShip extends GameElement{
 		lasers = new LinkedList<Laser>();
 	}
 	
+	/** Retursn laser list **/
+	public List<Laser> getListLasers() {
+		return lasers;
+	}
+	
 	public int getLives() {
 	    return lives;
 	}

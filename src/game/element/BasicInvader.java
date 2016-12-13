@@ -2,7 +2,6 @@ package game.element;
 
 import game.TextureFactory;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -86,16 +85,6 @@ public class BasicInvader extends Invader {
 		}
 	}
 
-	/**
-	 * Draws a BasicInvader in g
-	 * @param g : Graphics where the BasicInvader is drawn
-	 */
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(this.getTexture()[textureIndex], (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-	}
-
-
 	@Override
 	public double getSpeed() {
 		return SPEED;
@@ -115,6 +104,13 @@ public class BasicInvader extends Invader {
 			}
 		}
 		return shot;
+	}
+
+	/**
+	 * Returns Image of a BasicInvader
+	 */
+	public Image getImage() {
+		return getTexture()[textureIndex];
 	}
 
 }

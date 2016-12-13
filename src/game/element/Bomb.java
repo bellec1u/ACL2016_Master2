@@ -1,11 +1,21 @@
 package game.element;
 
-import java.awt.Graphics;
+import game.TextureFactory;
+
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class Bomb extends Invader  {
 
 	/** Speed of a BasicInvader **/
@@ -42,19 +52,12 @@ public class Bomb extends Invader  {
 	@Override
 	public int getScore() {
 		// TODO Auto-generated method stub
-		return this.SCORE;
+		return SCORE;
 	}
 
 	@Override
 	public Image[] getTexture() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void render(Graphics g) {
-		// TODO Auto-generated method stub
-		g.fillOval((int)this.getPosition().getX(), (int)this.getPosition().getY(), WIDTH, HEIGHT);
+		return TextureFactory.getInstance().getBombImg();
 	}
 
 	@Override
@@ -73,5 +76,13 @@ public class Bomb extends Invader  {
 	public boolean canShot() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	/**
+	 * Returns Image of a Bomb
+	 */
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return getTexture()[0];
 	}
 }
