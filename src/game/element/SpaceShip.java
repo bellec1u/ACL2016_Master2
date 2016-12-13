@@ -127,4 +127,8 @@ public abstract class SpaceShip extends GameElement{
 		this.deleteLaserShoopDaWhoop();
 	}
 
+	public void addLife() {
+		this.lives++;
+	}
+
 }

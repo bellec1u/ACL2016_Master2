@@ -47,7 +47,7 @@ public class WorldTest {
 	public void testAddBonusSpecialShoot() {
 		World w = new World();
 		w.generateBonus( new Point2D.Double(0, 0) );
-		assert(w.getListSpecialShoot().size() == 1);
+		assert(w.getListBonus().size() == 1);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class WorldTest {
 		World w = new World();
 		w.generateBonus( new Point2D.Double(w.WIDTH, w.HEIGHT-5) );
 		w.update(50);
-		assert(w.getListSpecialShoot().size() == 0);
+		assert(w.getListBonus().size() == 0);
 	}
 	
 	/**

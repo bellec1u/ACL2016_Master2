@@ -2,11 +2,14 @@ package game;
 
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
+import game.element.Bomb;
+import game.element.Bonus;
 import game.element.GameElement;
 import game.element.Invader;
+import game.element.LifeBonus;
+import game.element.ShoopDaWhoopLaser;
 import game.element.SpaceShip;
 import game.element.SpecialShootBonus;
-import game.element.Bomb;
 
 import java.awt.geom.Point2D;
 import java.util.Iterator;
@@ -57,14 +60,14 @@ public class World {
 	private long lastSpawn;
 	
 
-	private List<SpecialShootBonus> listSpecialShoot;
+	private List<Bonus> listBonus;
 	private int nbSpecialShoot;
 	private int nbMaxSpecialShoot = 3;
-	private double tauxSpawnBonus = 0;
+	private double tauxSpawnBonus = 0.95;
 	
 	public World() {
 		invaders = new LinkedList<Invader>();    	
-		listSpecialShoot = new LinkedList<SpecialShootBonus>();
+		listBonus = new LinkedList<Bonus>();
 		addSpaceShip();
 		score = 0;
 	}
@@ -80,7 +83,7 @@ public class World {
 		elements.addAll(invaders);
 		
 		// adds bonuses
-		elements.addAll(listSpecialShoot);
+		elements.addAll(listBonus);
 		
 		return elements;
 	}
@@ -137,15 +140,15 @@ public class World {
 		invaders.addAll(invaderShot);
 		
 		// gestion des bonus
-		Iterator<SpecialShootBonus> ssb = this.listSpecialShoot.iterator();
+		Iterator<Bonus> ssb = this.listBonus.iterator();
 		while (ssb.hasNext()) {
-			SpecialShootBonus s = ssb.next();
+			Bonus s = ssb.next();
 			s.update(delta);
-			//manage collision entre bonus special shoot & Spaceship
+			//manage collision entre bonus  & Spaceship
 			manageCollision(s, ssb);
 
 			if (s.isOutOfScreen()) {
-				this.deleteSpecialShoot(ssb);
+				this.deleteBonus(ssb);
 			}
 		}
 
@@ -230,12 +233,16 @@ public class World {
 		}
 	}
 
-	private void manageCollision(SpecialShootBonus ssb, Iterator<SpecialShootBonus> issb) {
+	private void manageCollision(Bonus ssb, Iterator<Bonus> issb) {
 		//si une collision c'est produit entre un invader et le bonus special shoot
 		if ( this.spaceShip.hasCollision(ssb) ) {
-			this.deleteSpecialShoot(issb);
-			if (this.nbSpecialShoot < this.nbMaxSpecialShoot) {
-				this.nbSpecialShoot++;
+			this.deleteBonus(issb);
+			if (ssb.getClass().getName().equals("game.element.SpecialShootBonus")) {
+				if (this.nbSpecialShoot < this.nbMaxSpecialShoot) {
+					this.nbSpecialShoot++;
+				}
+			} else if (ssb instanceof LifeBonus){
+				this.spaceShip.addLife();
 			}
 		} 
 	}
@@ -246,12 +253,17 @@ public class World {
 	 * @param y
 	 */
 	public void generateBonus(Point2D pos) {
-		SpecialShootBonus ssb = new SpecialShootBonus(pos);
-		this.listSpecialShoot.add(ssb);
+		if (Math.random() >= 1.0/2) {
+			SpecialShootBonus ssb = new SpecialShootBonus(pos);
+			this.listBonus.add(ssb);
+		} else {
+			LifeBonus lb = new LifeBonus(pos);
+			this.listBonus.add(lb);
+		}
 	}
 
-	public void deleteSpecialShoot(Iterator<SpecialShootBonus> issb) {
-		issb.remove();
+	public void deleteBonus(Iterator<Bonus> ib) {
+		ib.remove();
 	}
 
 	public void restart() {
@@ -261,7 +273,7 @@ public class World {
 		updateLevel();
 		this.gameOver = false;
 		
-		this.listSpecialShoot.clear();
+		this.listBonus.clear();
 		this.nbSpecialShoot = 0;
 	}
 
@@ -294,8 +306,8 @@ public class World {
 		return HARD;
 	}
 
-	public List<SpecialShootBonus> getListSpecialShoot() {
-		return listSpecialShoot;
+	public List<Bonus> getListBonus() {
+		return listBonus;
 	}
 
 	@Override

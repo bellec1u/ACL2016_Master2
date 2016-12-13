@@ -27,6 +27,7 @@ public class TextureFactory {
 	private Image[] invaderBImg = new BufferedImage[2];
 	private Image[] invaderCImg = new BufferedImage[2];
 	private Image[] specialShootBonus = new BufferedImage[1];
+	private Image[] lifeBonus = new BufferedImage[1];
 	private Image[] shoopDaWhoop = new BufferedImage[2];
 	private Image[] bombImg = new BufferedImage[1];
 	private Font font;
@@ -53,6 +54,7 @@ public class TextureFactory {
 			this.invaderCImg[0] = ImageIO.read(new File("img/InvaderC_00.png"));
 			this.invaderCImg[1] = ImageIO.read(new File("img/InvaderC_01.png"));
 			this.specialShootBonus[0] = ImageIO.read(new File("img/bonusShoot.png"));
+			this.lifeBonus[0] = ImageIO.read(new File("img/bonusLife.png"));
 			this.shoopDaWhoop[0] = ImageIO.read(new File("img/Shoop-Da-Whoop.png"));
 			this.shoopDaWhoop[1] = ImageIO.read(new File("img/da_whoop_laser.png"));
 			this.bombImg[0] = ImageIO.read(new File("img/bomb.png"));
@@ -99,6 +101,10 @@ public class TextureFactory {
 	
 	public Image[] getSpecialShootBonus() {
 		return this.specialShootBonus;
+	}
+	
+	public Image[] getLifeBonus() {
+		return this.lifeBonus;
 	}
 	
 	public Image[] getShoopDaWhoop() {
