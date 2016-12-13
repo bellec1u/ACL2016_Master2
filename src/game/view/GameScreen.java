@@ -138,7 +138,6 @@ public class GameScreen extends JPanel {
 			 */
 			if(gameElement instanceof SpaceShip) {
 				SpaceShip ship = (SpaceShip) gameElement;
-				System.out.println(ship.getListLasers().size());
 				for( Laser l : ship.getListLasers() ) {
 					
 					if (l instanceof ShoopDaWhoopLaser) {

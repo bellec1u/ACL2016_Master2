@@ -52,7 +52,7 @@ public class TextureFactory {
 			this.invaderBImg[1] = ImageIO.read(new File("img/InvaderB_01.png"));
 			this.invaderCImg[0] = ImageIO.read(new File("img/InvaderC_00.png"));
 			this.invaderCImg[1] = ImageIO.read(new File("img/InvaderC_01.png"));
-			this.specialShootBonus[0] = ImageIO.read(new File("img/bonus.png"));
+			this.specialShootBonus[0] = ImageIO.read(new File("img/bonusShoot.png"));
 			this.shoopDaWhoop[0] = ImageIO.read(new File("img/Shoop-Da-Whoop.png"));
 			this.shoopDaWhoop[1] = ImageIO.read(new File("img/da_whoop_laser.png"));
 			this.bombImg[0] = ImageIO.read(new File("img/bomb.png"));
