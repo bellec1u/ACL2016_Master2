@@ -79,6 +79,7 @@ public class GameListener implements KeyListener {
 		            }
 
 		        });
+				timer.setRepeats(false);
 		        timer.start();
 			}
 			

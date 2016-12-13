@@ -138,16 +138,20 @@ public class GameScreen extends JPanel {
 			 */
 			if(gameElement instanceof SpaceShip) {
 				SpaceShip ship = (SpaceShip) gameElement;
+				System.out.println(ship.getListLasers().size());
 				for( Laser l : ship.getListLasers() ) {
 					
 					if (l instanceof ShoopDaWhoopLaser) {
+						
 						//draw a shoop da whoop laser (special shoot)
 						//only head in first
 						l.setPosition((int)ship.getPosition().getX(), 0);
+						
 						g.drawImage(l.getTexture()[0], 
 								(int)ship.getPosition().getX() - 15, (int)ship.getPosition().getY() - 8, 
 								60, 32, 
 								null);        
+						
 						if (System.currentTimeMillis() - ((ShoopDaWhoopLaser)l).getStartShoot() >= 2700) {
 							//draw the laser
 							l.setBoundingBox( new Rectangle2D.Double(
@@ -157,6 +161,7 @@ public class GameScreen extends JPanel {
 									(int)l.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)l).getHeight() + 500,
 									null);
 						}
+							
 					} else {
 						g.drawImage(l.getImage(), 
 								(int)l.getPosition().getX(),
