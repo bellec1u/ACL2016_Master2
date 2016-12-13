@@ -18,7 +18,7 @@ public class ShoopDaWhoopLaser extends Laser{
 	private final static int WIDTH = 49;	
 	private final static int HEIGHT = World.HEIGHT;
 
-	private long startShoot;
+	private long startShoot = -1;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
