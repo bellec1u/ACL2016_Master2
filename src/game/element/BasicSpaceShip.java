@@ -61,7 +61,7 @@ public class BasicSpaceShip extends SpaceShip {
 			laser = lasers.get(i);
 			laser.update(delta); // moves Laser
 			if (laser.isOutOfScreen() ) {
-				// deletes the laser whom is out of screen
+				// deletes the laser which is out of screen
 				deleteLaser(laser); 
 			}
 			

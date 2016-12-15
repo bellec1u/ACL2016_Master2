@@ -173,7 +173,7 @@ public class GameScreen extends JPanel {
 	}
 	
 	/**
-	 * @return the abscissa of the centered string on sreen
+	 * @return the abscissa of the centered string on screen
 	 */
 	private int getCenteredStringX(Graphics g, String str) {
 		FontMetrics fm = g.getFontMetrics();

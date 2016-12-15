@@ -87,12 +87,14 @@ public class GameListener implements KeyListener {
 			
 			break;
 		case KeyEvent.VK_R : 
-			if (this.world.getGameOver()) {
+			if (world.getGameOver()) {
 				this.world.restart();
 			}
 			break;
 		case KeyEvent.VK_ESCAPE :
-		    gameScreen.togglePause();
+		    if (!world.getGameOver()) {
+		        gameScreen.togglePause();
+		    }
 		    break;
 		case KeyEvent.VK_Q :
 		    System.exit(0);
