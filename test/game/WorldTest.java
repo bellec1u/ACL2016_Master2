@@ -47,7 +47,7 @@ public class WorldTest {
 	public void testAddBonusSpecialShoot() {
 		World w = new World();
 		w.generateBonus( new Point2D.Double(0, 0) );
-		assert(w.getListBonus().size() == 1);
+		assertEquals(1, w.getListBonus().size());
 	}
 	
 	/**
@@ -56,9 +56,9 @@ public class WorldTest {
 	@Test
 	public void testBonusSpecialShootIsOutOfScreen() {
 		World w = new World();
-		w.generateBonus( new Point2D.Double(w.WIDTH, w.HEIGHT-5) );
+		w.generateBonus( new Point2D.Double(World.WIDTH, World.HEIGHT-5) );
 		w.update(50);
-		assert(w.getListBonus().size() == 0);
+		assertEquals(0, w.getListBonus().size());
 	}
 	
 	/**
@@ -68,8 +68,8 @@ public class WorldTest {
 	public void testAddBonusSpecialShootStock() {
 		World w = new World();
 		Point2D pos = w.getSpaceShip().getPosition();
-		w.generateBonus( new Point2D.Double(pos.getX(), pos.getY()) );
-		w.update(5);
-		assert(w.getSpaceShip().getNbSpecialShoot() == 1);
+		w.generateBonus(new Point2D.Double(pos.getX(), pos.getY()));
+		w.update(0);
+		assertEquals(1, w.getSpaceShip().getNbSpecialShoot());
 	}
 }
