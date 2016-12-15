@@ -61,8 +61,6 @@ public class World {
 	
 
 	private List<Bonus> listBonus;
-	private int nbSpecialShoot;
-	private int nbMaxSpecialShoot = 3;
 	private double tauxSpawnBonus = 0.95;
 	
 	public World() {
@@ -238,8 +236,8 @@ public class World {
 		if ( this.spaceShip.hasCollision(ssb) ) {
 			this.deleteBonus(issb);
 			if (ssb.getClass().getName().equals("game.element.SpecialShootBonus")) {
-				if (this.nbSpecialShoot < this.nbMaxSpecialShoot) {
-					this.nbSpecialShoot++;
+				if (this.spaceShip.getNbSpecialShoot() < this.spaceShip.getNbMaxSpecialShoot()) {
+					this.spaceShip.addSpecialShoot();
 				}
 			} else if (ssb instanceof LifeBonus){
 				this.spaceShip.addLife();
@@ -274,7 +272,6 @@ public class World {
 		this.gameOver = false;
 		
 		this.listBonus.clear();
-		this.nbSpecialShoot = 0;
 	}
 
 	/** Returns the score **/
@@ -284,10 +281,6 @@ public class World {
 
 	public boolean getGameOver() {
 		return this.gameOver;
-	}
-
-	public int getNbSpecialShoot() {
-		return this.nbSpecialShoot;
 	}
 
 	/** Adds value to the score **/
@@ -322,10 +315,6 @@ public class World {
 		sb.append(spaceShip.toString());
 
 		return sb.toString();
-	}
-
-	public void decrementSpecialShoot() {
-		this.nbSpecialShoot--;
 	}
 
 }

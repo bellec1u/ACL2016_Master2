@@ -24,7 +24,9 @@ public abstract class SpaceShip extends GameElement{
 	/** Laser's list **/
 	protected List<Laser> lasers;
 	protected int lives;
-	protected boolean shootShoopDaWhoop = false;
+	
+	protected int nbSpecialShoot;
+	protected int nbMaxSpecialShoot = 3;
 	
 	/**
 	 * 
@@ -93,12 +95,6 @@ public abstract class SpaceShip extends GameElement{
 	public void deleteLaser(Laser laser) {
 		lasers.remove(laser);
 	}
-	
-	public void deleteLaserShoopDaWhoop() {
-		ShoopDaWhoopLaser laser = (ShoopDaWhoopLaser) lasers.get( this.lasers.size()-1 );
-		laser.stopSound();
-		lasers.remove( laser );
-	}
 
 	/**
 	 * Returns the number of Laser in the Laser list
@@ -118,17 +114,28 @@ public abstract class SpaceShip extends GameElement{
 		return null; // unreachable
 	}
 
-	public void startShootShoopDaWhoop() {
-		this.shootShoopDaWhoop = true;
-	}
-	
-	public void endShootShoopDaWhoop() {
-		this.shootShoopDaWhoop = false;
-		this.deleteLaserShoopDaWhoop();
-	}
-
 	public void addLife() {
 		this.lives++;
+	}
+
+	public abstract void startSpecialShoot();
+
+	public abstract void endSpecialShoot();
+
+	public void decrementSpecialShoot() {
+		this.nbSpecialShoot--;
+	}
+
+	public int getNbSpecialShoot() {
+		return this.nbSpecialShoot;
+	}
+	
+	public int getNbMaxSpecialShoot() {
+		return this.nbMaxSpecialShoot;
+	}
+
+	public void addSpecialShoot() {
+		this.nbSpecialShoot++;
 	}
 
 }

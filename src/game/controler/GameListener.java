@@ -1,6 +1,7 @@
 package game.controler;
 
 import game.World;
+import game.element.SpaceShip;
 import game.view.GameScreen;
 
 import java.awt.event.ActionEvent;
@@ -28,7 +29,7 @@ public class GameListener implements KeyListener {
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
 		
-	private boolean shoopDaWhoopAction = false;
+	private boolean specialShootAction = false;
 	private int dureeActionShoopDaWhoop = 5000;
 	private long startTimerShoopDaWhoop = -1;
 
@@ -57,25 +58,26 @@ public class GameListener implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
-			if (!shoopDaWhoopAction) {
+			if (!specialShootAction) {
 				this.world.getSpaceShip().shoot();
 			}
 			break;
 		case KeyEvent.VK_N :
 			// generate a shoopDaWhoop
-			if (this.world.getNbSpecialShoot() >= 1 && !shoopDaWhoopAction) {
-				this.world.getSpaceShip().startShootShoopDaWhoop();
-				this.world.getSpaceShip().shoot();
-				this.world.decrementSpecialShoot();
+			SpaceShip ship = this.world.getSpaceShip();
+			if (ship.getNbSpecialShoot() >= 1 && !specialShootAction) {
+				ship.startSpecialShoot();
+				ship.shoot();
+				ship.decrementSpecialShoot();
 				
-				this.shoopDaWhoopAction = true;
+				this.specialShootAction = true;
 				
 				Timer timer = new Timer(3700, new ActionListener() {
 
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
-						shoopDaWhoopAction = false;
-						world.getSpaceShip().endShootShoopDaWhoop();
+		            	specialShootAction = false;
+						world.getSpaceShip().endSpecialShoot();
 		            }
 
 		        });

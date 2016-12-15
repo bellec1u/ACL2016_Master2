@@ -246,7 +246,7 @@ public class GameScreen extends JPanel {
 		g.setFont(TextureFactory.getInstance().getFont().deriveFont(20.0f));
 		g.setColor(Color.WHITE);
 		g.drawImage(TextureFactory.getInstance().getSpecialShootBonus()[0], 20, World.HEIGHT - 47, null);
-		String txt = "x " + world.getNbSpecialShoot();
+		String txt = "x " + world.getSpaceShip().getNbSpecialShoot();
 		g.drawString(txt, 45, (World.HEIGHT - 30));
 
 	}

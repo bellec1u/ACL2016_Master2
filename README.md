@@ -65,6 +65,16 @@ V 3.0 :
 * Mettre le jeu en pause :
  - [x] une pression sur la touche ÉCHAP met le jeu en pause et affiche l’écran de pause.
 
+V 3.1 :
+* Gestion des bonus de vie :
+ - [x] lorsqu'un alien meurt, il a 5% de chance faire faire apparaitre un bonus puis 50% de chance de faire apparaitre soit un SpecialShootBonus, soit un LifeBonus.
+* Tire spécial :
+ - [x] le vaisseau, s'il possède au moins un bonus tire spécial, peut lancer un tire spécial via la touche "N".
+ - [x] lorsqu'un tire spécial (ShoopDaWhoop) est lancé, les tirs normaux sont bloqués et "l'animation" (image + son) commencent.
+ - [x] le tire spécial tue tous les aliens devant le vaisseau.
+* Gestion de la musique de fond :
+ - [x] le jeu lance automatiquement une musique de fond lors d'une partie.
+
 # Diagrams
 
 https://www.lucidchart.com/invitations/accept/3525ba89-ac91-4f6b-8123-3785bc5c30e2

@@ -27,6 +27,8 @@ public class BasicSpaceShip extends SpaceShip {
 
 	/** delay until the BasicSpaceShip can shoot again **/
 	private long lastShotTime;
+	
+	protected boolean shootShoopDaWhoop = false;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -105,7 +107,22 @@ public class BasicSpaceShip extends SpaceShip {
 			lasers.add(laser);
 		}
 	}
-
+	
+	public void startSpecialShoot() {
+		this.shootShoopDaWhoop = true;
+	}
+	
+	public void endSpecialShoot() {
+		this.shootShoopDaWhoop = false;
+		this.deleteLaserShoopDaWhoop();
+	}
+	
+	public void deleteLaserShoopDaWhoop() {
+		ShoopDaWhoopLaser laser = (ShoopDaWhoopLaser) lasers.get( this.lasers.size()-1 );
+		laser.stopSound();
+		lasers.remove( laser );
+	}
+	
 	@Override
 	public double getSpeed() {
 		return SPEED;
