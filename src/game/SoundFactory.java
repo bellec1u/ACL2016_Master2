@@ -45,9 +45,6 @@ public class SoundFactory {
 			DataLine.Info info = new DataLine.Info(Clip.class, audio.getFormat());
 			backgroundSound = (Clip)AudioSystem.getLine(info);
 			backgroundSound.open(audio);
-			
-			audio = AudioSystem.getAudioInputStream(new File("sound/SHOOP_DA_WHOOP.wav"));
-			info = new DataLine.Info(Clip.class, audio.getFormat());
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			System.out.println("audio error");
 		} 

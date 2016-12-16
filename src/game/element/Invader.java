@@ -30,10 +30,19 @@ public abstract class Invader extends GameElement{
 	/** Returns Invader's score value **/
 	public abstract int getScore() ;
 	
+	/** Indicates if the Invader is out of screen,
+	 * in order to do so, we check if his current Y position is greater than
+	 * the World's HEIGHT, if so that function returns true else false.
+	 **/
 	public boolean isOutOfScreen() {
 		return position.getY() > World.HEIGHT;
 	}
 	
+
+	/**
+	 * Indicates if the Invader has potentials deserters in it.
+	 * Every Invaders have a different way to test it.
+	 */
 	public abstract boolean hasDeserters();
 
 }

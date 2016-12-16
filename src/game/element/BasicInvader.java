@@ -56,7 +56,6 @@ public class BasicInvader extends Invader {
 	/**
 	 * Returns Image[] of a BasicInvader
 	 */
-	@Override
 	public Image[] getTexture() {
 		switch (this.invaderType) {
 		case 0 :
@@ -72,7 +71,6 @@ public class BasicInvader extends Invader {
 	 * Updates BasicInvader's position
 	 * @param delta lap of time between 2 displays
 	 */
-	@Override
 	public void update(double delta) {
 		move(delta);
 
@@ -85,7 +83,7 @@ public class BasicInvader extends Invader {
 		}
 	}
 
-	@Override
+	/** Returns BasicInvader's speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
@@ -95,10 +93,16 @@ public class BasicInvader extends Invader {
 		return SCORE;
 	}
 	
+	/**
+	 * Indicates if the BasicInvader has potentials deserters in it.
+	 * In order to do it, we check if the variable deserters if stricly positive
+	 * and then the BasicInvader has 2% of chance to return true.
+	 * Else false.
+	 */
 	public boolean hasDeserters(){
 		boolean desert=false;
 		if(deserters > 0){
-			if(new Random().nextInt(100)>98){
+			if(new Random().nextInt(100) > 98){
 				desert = true;
 				deserters--;
 			}
@@ -106,9 +110,7 @@ public class BasicInvader extends Invader {
 		return desert;
 	}
 
-	/**
-	 * Returns Image of a BasicInvader
-	 */
+	/** Returns Image of a BasicInvader **/
 	public Image getImage() {
 		return getTexture()[textureIndex];
 	}

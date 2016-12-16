@@ -38,19 +38,22 @@ public abstract class SpaceShip extends GameElement{
 		lasers = new LinkedList<Laser>();
 	}
 	
-	/** Retursn laser list **/
+	/** Returns laser list **/
 	public List<Laser> getListLasers() {
 		return lasers;
 	}
 	
+	/** Returns SpaceShip's life **/
 	public int getLives() {
 	    return lives;
 	}
 	
+	/** Returns true if the SpaceShip's life is lower or equals than 0 **/
 	public boolean isWrecked() {
 	    return lives <= 0;
 	}
 	
+	/** Decrements the SpaceShip's life by 1 **/
 	public void decrementLives() {
 		if(lives>0){
 			--lives;
@@ -59,31 +62,34 @@ public abstract class SpaceShip extends GameElement{
 
 	/** Shoot a Laser **/
 	public abstract void shoot();
+	
+	/** Use special Shoot**/
+	public abstract void specialShoot();
 
+	/**
+	 * Manages the Collision between one Invader and the SpaceShip's lasers
+	 * @param invader the Invader to test
+	 * @return true if collision else false
+	 */
 	public boolean manageLaserCollision(Invader invader) {
 
 		Iterator<Laser> l = this.lasers.iterator();
 	    while (l.hasNext()) {
 	    	Laser laser = l.next();
 	    	
-	    	if (this.hasCollision(invader, laser)) {
+	    	if ( invader.hasCollision(laser) ) {
+	    		/**
+	    		 * We delete every lasers except the ShoopDaWhoopLaser
+	    		 * if there is one in the list lasers.
+	    		 */
 	    		if (!(laser instanceof ShoopDaWhoopLaser)) {
 	    			this.deleteLaser(laser);
 	    		}
 	    		return true;
 	    	}
-	    	
 	    }
-	    
 	    return false;
 		
-	}
-	
-	private boolean hasCollision(Invader invader, Laser laser) {
-		if (invader.getBoundingBox().intersects(laser.getBoundingBox())) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -102,7 +108,7 @@ public abstract class SpaceShip extends GameElement{
 	}
 	
 	/**
-	 * Returns Laser i, use for test
+	 * Returns Laser i, used for test
 	 */
 	public Laser getLaser(int i) {
 		if(i >= 0 && i < lasers.size()) {
@@ -112,25 +118,27 @@ public abstract class SpaceShip extends GameElement{
 		return null; // unreachable
 	}
 
+	/** Adds 1 to the current variable lives **/
 	public void addLife() {
 		this.lives++;
 	}
-	
-	/** Use special Shoot**/
-	public abstract void specialShoot();
 
+	/** Decrements the number of specialShoot available **/
 	public void decrementSpecialShoot() {
 		this.nbSpecialShoot--;
 	}
 
+	/** Returns the variable nbSpecialShoot **/
 	public int getNbSpecialShoot() {
 		return this.nbSpecialShoot;
 	}
 	
+	/** Returns the variable nbMaxSpecialShoot **/
 	public int getNbMaxSpecialShoot() {
 		return this.nbMaxSpecialShoot;
 	}
 
+	/** Adds 1 to the current variable nbMaxSpecialShoot **/
 	public void addSpecialShoot() {
 		this.nbSpecialShoot++;
 	}
@@ -138,9 +146,8 @@ public abstract class SpaceShip extends GameElement{
 	/**
 	 * Indicates if the SpaceShip is out of screen,
 	 * in order to do so,
-	 * we will check if the y axis is stricly < 0
+	 * we will check if the x position is greater than World.WIDTH or lower than 0.
 	 */
-	@Override
 	public boolean isOutOfScreen() {
 		Point2D position = getPosition();
 		return (position.getX() < 0 || position.getX() > World.WIDTH);

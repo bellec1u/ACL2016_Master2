@@ -28,6 +28,9 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class GameScreen extends JPanel {
 
+	/**
+	 * World
+	 */
 	private World world;
 
 	/**
@@ -41,7 +44,7 @@ public class GameScreen extends JPanel {
 	private final int frameDuration = 16; //  1000ms / 60fps (ms value)
 	private final double delay = ( 1.0 / 60.0 );
 	private Timer timer; // use to call repaint() every frameDuration
-	private boolean paused = true;
+	private boolean paused = true; // indicates if the game if paused or not
 
 	public GameScreen(World w) {
 		super();
@@ -67,6 +70,7 @@ public class GameScreen extends JPanel {
 		music.start();
 	}
 
+	/** Pause the Game **/
 	public void togglePause() {
 		if (!world.getGameOver()) {
 			paused = !paused;
@@ -83,12 +87,15 @@ public class GameScreen extends JPanel {
 		}
 	}
 	
-	
+	/** Returns the variable world **/
 	public World getWorld() {
 		return world;
 	}
 
-	@Override
+	/**
+	 * Most important graphic function,
+	 * used here to draw every GameElements of the World
+	 */
 	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 

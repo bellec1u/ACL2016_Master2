@@ -6,6 +6,15 @@ import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class LifeBonus extends Bonus {
 
 	/** Speed of a bonus **/
@@ -20,22 +29,26 @@ public class LifeBonus extends Bonus {
 		this.turnDown();
 	}
 
-	@Override
+	/**
+	 * Returns Image[] of a LifeBonus
+	 */
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getLifeBonus();
 	}
 	
-	@Override
+	/** Updates LifeBonus' positions in the game **/
 	public void update(double delta) {
 		move(delta);
 	}
 
-	@Override
+	/** Returns LifeBonus's speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
 
-
+	/**
+	 * Returns Image of LifeBonus
+	 */
 	public Image getImage() {
 		return getTexture()[0];
 	}

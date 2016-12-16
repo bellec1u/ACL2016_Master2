@@ -29,22 +29,27 @@ public class SpecialShootBonus extends Bonus {
 		this.turnDown();
 	}
 
-	@Override
+	/**
+	 * Returns Image[] of a SpecialShootBonus
+	 */
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getSpecialShootBonus();
 	}
 	
-	@Override
+	/**
+	 * Updates the SpecialShootBonus' position
+	 * @param delta lap of time between 2 displays
+	 */
 	public void update(double delta) {
 		move(delta);
 	}
 
-	@Override
+	/** Returns SpecialShootBonus' speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
 
-
+	/** Returns Image of a SpecialShootBonus **/
 	public Image getImage() {
 		return getTexture()[0];
 	}

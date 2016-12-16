@@ -20,6 +20,9 @@ import javax.imageio.ImageIO;
  */
 public class TextureFactory {
 
+	/**
+	 * GameElements textures
+	 */
 	private Image[] spaceShipImg = new BufferedImage[1];
 	private Image spaceShipColorImg;
 	private Image[] shootImg = new BufferedImage[1];
@@ -30,17 +33,21 @@ public class TextureFactory {
 	private Image[] lifeBonus = new BufferedImage[1];
 	private Image[] shoopDaWhoop = new BufferedImage[2];
 	private Image[] deserterImg = new BufferedImage[1];
+	
+	/**
+	 * Fonts used
+	 */
 	private Font font;
 	private Font monospaced;
 	
 
 	/**
-	 * Instance unique pré-initialisée
+	 * unique instance -> singleton
 	 */
 	private static TextureFactory INSTANCE = new TextureFactory();
 	
 	/**
-	 * Constructeur privé 
+	 * Private constructor
 	 */
 	private TextureFactory() {
 		try {
@@ -66,10 +73,7 @@ public class TextureFactory {
 		}
 	}
 
-	/**
-	 * Point d'accès pour l'instance unique du singleton 
-	 * @return
-	 */
+	/** Returns the instance of TextureFactory **/
 	public static TextureFactory getInstance() {	
 		return INSTANCE;
 	}

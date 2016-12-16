@@ -7,6 +7,15 @@ import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Project "Space Invader"
+ * M1 Informatique 2016/2017
+ * @author BELLEC Leopold
+ * @author DAUZVARDIS Juozas
+ * @author JUNGES Pierre-Marie
+ * @author LIPSKI Guillaume
+ *
+ */
 public class ShoopDaWhoopLaser extends Laser{
 
 
@@ -35,34 +44,33 @@ public class ShoopDaWhoopLaser extends Laser{
 	}
 
 	/**
-	 * Returns Image[] of a BasicLaser
+	 * Returns Image[] of the ShoopDaWhoopLaser
 	 */
-	@Override
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getShoopDaWhoop();
 	}
 
 	/**
-	 * Updates BasicLaser's position
+	 * Updates ShoopDaWhoopLaser's position
 	 * @param delta lap of time between 2 displays
 	 */
-	@Override
 	public void update(double delta) {
 		Point2D shipPosition = ship.getPosition();
 		// if the all Laser has to be display then
 		setPosition((int)shipPosition.getX() - (int)(ship.getWidth() / 4) - 2, (int)shipPosition.getY() - HEIGHT);
 	}
 
-	@Override
+	/** Returns ShoopDaWhoopLaser's speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
 	
+	/** Returns the variable startShoot (time when the Laser was shot) **/
 	public long getStartShoot() {
 		return this.startShoot;
 	}
 
-	@Override
+	/** Returns Image of the ShoopDaWhoopLaser **/
 	public Image getImage() {
 		return getTexture()[0];
 	}	
@@ -82,11 +90,11 @@ public class ShoopDaWhoopLaser extends Laser{
     }
     
 	/**
-	 * Indicates if the Laser is out of screen,
-	 * in order to do so,
-	 * we will check if the y axis is stricly < 0
+	 * The definition here is a bit different (than in the other Laser),
+	 * this Laser is in fact an image so we cannot check if the Image is
+	 * out or in the World, BUT we decided to remove it when
+	 * a time of 2s is passed.
 	 */
-	@Override
 	public boolean isOutOfScreen() {
 		return (startShoot + 2000 < System.currentTimeMillis());
 	}

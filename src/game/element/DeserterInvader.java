@@ -5,6 +5,7 @@ import game.TextureFactory;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+
 /**
  * Project "Space Invader"
  * M1 Informatique 2016/2017
@@ -35,35 +36,40 @@ public class DeserterInvader extends Invader  {
 		this.turnDown();
 	}
 
-	@Override
+	/** Returns Invader's score value **/
 	public int getScore() {
-		// TODO Auto-generated method stub
 		return SCORE;
 	}
 
-	@Override
+	/**
+	 * Returns Image[] of a DeserterInvader
+	 */
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getDeserterImg();
 	}
 
-	@Override
+	/**
+	 * Updates DeserterInvader's position
+	 * @param delta lap of time between 2 displays
+	 */
 	public void update(double delta) {
-		// TODO Auto-generated method stub
 		move(delta);
 	}
 
-	@Override
+	/** Returns DeserterInvader's speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
 
-	@Override
+	/**
+	 * DeserterInvader cannot have deserters, so always return false.
+	 */
 	public boolean hasDeserters() {
 		return false;
 	}
 
 	/**
-	 * Returns Image of a Bomb
+	 * Returns Image of a DeserterInvader
 	 */
 	public Image getImage() {
 		return getTexture()[0];

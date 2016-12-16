@@ -44,7 +44,6 @@ public class BasicSpaceShip extends SpaceShip {
 	/**
 	 * Returns Image[] of a BasicSpaceShip
 	 */
-	@Override
 	public Image[] getTexture() {
 		return TextureFactory.getInstance().getSpaceShipImg();
 	}
@@ -62,7 +61,11 @@ public class BasicSpaceShip extends SpaceShip {
 			laser = lasers.get(i);
 			laser.update(delta); // moves Laser
 			if (laser.isOutOfScreen() ) {
-				// deletes the laser which is out of screen
+				/* deletes the laser which is out of screen
+				 * and if laser is a ShoopDaWhoopLaser then
+				 * we indicate that the ShoopDaWhoopLaser is 
+				 * not active anymore
+				 */
 				if(laser instanceof ShoopDaWhoopLaser) {
 					shootShoopDaWhoop = false;
 				}
@@ -75,7 +78,6 @@ public class BasicSpaceShip extends SpaceShip {
 	 * Shoots a BasicLaser with UP direction,
 	 * The BasicLaser is created just above the BasicSpaceShip's coordinates
 	 */
-	@Override
 	public void shoot() {
 		if (!this.shootShoopDaWhoop) {
 			// limit a bit the number of lasers
@@ -96,7 +98,27 @@ public class BasicSpaceShip extends SpaceShip {
 		}
 	}
 	
-	@Override
+	/** 
+	 * Shoots a ShoopDaWhoop laser if the BasicSpaceShip fills all the corrects
+	 * conditions.
+	 **/
+	public void specialShoot() {
+		if(getNbSpecialShoot() >= 1 && !shootShoopDaWhoop) {
+			decrementSpecialShoot();
+			shootShoopDaWhoop = true;
+			
+			// create a laser above spaceship's position
+			Point2D pos = getPosition();
+			Laser laser = new ShoopDaWhoopLaser(this, pos);
+			
+			// place in right position (middle of spaceship)
+			double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
+			laser.setRelativePosition(x, -2);
+			lasers.add(laser);
+		}
+	}
+	
+	/** Returns BasicSpaceShip's speed **/
 	public double getSpeed() {
 		return SPEED;
 	}
@@ -121,22 +143,4 @@ public class BasicSpaceShip extends SpaceShip {
     public int getHeight() {
     	return HEIGHT;
     }
-
-	@Override
-	public void specialShoot() {
-		if(getNbSpecialShoot() >= 1 && !shootShoopDaWhoop) {
-			decrementSpecialShoot();
-			shootShoopDaWhoop = true;
-			
-			// create a laser above spaceship's position
-			Point2D pos = getPosition();
-			Laser laser = new ShoopDaWhoopLaser(this, pos);
-			
-			// place in right position (middle of spaceship)
-			double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
-			laser.setRelativePosition(x, -2);
-			lasers.add(laser);
-		}
-	}
-
 }
