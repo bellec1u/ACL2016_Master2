@@ -77,6 +77,19 @@ public class GameScreen extends JPanel {
 		}
 	}
 	
+	/** Mute the music is the music is active and if the pause menu is not open **/ 
+	public void toggleMusic() {
+		if( !paused ) {
+			if( music.isActive() ) {
+				music.stop();
+			} else {
+				music.loop(Clip.LOOP_CONTINUOUSLY);
+				music.start();
+			}
+		}
+	}
+	
+	
 	public World getWorld() {
 		return world;
 	}
@@ -195,7 +208,8 @@ public class GameScreen extends JPanel {
 				"  →     move right", 
 				"  ←     move left", 
 				"SPACE   shoot",
-		"  n     special laser"};
+		"  n     special laser",
+		"  m     mute the music"};
 		int x = getCenteredStringX(g, texts[2]);
 		int y = 130;
 

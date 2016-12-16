@@ -59,6 +59,9 @@ public class GameListener implements KeyListener {
 			// generate a shoopDaWhoop
 				spaceShip.specialShoot();			
 			break;
+		case KeyEvent.VK_M :
+			// mute the music
+				gameScreen.toggleMusic();
 		case KeyEvent.VK_R : 
 				world.restart();
 			break;
