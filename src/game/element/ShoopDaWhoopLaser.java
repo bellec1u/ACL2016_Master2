@@ -1,40 +1,37 @@
 package game.element;
 
-import game.SoundFactory;
 import game.TextureFactory;
 import game.World;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-
-import javax.sound.sampled.Clip;
 
 public class ShoopDaWhoopLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double SPEED = 0.0; // 3 pixels every refresh call
+	private static final double SPEED = 0.0; // 0 pixel every refresh call
 	
 	/** Dimension (width and height) **/
-	private final static int WIDTH = 49;	
-	private final static int HEIGHT = World.HEIGHT;
+	private final static int WIDTH = 49;
+	private final static int HEIGHT = ( World.HEIGHT - 100 );
 
-	private long startShoot = -1;
-	
-	private Clip sound;
+	private long startShoot;
+
+	/**
+	 * Attached SpaceShip
+	 */
+	private SpaceShip ship;
 	
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
 	 * @param pos the position
 	 */
-	public ShoopDaWhoopLaser(Point2D pos) {
-		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  0,  0));
+	public ShoopDaWhoopLaser(SpaceShip spaceShip, Point2D pos) {
+		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
+		this.ship = spaceShip;
 		this.startShoot = System.currentTimeMillis();
-		sound = SoundFactory.getInstance().getShoopDaWhoop();
-		sound.loop(Clip.LOOP_CONTINUOUSLY);
-		sound.start();
 	}
 
 	/**
@@ -51,11 +48,12 @@ public class ShoopDaWhoopLaser extends Laser{
 	 */
 	@Override
 	public void update(double delta) {
-		move(delta);
-	}
-	
-	public boolean canShowLaser() {
-		return (System.currentTimeMillis() - this.getStartShoot() >= 2700);
+		Point2D shipPosition = ship.getPosition();
+		// if the all Laser has to be display then
+		System.out.println("Position AVANT : " + getPosition() + "BoundingBox : " + getBoundingBox());
+		setPosition(250,250);
+		System.out.println("Position APRES : " + getPosition() + "BoundingBox : " + getBoundingBox());
+		System.out.println("Position du Vaisseau : " +shipPosition + "\n-------------------------\n");
 	}
 
 	@Override
@@ -69,20 +67,32 @@ public class ShoopDaWhoopLaser extends Laser{
 
 	@Override
 	public Image getImage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static int getWidth() {
-		return WIDTH;
-	}
-
-	public static int getHeight() {
-		return HEIGHT;
-	}
-
-	public void stopSound() {
-		sound.stop();
+		setPosition(250,250);
+		return getTexture()[0];
+	}	
+	
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    /**
+     * Returns HEIGHT of the GameElement;
+     */
+    public int getHeight() {
+    	return HEIGHT;
+    }
+    
+	/**
+	 * Indicates if the Laser is out of screen,
+	 * in order to do so,
+	 * we will check if the y axis is stricly < 0
+	 */
+	@Override
+	public boolean isOutOfScreen() {
+		return (startShoot + 2700 > System.currentTimeMillis());
 	}
 	
 }

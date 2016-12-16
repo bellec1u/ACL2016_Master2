@@ -121,7 +121,7 @@ public class BasicInvader extends Invader {
     }
     
     /**
-     * Returns HEIGHTT of the GameElement;
+     * Returns HEIGHT of the GameElement;
      */
     public int getHeight() {
     	return HEIGHT;

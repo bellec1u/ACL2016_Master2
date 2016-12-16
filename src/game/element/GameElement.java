@@ -176,6 +176,9 @@ public abstract class GameElement{
     public void setBoundingBox(Rectangle2D boundingBox) {
 		this.boundingBox = boundingBox;
 	}
+    
+    /** Check if GameElement is out of screen **/
+    public abstract boolean isOutOfScreen();
 
 	/** toString **/
     public String toString() {
@@ -184,5 +187,15 @@ public abstract class GameElement{
         sb.append("    Position : " + position + "\n");
         return sb.toString();
     }
+    
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public abstract int getWidth();
+    
+    /**
+     * Returns HEIGHTT of the GameElement;
+     */
+    public abstract int getHeight();
 
 }

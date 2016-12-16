@@ -1,14 +1,12 @@
 package game.element;
 
-import game.SoundFactory;
+import game.World;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import javax.sound.sampled.Clip;
 
 /**
  * Project "Space Invader"
@@ -117,10 +115,9 @@ public abstract class SpaceShip extends GameElement{
 	public void addLife() {
 		this.lives++;
 	}
-
-	public abstract void startSpecialShoot();
-
-	public abstract void endSpecialShoot();
+	
+	/** Use special Shoot**/
+	public abstract void specialShoot();
 
 	public void decrementSpecialShoot() {
 		this.nbSpecialShoot--;
@@ -138,4 +135,14 @@ public abstract class SpaceShip extends GameElement{
 		this.nbSpecialShoot++;
 	}
 
+	/**
+	 * Indicates if the SpaceShip is out of screen,
+	 * in order to do so,
+	 * we will check if the y axis is stricly < 0
+	 */
+	@Override
+	public boolean isOutOfScreen() {
+		Point2D position = getPosition();
+		return (position.getX() < 0 || position.getX() > World.WIDTH);
+	}
 }

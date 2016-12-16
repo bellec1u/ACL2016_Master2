@@ -4,16 +4,12 @@ import game.SoundFactory;
 import game.TextureFactory;
 import game.World;
 import game.element.GameElement;
-import game.element.Laser;
-import game.element.ShoopDaWhoopLaser;
-import game.element.SpaceShip;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 import javax.sound.sampled.Clip;
@@ -65,20 +61,22 @@ public class GameScreen extends JPanel {
 		timer.setRepeats(true);
 		timer.start();
 
-		// loads music
+		// loads musics
 		music = SoundFactory.getInstance().getBackgroundSound();
 	}
 
 	public void togglePause() {
-		paused = !paused;
-		if( paused ) {
-			music.stop();
-		} else {
-			music.loop(Clip.LOOP_CONTINUOUSLY);
-			music.start();
+		if (!world.getGameOver()) {
+			paused = !paused;
+			if( paused ) {
+				music.stop();
+			} else {
+				music.loop(Clip.LOOP_CONTINUOUSLY);
+				music.start();
+			}
 		}
 	}
-
+	
 	public World getWorld() {
 		return world;
 	}
@@ -130,45 +128,10 @@ public class GameScreen extends JPanel {
 			g.drawImage(gameElement.getImage(), 
 					(int)gameElement.getPosition().getX(),
 					(int)gameElement.getPosition().getY(), 
+					(int)gameElement.getWidth(),
+					(int)gameElement.getHeight(),
 					null);
 			
-			/*
-			 * If gameElement is a SpaceShip then we need to
-			 * draw its lasers too.
-			 */
-			if(gameElement instanceof SpaceShip) {
-				SpaceShip ship = (SpaceShip) gameElement;
-				for( Laser l : ship.getListLasers() ) {
-					
-					if (l instanceof ShoopDaWhoopLaser) {
-						
-						this.renderShoopDaWhoop(g, ship, l);
-							
-					} else {
-						g.drawImage(l.getImage(), 
-								(int)l.getPosition().getX(),
-								(int)l.getPosition().getY(), 
-								null);
-					}
-					
-				}
-			}
-		}
-	}
-	
-	public void renderShoopDaWhoop(Graphics g, SpaceShip ship, Laser l) {
-		//draw a shoop da whoop laser (special shoot)
-		//only head in first
-		g.drawImage(l.getTexture()[0], 
-				(int)ship.getPosition().getX() - 15, (int)ship.getPosition().getY() - 8, 
-				60, 32, 
-				null);        
-		
-		if (((ShoopDaWhoopLaser)l).canShowLaser()) {
-			//draw the laser
-			g.drawImage(l.getTexture()[1], (int)l.getPosition().getX(), 
-					(int)l.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)l).getHeight() + 500,
-					null);
 		}
 	}
 	

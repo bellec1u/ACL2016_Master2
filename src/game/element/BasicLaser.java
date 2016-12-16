@@ -62,5 +62,30 @@ public class BasicLaser extends Laser{
 	public Image getImage() {
 		return getTexture()[0];
 	}
+	
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    /**
+     * Returns HEIGHTT of the GameElement;
+     */
+    public int getHeight() {
+    	return HEIGHT;
+    }
+    
+	/**
+	 * Indicates if the Laser is out of screen,
+	 * in order to do so,
+	 * we will check if the y axis is stricly < 0
+	 */
+	@Override
+	public boolean isOutOfScreen() {
+		Point2D position = getPosition();
+		return (position.getY() < 0);
+	}
 
 }

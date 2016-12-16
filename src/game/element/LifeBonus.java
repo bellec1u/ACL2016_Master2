@@ -12,7 +12,7 @@ public class LifeBonus extends Bonus {
 	private static final double SPEED = 50.0; // 4 pixels every refresh call
 
 	/** Dimension (width and height) **/
-	private final static int WIDTH = 36;	
+	private final static int WIDTH = 24;	
 	private final static int HEIGHT = 16;
 	
 	public LifeBonus(Point2D pos) {
@@ -39,5 +39,19 @@ public class LifeBonus extends Bonus {
 	public Image getImage() {
 		return getTexture()[0];
 	}
+	
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    /**
+     * Returns HEIGHT of the GameElement;
+     */
+    public int getHeight() {
+    	return HEIGHT;
+    }
 	
 }

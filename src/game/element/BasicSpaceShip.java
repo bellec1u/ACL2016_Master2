@@ -28,7 +28,7 @@ public class BasicSpaceShip extends SpaceShip {
 	/** delay until the BasicSpaceShip can shoot again **/
 	private long lastShotTime;
 	
-	protected boolean shootShoopDaWhoop = false;
+	private boolean shootShoopDaWhoop;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -38,6 +38,7 @@ public class BasicSpaceShip extends SpaceShip {
 		super(pos, new Rectangle2D.Double(pos.getX(),  pos.getY(),  WIDTH,  HEIGHT));
 		this.lastShotTime = 0;
 		this.lives = 3;
+		shootShoopDaWhoop = false;
 	}
 
 	/**
@@ -62,17 +63,10 @@ public class BasicSpaceShip extends SpaceShip {
 			laser.update(delta); // moves Laser
 			if (laser.isOutOfScreen() ) {
 				// deletes the laser which is out of screen
-				deleteLaser(laser); 
-			}
-			
-			if (laser instanceof ShoopDaWhoopLaser) {
-				laser.setPosition((int)this.getPosition().getX(), 0);
-				
-				if (((ShoopDaWhoopLaser) laser).canShowLaser()) {
-					laser.setBoundingBox( new Rectangle2D.Double(
-							laser.getPosition().getX(), laser.getPosition().getY() + 15 - ((ShoopDaWhoopLaser)laser).getHeight() + 500, 
-							((ShoopDaWhoopLaser)laser).getWidth(),  ((ShoopDaWhoopLaser)laser).getHeight()) );
+				if(laser instanceof ShoopDaWhoopLaser) {
+					shootShoopDaWhoop = false;
 				}
+				deleteLaser(laser); 
 			}
 		}
 	}
@@ -99,28 +93,7 @@ public class BasicSpaceShip extends SpaceShip {
 			laser.setRelativePosition(x, -2);
 
 			lasers.add(laser);
-		} else {
-			// create a laser above spaceship's position
-			Point2D pos = getPosition();
-			pos.setLocation(pos.getX(), 0);
-			Laser laser = new ShoopDaWhoopLaser(pos);
-			lasers.add(laser);
 		}
-	}
-	
-	public void startSpecialShoot() {
-		this.shootShoopDaWhoop = true;
-	}
-	
-	public void endSpecialShoot() {
-		this.shootShoopDaWhoop = false;
-		this.deleteLaserShoopDaWhoop();
-	}
-	
-	public void deleteLaserShoopDaWhoop() {
-		ShoopDaWhoopLaser laser = (ShoopDaWhoopLaser) lasers.get( this.lasers.size()-1 );
-		laser.stopSound();
-		lasers.remove( laser );
 	}
 	
 	@Override
@@ -132,8 +105,38 @@ public class BasicSpaceShip extends SpaceShip {
 	 * Returns Image of a BasicSpaceShip
 	 */
 	public Image getImage() {
-		// TODO Auto-generated method stub
 		return getTexture()[0];
+	}
+	
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    /**
+     * Returns HEIGHT of the GameElement;
+     */
+    public int getHeight() {
+    	return HEIGHT;
+    }
+
+	@Override
+	public void specialShoot() {
+		if(getNbSpecialShoot() >= 1 && !shootShoopDaWhoop) {
+			decrementSpecialShoot();
+			shootShoopDaWhoop = true;
+			
+			// create a laser above spaceship's position
+			Point2D pos = getPosition();
+			Laser laser = new ShoopDaWhoopLaser(this, pos);
+			
+			// place in right position (middle of spaceship)
+			double x = getBoundingBox().getWidth()/2 - laser.getBoundingBox().getWidth()/2;
+			laser.setRelativePosition(x, -2);
+			lasers.add(laser);
+		}
 	}
 
 }

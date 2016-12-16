@@ -4,12 +4,9 @@ import game.World;
 import game.element.SpaceShip;
 import game.view.GameScreen;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.Timer;
 
 /**
  * Project "Space Invader"
@@ -29,8 +26,6 @@ public class GameListener implements KeyListener {
 	
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
-		
-	private boolean specialShootAction = false;
 
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
@@ -58,32 +53,11 @@ public class GameListener implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
-			if (!specialShootAction) {
 				spaceShip.shoot();
-			}
 			break;
 		case KeyEvent.VK_N :
 			// generate a shoopDaWhoop
-			if (spaceShip.getNbSpecialShoot() >= 1 && !specialShootAction) {
-				spaceShip.startSpecialShoot();
-				spaceShip.shoot();
-				spaceShip.decrementSpecialShoot();
-				
-				this.specialShootAction = true;
-				
-				Timer timer = new Timer(3700, new ActionListener() {
-
-		            @Override
-		            public void actionPerformed(ActionEvent e) {
-		            	specialShootAction = false;
-		            	spaceShip.endSpecialShoot();
-		            }
-
-		        });
-				timer.setRepeats(false);
-		        timer.start();
-			}
-			
+				spaceShip.specialShoot();			
 			break;
 		case KeyEvent.VK_R : 
 				world.restart();
