@@ -63,29 +63,23 @@ public class GameScreen extends JPanel {
 
 		// loads musics
 		music = SoundFactory.getInstance().getBackgroundSound();
+		music.loop(Clip.LOOP_CONTINUOUSLY);
+		music.start();
 	}
 
 	public void togglePause() {
 		if (!world.getGameOver()) {
 			paused = !paused;
-			if( paused ) {
-				music.stop();
-			} else {
-				music.loop(Clip.LOOP_CONTINUOUSLY);
-				music.start();
-			}
 		}
 	}
 	
 	/** Mute the music is the music is active and if the pause menu is not open **/ 
 	public void toggleMusic() {
-		if( !paused ) {
-			if( music.isActive() ) {
-				music.stop();
-			} else {
-				music.loop(Clip.LOOP_CONTINUOUSLY);
-				music.start();
-			}
+		if ( music.isActive() ) {
+			music.stop();
+		} else {
+			music.loop(Clip.LOOP_CONTINUOUSLY);
+			music.start();
 		}
 	}
 	
