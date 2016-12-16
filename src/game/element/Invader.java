@@ -34,6 +34,6 @@ public abstract class Invader extends GameElement{
 		return position.getY() > World.HEIGHT;
 	}
 	
-	public abstract boolean canShot();
+	public abstract boolean hasDeserters();
 
 }

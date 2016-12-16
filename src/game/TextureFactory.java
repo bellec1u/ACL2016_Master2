@@ -29,7 +29,7 @@ public class TextureFactory {
 	private Image[] specialShootBonus = new BufferedImage[1];
 	private Image[] lifeBonus = new BufferedImage[1];
 	private Image[] shoopDaWhoop = new BufferedImage[2];
-	private Image[] bombImg = new BufferedImage[1];
+	private Image[] deserterImg = new BufferedImage[1];
 	private Font font;
 	private Font monospaced;
 	
@@ -57,7 +57,7 @@ public class TextureFactory {
 			this.lifeBonus[0] = ImageIO.read(new File("img/bonusLife.png"));
 			this.shoopDaWhoop[0] = ImageIO.read(new File("img/Shoop-Da-Whoop.png"));
 			this.shoopDaWhoop[1] = ImageIO.read(new File("img/da_whoop_laser.png"));
-			this.bombImg[0] = ImageIO.read(new File("img/bomb.png"));
+			this.deserterImg[0] = ImageIO.read(new File("img/bomb.png"));
 			this.font = Font.createFont(Font.TRUETYPE_FONT, new File("font/arcade.ttf"));
 			this.monospaced = new Font("Monospaced", Font.BOLD, 15);
 		} catch (IOException e) {
@@ -111,8 +111,8 @@ public class TextureFactory {
 		return this.shoopDaWhoop;
 	}
 	
-	public Image[] getBombImg() {
-		return this.bombImg;
+	public Image[] getDeserterImg() {
+		return this.deserterImg;
 	}
 	
 	public Font getFont() {

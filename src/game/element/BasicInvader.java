@@ -36,8 +36,8 @@ public class BasicInvader extends Invader {
 	/** Score value**/
 	public static final int SCORE = 10;
 	
-	/** Munitions **/
-	private int amo;
+	/** Deserters possibles **/
+	private int deserters;
 
 	/**
 	 * Constructs a BasicSpaceShip with given arguments
@@ -50,7 +50,7 @@ public class BasicInvader extends Invader {
 		this.lastTextureChange = System.currentTimeMillis();
 		Random r = new Random();
 		this.invaderType = r.nextInt(3);
-		this.amo=r.nextInt(3);
+		this.deserters = r.nextInt(3);
 	}
 
 	/**
@@ -95,15 +95,15 @@ public class BasicInvader extends Invader {
 		return SCORE;
 	}
 	
-	public boolean canShot(){
-		boolean shot=false;
-		if(amo>0){
+	public boolean hasDeserters(){
+		boolean desert=false;
+		if(deserters > 0){
 			if(new Random().nextInt(100)>98){
-				shot = true;
-				amo--;
+				desert = true;
+				deserters--;
 			}
 		}
-		return shot;
+		return desert;
 	}
 
 	/**
@@ -112,5 +112,19 @@ public class BasicInvader extends Invader {
 	public Image getImage() {
 		return getTexture()[textureIndex];
 	}
+	
+    /**
+     * Returns WIDTH of the GameElement
+     */
+    public int getWidth() {
+    	return WIDTH;
+    }
+    
+    /**
+     * Returns HEIGHTT of the GameElement;
+     */
+    public int getHeight() {
+    	return HEIGHT;
+    }
 
 }

@@ -2,12 +2,11 @@ package game;
 
 import game.element.BasicInvader;
 import game.element.BasicSpaceShip;
-import game.element.Bomb;
+import game.element.DeserterInvader;
 import game.element.Bonus;
 import game.element.GameElement;
 import game.element.Invader;
 import game.element.LifeBonus;
-import game.element.ShoopDaWhoopLaser;
 import game.element.SpaceShip;
 import game.element.SpecialShootBonus;
 
@@ -126,8 +125,8 @@ public class World {
 			invader.update(delta);
 			manageCollision(invader, it);
 
-			if(invader.canShot()){
-	    		invaderShot.add(new Bomb(new Point2D.Double(invader.getPosition().getX()+10,invader.getPosition().getY()+8)));
+			if(invader.hasDeserters()){
+	    		invaderShot.add(new DeserterInvader(new Point2D.Double(invader.getPosition().getX()+10,invader.getPosition().getY()+8)));
 	    	}
 			
 			if (invader.isOutOfScreen()) {
