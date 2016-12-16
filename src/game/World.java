@@ -60,7 +60,7 @@ public class World {
 	
 
 	private List<Bonus> listBonus;
-	private double tauxSpawnBonus = 0;//0.95;
+	private double tauxSpawnBonus = 0.95;
 	
 	public World() {
 		invaders = new LinkedList<Invader>();    	

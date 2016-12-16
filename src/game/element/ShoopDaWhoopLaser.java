@@ -50,10 +50,7 @@ public class ShoopDaWhoopLaser extends Laser{
 	public void update(double delta) {
 		Point2D shipPosition = ship.getPosition();
 		// if the all Laser has to be display then
-		System.out.println("Position AVANT : " + getPosition() + "BoundingBox : " + getBoundingBox());
-		setPosition(250,250);
-		System.out.println("Position APRES : " + getPosition() + "BoundingBox : " + getBoundingBox());
-		System.out.println("Position du Vaisseau : " +shipPosition + "\n-------------------------\n");
+		setPosition((int)shipPosition.getX() - (int)(ship.getWidth() / 4) - 2, (int)shipPosition.getY() - HEIGHT);
 	}
 
 	@Override
@@ -67,7 +64,6 @@ public class ShoopDaWhoopLaser extends Laser{
 
 	@Override
 	public Image getImage() {
-		setPosition(250,250);
 		return getTexture()[0];
 	}	
 	
@@ -92,7 +88,7 @@ public class ShoopDaWhoopLaser extends Laser{
 	 */
 	@Override
 	public boolean isOutOfScreen() {
-		return (startShoot + 2700 > System.currentTimeMillis());
+		return (startShoot + 2000 < System.currentTimeMillis());
 	}
 	
 }

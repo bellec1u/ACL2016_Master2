@@ -19,8 +19,8 @@ import java.util.Random;
 public class BasicInvader extends Invader {
 
 	/** Speed of a BasicInvader **/
-	private static final double SPEED = 90.0; // 1.5 pixels every refresh call
-	private static final int TEXTURE_CHANGE_DELAY = 500;
+	private final double SPEED = 90.0; // 1.5 pixels every refresh call
+	private final int TEXTURE_CHANGE_DELAY = 500;
 
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 24;	
@@ -34,7 +34,7 @@ public class BasicInvader extends Invader {
 	private int invaderType;
 
 	/** Score value**/
-	public static final int SCORE = 10;
+	public final int SCORE = 10;
 	
 	/** Deserters possibles **/
 	private int deserters;
