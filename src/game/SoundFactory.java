@@ -35,7 +35,6 @@ public class SoundFactory {
 	 * Musique du jeu
 	 */
 	Clip backgroundSound;
-	Clip shoopDaWhoop;
 	
 	/**
 	 * Constructeur privé
@@ -49,8 +48,6 @@ public class SoundFactory {
 			
 			audio = AudioSystem.getAudioInputStream(new File("sound/SHOOP_DA_WHOOP.wav"));
 			info = new DataLine.Info(Clip.class, audio.getFormat());
-			shoopDaWhoop = (Clip)AudioSystem.getLine(info);
-			shoopDaWhoop.open(audio);
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			System.out.println("audio error");
 		} 
@@ -64,7 +61,4 @@ public class SoundFactory {
 		return backgroundSound;
 	}
 	
-	public Clip getShoopDaWhoop() {
-		return this.shoopDaWhoop;
-	}
 }

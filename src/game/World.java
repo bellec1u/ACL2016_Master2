@@ -272,7 +272,6 @@ public class World {
 			addSpaceShip();
 			updateLevel();
 			this.gameOver = false;
-			
 			this.listBonus.clear();		//if (Math.random() >= 1.0/2) {
 		}
 	}

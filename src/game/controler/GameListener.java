@@ -1,7 +1,6 @@
 package game.controler;
 
 import game.World;
-import game.element.SpaceShip;
 import game.view.GameScreen;
 
 import java.awt.event.KeyEvent;
@@ -22,7 +21,6 @@ public class GameListener implements KeyListener {
 	/** SpaceShip to control **/
 	private World world;
 	private GameScreen gameScreen;
-	private SpaceShip spaceShip;
 	
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
@@ -30,7 +28,6 @@ public class GameListener implements KeyListener {
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
 	    this.world = gscreen.getWorld();
-	    this.spaceShip = world.getSpaceShip();
 	}
 
 	/**
@@ -53,24 +50,25 @@ public class GameListener implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
-				spaceShip.shoot();
+			world.getSpaceShip().shoot();
 			break;
 		case KeyEvent.VK_N :
 			// generate a shoopDaWhoop
-				spaceShip.specialShoot();			
+			world.getSpaceShip().specialShoot();			
 			break;
 		case KeyEvent.VK_M :
 			// mute the music
-				gameScreen.toggleMusic();
+			gameScreen.toggleMusic();
+			break;
 		case KeyEvent.VK_R : 
-				world.restart();
+			world.restart();
 			break;
 		case KeyEvent.VK_ESCAPE :
-		    	gameScreen.togglePause();
-		    break;
+			gameScreen.togglePause();
+			break;
 		case KeyEvent.VK_Q :
-		    System.exit(0);
-		    break;
+			System.exit(0);
+			break;
 		}
 		this.changeDirection();
 	}
@@ -102,13 +100,13 @@ public class GameListener implements KeyListener {
 	private void changeDirection() {
 		switch(this.directionDeplacement) {
 		case -1 :
-			spaceShip.turnLeft();
+			world.getSpaceShip().turnLeft();
 			break;
 		case 0 :
-			spaceShip.stopMove();
+			world.getSpaceShip().stopMove();
 			break;
 		case 1 :
-			spaceShip.turnRight();
+			world.getSpaceShip().turnRight();
 			break;
 		default :
 			this.directionDeplacement = 0;
