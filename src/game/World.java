@@ -60,7 +60,7 @@ public class World {
 	
 
 	private List<Bonus> listBonus;
-	private double tauxSpawnBonus = 0.95;
+	private double tauxSpawnBonus = 0;//0.95;
 	
 	public World() {
 		invaders = new LinkedList<Invader>();    	
@@ -75,6 +75,8 @@ public class World {
 		
 		// adds the SpaceShip
 		elements.add(spaceShip);
+		// adds SpaceShip's laser
+		elements.addAll(spaceShip.getListLasers());
 		
 		// adds the invaders
 		elements.addAll(invaders);
@@ -231,7 +233,7 @@ public class World {
 	}
 
 	private void manageCollision(Bonus ssb, Iterator<Bonus> issb) {
-		//si une collision c'est produit entre un invader et le bonus special shoot
+		//si une collision c'est produit entre le vaisseau et le bonus special shoot
 		if ( this.spaceShip.hasCollision(ssb) ) {
 			this.deleteBonus(issb);
 			if (ssb.getClass().getName().equals("game.element.SpecialShootBonus")) {
@@ -264,13 +266,15 @@ public class World {
 	}
 
 	public void restart() {
-		this.score = 0;
-		this.invaders.clear();
-		addSpaceShip();
-		updateLevel();
-		this.gameOver = false;
-		
-		this.listBonus.clear();
+		if ( getGameOver() ) {
+			this.score = 0;
+			this.invaders.clear();
+			addSpaceShip();
+			updateLevel();
+			this.gameOver = false;
+			
+			this.listBonus.clear();		//if (Math.random() >= 1.0/2) {
+		}
 	}
 
 	/** Returns the score **/

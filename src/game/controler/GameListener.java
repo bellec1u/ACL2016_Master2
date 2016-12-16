@@ -25,17 +25,17 @@ public class GameListener implements KeyListener {
 	/** SpaceShip to control **/
 	private World world;
 	private GameScreen gameScreen;
+	private SpaceShip spaceShip;
 	
 	//-1 = gauche | 0 = pas bouger | 1 = droite
 	private int directionDeplacement;
 		
 	private boolean specialShootAction = false;
-	private int dureeActionShoopDaWhoop = 5000;
-	private long startTimerShoopDaWhoop = -1;
 
 	public GameListener(GameScreen gscreen) {
 		this.gameScreen = gscreen;
 	    this.world = gscreen.getWorld();
+	    this.spaceShip = world.getSpaceShip();
 	}
 
 	/**
@@ -59,16 +59,15 @@ public class GameListener implements KeyListener {
 		case KeyEvent.VK_SPACE :
 			// then spaceship shoots a laser
 			if (!specialShootAction) {
-				this.world.getSpaceShip().shoot();
+				spaceShip.shoot();
 			}
 			break;
 		case KeyEvent.VK_N :
 			// generate a shoopDaWhoop
-			SpaceShip ship = this.world.getSpaceShip();
-			if (ship.getNbSpecialShoot() >= 1 && !specialShootAction) {
-				ship.startSpecialShoot();
-				ship.shoot();
-				ship.decrementSpecialShoot();
+			if (spaceShip.getNbSpecialShoot() >= 1 && !specialShootAction) {
+				spaceShip.startSpecialShoot();
+				spaceShip.shoot();
+				spaceShip.decrementSpecialShoot();
 				
 				this.specialShootAction = true;
 				
@@ -77,7 +76,7 @@ public class GameListener implements KeyListener {
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
 		            	specialShootAction = false;
-						world.getSpaceShip().endSpecialShoot();
+		            	spaceShip.endSpecialShoot();
 		            }
 
 		        });
@@ -87,14 +86,10 @@ public class GameListener implements KeyListener {
 			
 			break;
 		case KeyEvent.VK_R : 
-			if (world.getGameOver()) {
-				this.world.restart();
-			}
+				world.restart();
 			break;
 		case KeyEvent.VK_ESCAPE :
-		    if (!world.getGameOver()) {
-		        gameScreen.togglePause();
-		    }
+		    	gameScreen.togglePause();
 		    break;
 		case KeyEvent.VK_Q :
 		    System.exit(0);
@@ -130,13 +125,13 @@ public class GameListener implements KeyListener {
 	private void changeDirection() {
 		switch(this.directionDeplacement) {
 		case -1 :
-			this.world.getSpaceShip().turnLeft();
+			spaceShip.turnLeft();
 			break;
 		case 0 :
-			this.world.getSpaceShip().stopMove();
+			spaceShip.stopMove();
 			break;
 		case 1 :
-			this.world.getSpaceShip().turnRight();
+			spaceShip.turnRight();
 			break;
 		default :
 			this.directionDeplacement = 0;
