@@ -51,7 +51,8 @@ public class WorldTest {
 	@Test
 	public void testAddBonusSpecialShoot() {
 		World w = new World();
-		w.generateBonus( new Point2D.Double(0, 0) );
+		Bonus bonus = new SpecialShootBonus( new Point2D.Double(0, 0) );
+		w.testerBonus(bonus);
 		assertEquals(1, w.getListBonus().size());
 	}
 	
@@ -61,7 +62,8 @@ public class WorldTest {
 	@Test
 	public void testBonusSpecialShootIsOutOfScreen() {
 		World w = new World();
-		w.generateBonus( new Point2D.Double(World.WIDTH, World.HEIGHT-5) );
+		Bonus bonus = new SpecialShootBonus(new Point2D.Double(World.WIDTH, World.HEIGHT-5));
+		w.testerBonus(bonus);
 		w.update(50);
 		assertEquals(0, w.getListBonus().size());
 	}
