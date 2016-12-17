@@ -255,8 +255,15 @@ public class World {
 			this.listBonus.add(lb);
 		}
 	}
+	
+	/**
+	 * Fonction pour tester le fonctionnement des bonus
+	 */
+	public void testerBonus(Bonus bonus) {
+		this.listBonus.add(bonus);
+	}
 
-	public void deleteBonus(Iterator<Bonus> ib) {
+	private void deleteBonus(Iterator<Bonus> ib) {
 		ib.remove();
 	}
 

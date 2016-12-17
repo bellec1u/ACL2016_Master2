@@ -44,7 +44,7 @@ public class GameScreen extends JPanel {
 	private final int frameDuration = 16; //  1000ms / 60fps (ms value)
 	private final double delay = ( 1.0 / 60.0 );
 	private Timer timer; // use to call repaint() every frameDuration
-	private boolean paused = true; // indicates if the game if paused or not
+	private boolean paused; // indicates if the game if paused or not
 
 	public GameScreen(World w) {
 		super();
@@ -68,6 +68,8 @@ public class GameScreen extends JPanel {
 		music = SoundFactory.getInstance().getBackgroundSound();
 		music.loop(Clip.LOOP_CONTINUOUSLY);
 		music.start();
+		
+		paused = true;
 	}
 
 	/** Pause the Game **/
