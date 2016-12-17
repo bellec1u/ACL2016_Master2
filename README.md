@@ -40,7 +40,7 @@ V 2.0 :
 V 2.1 :
 * Gestion de fin de partie :
  - [x] faire apparaître le message "GAME OVER" et le score quand la partie est finie.
- - [x] possibilité d'appuyer sur R si la partie est finie pour en relancer une.
+ - [x] possibilité d'appuyer sur 'R' si la partie est finie pour en relancer une.
 * Gestion des collisions Invader-Spaceship.
  - [x] les deux éléments sont éliminés.
 * Gestion du score de la partie :
@@ -53,13 +53,13 @@ V 2.1 :
 V 3.0 :
 * Modification du niveau de difficulté en fonction du score :
  - [x] plus le score est élevé plus les invaders apparaissent nombreux et rapidement.
-* Gestion des bonus tire spéciaux :
- - [x] les bonus de tire spécaux ont une certaine probabilité a la mort des invaders
- - [x] lorsque le vaisseau passe sur un bonus de tire spécial, le bonus disparait et s'ajoute a la liste de bonus de tire spécaux possédé par le vaisseau
- - [x] si le joueur a 3 bonus de tire spécaux, celui-ci ne peut pas en accumuler plus
- - [x] lorsque le bonus de tire spécial sort de l'écran (en bas), celui-ci disparait completement du monde.
+* Gestion des bonus du tir spécial :
+ - [x] les bonus du tir spécial ont une certaine probabilité d'apparaître à la mort des invaders.
+ - [x] lorsque le vaisseau touche un bonus du tir spécial, le bonus disparaît et s'ajoute à la liste de bonus du tir spécial.
+ - [x] si le joueur a 3 bonus du tir spécial, il ne peut plus en accumuler davantage.
+ - [x] lorsque le bonus du tir spécial sort de l'écran, celui-ci disparaît complètement du monde.
 * Les Invaders lâchent des bombes de façon aléatoire :
- - [x] les bombes apparaissent et interragissent comme les invaders.
+ - [x] les bombes apparaissent et interagissent comme les Invaders.
  - [x] les bombes donnent un score plus élevé.
  - [x] chaque Invader a entre 0 et 3 bombes.
 * Mettre le jeu en pause :
@@ -67,13 +67,20 @@ V 3.0 :
 
 V 3.1 :
 * Gestion des bonus de vie :
- - [x] lorsqu'un alien meurt, il a 5% de chance faire faire apparaitre un bonus puis 50% de chance de faire apparaitre soit un SpecialShootBonus, soit un LifeBonus.
-* Tire spécial :
- - [x] le vaisseau, s'il possède au moins un bonus tire spécial, peut lancer un tire spécial via la touche "N".
- - [x] lorsqu'un tire spécial (ShoopDaWhoop) est lancé, les tirs normaux sont bloqués et "l'animation" (image + son) commencent.
- - [x] le tire spécial tue tous les aliens devant le vaisseau.
+ - [x] lorsqu'un alien meurt, il a 5% de chance de faire apparaître un bonus puis 50% de chance de faire apparaître soit un SpecialShootBonus, soit un LifeBonus.
+* Tir spécial :
+ - [x] le vaisseau, s'il possède au moins un bonus du tir spécial, peut lancer un tir spécial via la touche "N".
+ - [x] lorsqu'un tir spécial (ShoopDaWhoop) est lancé, les tirs normaux sont bloqués et "l'animation" (image + son) commence.
+ - [x] le tir spécial tue tous les aliens devant le vaisseau.
 * Gestion de la musique de fond :
  - [x] le jeu lance automatiquement une musique de fond lors d'une partie.
+ 
+V 3.2 :
+* Tir spécial :
+ - [x] tir spécial simplifié ; le vaisseau tire un puissant rayon laser destructeur.
+* Gestion de la musique de fond :
+ - [x] la musique peut être arrêtée ou relancée à l'aide d'une pression sur la touche 'M'.
+
 
 # Diagrams
 
