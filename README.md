@@ -78,11 +78,14 @@ V 3.1 :
 V 3.2 :
 * Tir spécial :
  - [x] tir spécial simplifié ; le vaisseau tire un puissant rayon laser destructeur.
-* Gestion des déserteurs des vaisseaux aliens :
+* Gestion des déserteurs (anciennement bombe) des vaisseaux aliens :
  - [x] un petit vaisseau déserteur peut être expulsé par les Invaders à tout moment ; il produit des dégâts au contact du vaisseau joueur.
 * Gestion de la musique de fond :
  - [x] la musique peut être arrêtée ou relancée à l'aide d'une pression sur la touche 'M'.
-
+* Gestion des bonus :
+ - [x] la façon dont on applique un bonus au vaisseau a été simplifié.
+* Gestion de la mise à jour graphique :
+ - [x] notre fonction de render graphique peut être réutilisée pour d'autres jeux.
 
 # Diagrams
 

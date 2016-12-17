@@ -62,6 +62,7 @@ public class SpecialShootBonus extends Bonus {
     }
     
     /**
+     * 
      * Returns HEIGHTT of the GameElement;
      */
     public int getHeight() {

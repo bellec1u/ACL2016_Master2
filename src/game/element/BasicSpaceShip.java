@@ -18,7 +18,7 @@ import game.TextureFactory;
 public class BasicSpaceShip extends SpaceShip {
 
 	/** Speed of a BasicSpaceShip **/
-	private final double SPEED = 200.0; // 4 pixels every refresh call
+	private final double SPEED = 200.0; // ~4 pixels every refresh call
 	private static final int SHOT_DELAY = 200;
 
 	/** Dimension (width and height) **/
