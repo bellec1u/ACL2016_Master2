@@ -55,7 +55,6 @@ public class World {
 	private int SPAWN_MIN_RATE = 200;
 	private int spawnDelay = 1000;    
 	private int spawnNumber = 1;
-	private boolean[] spawnTab;
 	private long lastSpawn;
 	
 
@@ -163,14 +162,16 @@ public class World {
 		/*
 		 * Change the indice without using a Timer
 		 */
-		spawnTab = new boolean[World.WIDTH/29];
+		int divideBy = 29;
+		int rows = (World.WIDTH / divideBy);
+		boolean[] spawnTab = new boolean[rows];
 		for(int i = 0 ; i < spawnNumber ; i++){
-			x = rand.nextInt(World.WIDTH / 29);
+			x = rand.nextInt(rows);
 			while( spawnTab[x] == true ){
-				x = rand.nextInt(World.WIDTH/29);
+				x = rand.nextInt(rows);
 			}
 			spawnTab[x] = true;
-			invaders.add(new BasicInvader(new Point2D.Double((29) * x, 16)));
+			invaders.add(new BasicInvader(new Point2D.Double((divideBy) * x, 16)));
 		}
 	}
 	
@@ -235,14 +236,8 @@ public class World {
 	private void manageCollision(Bonus ssb, Iterator<Bonus> issb) {
 		//si une collision c'est produit entre le vaisseau et le bonus special shoot
 		if ( this.spaceShip.hasCollision(ssb) ) {
-			this.deleteBonus(issb);
-			if (ssb.getClass().getName().equals("game.element.SpecialShootBonus")) {
-				if (this.spaceShip.getNbSpecialShoot() < this.spaceShip.getNbMaxSpecialShoot()) {
-					this.spaceShip.addSpecialShoot();
-				}
-			} else if (ssb instanceof LifeBonus){
-				this.spaceShip.addLife();
-			}
+			ssb.applyBonus(spaceShip);
+			this.deleteBonus(issb);		
 		} 
 	}
 

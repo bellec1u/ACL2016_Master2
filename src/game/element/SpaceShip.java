@@ -140,7 +140,9 @@ public abstract class SpaceShip extends GameElement{
 
 	/** Adds 1 to the current variable nbMaxSpecialShoot **/
 	public void addSpecialShoot() {
-		this.nbSpecialShoot++;
+		if ( nbSpecialShoot < nbMaxSpecialShoot ) {
+			this.nbSpecialShoot++;
+		}
 	}
 
 	/**

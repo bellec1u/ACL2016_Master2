@@ -28,5 +28,8 @@ public abstract class Bonus extends GameElement {
 	public boolean isOutOfScreen() {
 		return position.getY() > World.HEIGHT;
 	}
+	
+	/** Applies an bonus effect to the SpaceShip **/
+	public abstract void applyBonus(SpaceShip spaceShip);
 
 }

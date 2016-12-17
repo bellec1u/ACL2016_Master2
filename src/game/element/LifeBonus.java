@@ -18,7 +18,7 @@ import java.awt.geom.Rectangle2D;
 public class LifeBonus extends Bonus {
 
 	/** Speed of a bonus **/
-	private static final double SPEED = 50.0; // 4 pixels every refresh call
+	private final double SPEED = 60.0; // 1 pixel every refresh call
 
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 24;	
@@ -39,6 +39,13 @@ public class LifeBonus extends Bonus {
 	/** Updates LifeBonus' positions in the game **/
 	public void update(double delta) {
 		move(delta);
+	}
+	
+	/**
+	 * Increments the SpaceShip's life
+	 */
+	public void applyBonus(SpaceShip spaceShip) {
+		spaceShip.addLife();
 	}
 
 	/** Returns LifeBonus's speed **/

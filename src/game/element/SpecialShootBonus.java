@@ -18,7 +18,7 @@ import java.awt.geom.Rectangle2D;
 public class SpecialShootBonus extends Bonus {
 
 	/** Speed of a bonus **/
-	private static final double SPEED = 50.0; // 4 pixels every refresh call
+	private final double SPEED = 90.0; // 1.5 pixels every refresh call
 
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 24;	
@@ -67,5 +67,12 @@ public class SpecialShootBonus extends Bonus {
     public int getHeight() {
     	return HEIGHT;
     }
+
+	/**
+	 * Increments the number of specialShot possible of the SpaceShip
+	 */
+	public void applyBonus(SpaceShip spaceShip) {
+		spaceShip.addSpecialShoot();
+	}
 
 }

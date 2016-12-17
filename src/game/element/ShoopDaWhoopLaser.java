@@ -20,7 +20,7 @@ public class ShoopDaWhoopLaser extends Laser{
 
 
 	/** Speed of a BasicLaser **/
-	private static final double SPEED = 0.0; // 0 pixel every refresh call
+	private final double SPEED = 0.0; // 0 pixel every refresh call
 	
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 49;

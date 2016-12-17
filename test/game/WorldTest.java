@@ -69,7 +69,7 @@ public class WorldTest {
 		World w = new World();
 		Point2D pos = w.getSpaceShip().getPosition();
 		w.generateBonus(new Point2D.Double(pos.getX(), pos.getY()));
-		w.update(0);
+		w.update(1);
 		assertEquals(1, w.getSpaceShip().getNbSpecialShoot());
 	}
 }

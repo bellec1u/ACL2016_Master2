@@ -18,7 +18,7 @@ import java.awt.geom.Rectangle2D;
 public class DeserterInvader extends Invader  {
 
 	/** Speed of a BasicInvader **/
-	private final static double SPEED = 180.0; // 3 pixels every refresh call
+	private static double SPEED = 180.0; // 3 pixels every refresh call
 
 	/** Dimension (width and height) **/
 	private final static int WIDTH = 4;	
