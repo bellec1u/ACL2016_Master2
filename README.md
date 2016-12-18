@@ -83,9 +83,9 @@ V 3.2 :
 * Gestion de la musique de fond :
  - [x] la musique peut être arrêtée ou relancée à l'aide d'une pression sur la touche 'M'.
 * Gestion des bonus :
- - [x] la façon dont on applique un bonus au vaisseau a été simplifié.
+ - [x] la façon dont on applique un bonus au vaisseau a été simplifiée.
 * Gestion de la mise à jour graphique :
- - [x] notre fonction de render graphique peut être réutilisée pour d'autres jeux.
+ - [x] la fonction de rendu graphique peut être réutilisée pour d'autres jeux.
 
 # Diagrams
 

@@ -1,10 +1,5 @@
 package game.view;
 
-import game.SoundFactory;
-import game.TextureFactory;
-import game.World;
-import game.element.GameElement;
-
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -15,6 +10,11 @@ import java.util.List;
 import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import game.SoundFactory;
+import game.TextureFactory;
+import game.World;
+import game.element.GameElement;
 
 /**
  * Project "Space Invader"
@@ -54,12 +54,10 @@ public class GameScreen extends JPanel {
 
 		// calls paintComponent() each 16 ms
 		timer = new Timer(frameDuration, new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				repaint();
 			}
-
 		});
 		timer.setRepeats(true);
 		timer.start();
@@ -119,7 +117,7 @@ public class GameScreen extends JPanel {
 			if (!paused) {
 				world.update(delay);
 			}
-			//world.render(g):
+
 			renderWorld(g);
 			if (paused) {
 				drawPauseScreen(g);
@@ -203,17 +201,18 @@ public class GameScreen extends JPanel {
 		String txt = "PAUSE";
 		g.drawString(txt, getCenteredStringX(g, txt), 100);
 
-		// Draw commands
+		// Draw control keys
 		g.setColor(Color.WHITE);
 		g.setFont(TextureFactory.getInstance().getMonospacedFont());
-		String[] texts = {" ESC    pause", 
-				"  q     quit", 
-				"  →     move right", 
-				"  ←     move left", 
-				"SPACE   shoot",
-		"  n     special laser",
-		"  m     mute the music"};
-		int x = getCenteredStringX(g, texts[2]);
+		String[] texts = {
+            "  m     mute the music",
+            "  n     special laser",
+            "  \u2192     move right", 
+            "  \u2190     move left", 
+            "SPACE   shoot",
+            " ESC    pause", 
+            "  q     quit"};
+		int x = getCenteredStringX(g, texts[0]);
 		int y = 130;
 
 		for (String str : texts) {

@@ -238,7 +238,7 @@ public class World {
 		//si une collision c'est produit entre le vaisseau et le bonus special shoot
 		if ( this.spaceShip.hasCollision(ssb) ) {
 			ssb.applyBonus(spaceShip);
-			this.deleteBonus(issb);		
+			this.deleteBonus(issb);
 		} 
 	}
 
@@ -248,13 +248,14 @@ public class World {
 	 * @param y
 	 */
 	private void generateBonus(Point2D pos) {
-		if (Math.random() >= 1.0/2) {
-			SpecialShootBonus ssb = new SpecialShootBonus(pos);
-			this.listBonus.add(ssb);
+		Bonus bonus;
+	    if (Math.random() >= 1.0/2) {
+			bonus = new SpecialShootBonus(pos);
 		} else {
-			LifeBonus lb = new LifeBonus(pos);
-			this.listBonus.add(lb);
+			bonus = new LifeBonus(pos);
 		}
+	    
+	    this.listBonus.add(bonus);
 	}
 	
 	/**
@@ -275,7 +276,7 @@ public class World {
 			addSpaceShip();
 			updateLevel();
 			this.gameOver = false;
-			this.listBonus.clear();		//if (Math.random() >= 1.0/2) {
+			this.listBonus.clear();
 		}
 	}
 
@@ -291,7 +292,7 @@ public class World {
 	/** Adds value to the score **/
 	public void incrementScore(int value) {
 		score += value;
-		updateLevel() ;
+		updateLevel();
 	}
 	
 	/** Returns MEDIUM **/
