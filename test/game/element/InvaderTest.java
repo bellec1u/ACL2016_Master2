@@ -62,11 +62,6 @@ public class InvaderTest {
 	public void invaderGeneration() {
 	    World w = new World();
 	    int nbInvader=w.getInvaderNumber();
-	    try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 	    w.update(1);
 	    assertTrue(nbInvader<w.getInvaderNumber());
 	}

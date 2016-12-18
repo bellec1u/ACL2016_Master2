@@ -1,6 +1,11 @@
 package game;
 
 import static org.junit.Assert.*;
+import game.element.Bonus;
+import game.element.LifeBonus;
+import game.element.SpaceShip;
+import game.element.SpecialShootBonus;
+
 import java.awt.geom.Point2D;
 import org.junit.Test;
 
@@ -46,7 +51,8 @@ public class WorldTest {
 	@Test
 	public void testAddBonusSpecialShoot() {
 		World w = new World();
-		w.generateBonus( new Point2D.Double(0, 0) );
+		Bonus bonus = new SpecialShootBonus( new Point2D.Double(0, 0) );
+		w.testerBonus(bonus);
 		assertEquals(1, w.getListBonus().size());
 	}
 	
@@ -56,7 +62,8 @@ public class WorldTest {
 	@Test
 	public void testBonusSpecialShootIsOutOfScreen() {
 		World w = new World();
-		w.generateBonus( new Point2D.Double(World.WIDTH, World.HEIGHT-5) );
+		Bonus bonus = new SpecialShootBonus(new Point2D.Double(World.WIDTH, World.HEIGHT-5));
+		w.testerBonus(bonus);
 		w.update(50);
 		assertEquals(0, w.getListBonus().size());
 	}
@@ -68,8 +75,37 @@ public class WorldTest {
 	public void testAddBonusSpecialShootStock() {
 		World w = new World();
 		Point2D pos = w.getSpaceShip().getPosition();
-		w.generateBonus(new Point2D.Double(pos.getX(), pos.getY()));
-		w.update(1);
+		Bonus bonus = new SpecialShootBonus(pos);
+		w.testerBonus(bonus);
+		w.update(0);
 		assertEquals(1, w.getSpaceShip().getNbSpecialShoot());
+		
+		// le bonus a du être supprimé
+		assertTrue(w.getListBonus().size() == 0);
+	}
+	
+	/**
+	 * On test la collision entre le SpaceShip et un Bonus de vie
+	 * si collision alors le vie du spaceShip est augmentée de 1.
+	 */
+	@Test
+	public void testCollisionSpaceShipBonus() {
+		World w = new World();
+		SpaceShip s = w.getSpaceShip();	
+		
+		// recupere la vie du vaisseau avant
+		int vieAvant = s.getLives();
+		
+		// on créé le bonus a la position du vaisseau
+		Bonus bonus = new LifeBonus(s.getPosition());
+		w.testerBonus(bonus);
+		// on update
+		w.update(0);
+		
+		// on verifie que la vie du vaisseau ait été augmenté
+		assertTrue(s.getLives() == (vieAvant + 1));
+		
+		// le bonus a du être supprimé
+		assertTrue(w.getListBonus().size() == 0);
 	}
 }

@@ -85,6 +85,7 @@ public class World {
 		
 		return elements;
 	}
+	
 	private void addSpaceShip() {
 		this.spaceShip = new BasicSpaceShip(new Point2D.Double(WIDTH/2, HEIGHT-100));
 		this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
@@ -109,7 +110,7 @@ public class World {
 		return invaders.size();
 	}
 
-	public void deleteInvader(Iterator<Invader> it) {
+	private void deleteInvader(Iterator<Invader> it) {
 		it.remove();
 	}
 
@@ -246,7 +247,7 @@ public class World {
 	 * @param x
 	 * @param y
 	 */
-	public void generateBonus(Point2D pos) {
+	private void generateBonus(Point2D pos) {
 		if (Math.random() >= 1.0/2) {
 			SpecialShootBonus ssb = new SpecialShootBonus(pos);
 			this.listBonus.add(ssb);
@@ -255,8 +256,15 @@ public class World {
 			this.listBonus.add(lb);
 		}
 	}
+	
+	/**
+	 * Fonction pour tester le fonctionnement des bonus
+	 */
+	public void testerBonus(Bonus bonus) {
+		this.listBonus.add(bonus);
+	}
 
-	public void deleteBonus(Iterator<Bonus> ib) {
+	private void deleteBonus(Iterator<Bonus> ib) {
 		ib.remove();
 	}
 
