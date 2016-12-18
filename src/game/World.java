@@ -90,7 +90,7 @@ public class World {
 		this.spaceShip.setRelativePosition(-spaceShip.getBoundingBox().getWidth()/2, 0);
 	}
 
-	/** Returns the ith Invader **/
+	/** Returns the i-th Invader **/
 	public Invader getInvader(int i) {
 		if( i >= 0 && i < invaders.size()) {
 			return invaders.get(i);
